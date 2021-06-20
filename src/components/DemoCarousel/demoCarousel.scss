@@ -1,0 +1,27 @@
+@import "node_modules/react-modal-video/scss/modal-video.scss";
+
+.btnPlay {
+  opacity: 0;
+  transition: all 0.2s;
+  .iconPlay {
+    color: #fff;
+    font-size: 80px !important;
+    background-color: #7a807a54;
+    border-radius: 50%;
+  }
+}
+.paper {
+  &:hover {
+    .btnPlay {
+      opacity: 1;
+    }
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .reponsiveImg {
+    max-width: 100%;
+    height: 350px !important;
+  }
+}

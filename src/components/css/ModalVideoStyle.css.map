@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../ModalVideo/ModalVideoStyle.scss"
+    ],
+    "names": [],
+    "file": "ModalVideoStyle.css"
+}
