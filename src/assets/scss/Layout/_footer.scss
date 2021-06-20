@@ -1,0 +1,113 @@
+#footer {
+  background-color: #222;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: $color-gray-1;
+  .maxWidth940 {
+    max-width: 960px;
+    padding: 0 10px;
+    float: none;
+    margin: auto;
+    clear: both;
+  }
+  .title {
+    color: $color-white;
+    font-size: $fs-0 - 2;
+    text-transform: uppercase;
+  }
+  .ant-row .ant-col {
+    align-self: start;
+  }
+  #footer__Document {
+    padding: 0 15px;
+
+    a {
+      font-size: 12px -2 !important;
+      font-size: 80%;
+      font-weight: $fw-0;
+      white-space: nowrap;
+      color: $color-gray-1;
+      display: block;
+      transition: all 0.2s;
+      line-height: 2.3;
+      &:hover {
+        color: $color-white;
+        transition: all 0.5;
+      }
+    }
+  }
+  .partnerLine {
+    margin-bottom: 15px;
+    padding-left: 0;
+    padding-right: 0;
+    .iconConnect {
+      border-radius: 50%;
+      height: 30px;
+      width: 30px;
+      margin-right: 15px;
+    }
+  }
+  #footer__Social {
+    .text__Center {
+      text-align: center;
+    }
+    .social_image_logo {
+      background: 0 0;
+      height: 30px;
+      width: auto;
+      margin: 5px;
+    }
+  }
+  #footer__Connect,
+  #footer__Social {
+    padding: 0 15px;
+  }
+  .hrFooter {
+    border-top: 1px solid #4a4a4a;
+    margin-bottom: 10px;
+    opacity: 0.2;
+  }
+  .imgFooter {
+    text-align: center;
+    padding: 0;
+    .zion_icon {
+      width: 80px;
+      height: auto;
+      border-radius: 8px;
+    }
+  }
+  .infoFooter {
+    color: $color-white;
+    padding-left: 15px;
+    font-size: 70%;
+    span {
+      display: block;
+      line-height: 1.8;
+      color: $color-gray-1;
+      font-size: 12px;
+      font-weight: 400;
+    }
+    span:first-child {
+      color: $color-white;
+    }
+  }
+  .imgBoCo {
+    width: 130px;
+    float: right;
+  }
+  @include respon-to("medium") {
+    .footer__Med {
+      display: none;
+    }
+    .ant-col {
+      margin: auto;
+      text-align: center;
+    }
+    .imgBoCo {
+      float: none;
+    }
+    .zion_icon {
+      margin-bottom: 15px;
+    }
+  }
+}

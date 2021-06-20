@@ -1,0 +1,165 @@
+#chiTietTong {
+  background-color: rgb(10, 32, 41);
+  .chiTiet {
+    position: relative;
+    .chiTietMo {
+      position: relative;
+      top: 0;
+      left: 0;
+      width: 100%;
+      overflow: hidden;
+      .chiTiet__Videores {
+        display: none;
+      }
+      .anhBiaPhim {
+        filter: blur(15px);
+        margin: -11px 0 -5px -10px;
+        width: calc(100% + 5px);
+      }
+      @include respon-to("medium") {
+        .anhBiaPhim {
+          filter: none;
+        }
+      }
+    }
+    .styleGradient {
+      background: linear-gradient(to top, rgb(10, 32, 41), transparent 100%);
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+    }
+    .chiTiet__ThongTin {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      .anhPhim {
+        padding-left: 0;
+        padding-right: 0;
+        max-width: 220px;
+      }
+    }
+    .chiTiet__thongTinPhim {
+      color: $color-white;
+      padding-left: 15px;
+    }
+    .thongTinPhim2__c18 {
+      margin-right: 6px;
+      margin-top: 6px;
+      background-color: $color-red;
+      color: $color-white;
+      font-size: $fs-2;
+      border-radius: 4px;
+      padding: 0 5px;
+      display: inline-block;
+      text-align: center;
+      min-width: 33px;
+    }
+    .thongTinPhim2__tenPhim {
+      font-size: $fs-4;
+      font-weight: $fw-1 - 100;
+    }
+    .chiTiet__vongTron {
+      text-align: center;
+    }
+    .ant-progress-text {
+      color: $color-white;
+      font-weight: $fw-1 - 100;
+      font-size: 50px;
+    }
+    .ant-progress-circle-trail {
+      stroke: darkslategray;
+    }
+    .anticon-star {
+      color: $color-red;
+      font-size: 28px;
+    }
+  }
+  .chiTiet__anhNho {
+    border-radius: 4px;
+  }
+  @include respon-to("medium") {
+    .chiTiet__ThongTin {
+      display: none;
+    }
+  }
+  .noiDung__Mobile {
+    display: none;
+  }
+  .ant-tabs-tab {
+    font-size: $fs-3;
+
+    &:hover {
+      color: $color-white;
+      font-size: $fs-4;
+    }
+  }
+  .ant-tabs-tab-btn {
+    transition: none;
+    color: white;
+    padding: 0 10px;
+  }
+  .ant-tabs > .ant-tabs-nav .ant-tabs-nav-list,
+  .ant-tabs > div > .ant-tabs-nav .ant-tabs-nav-list {
+    transition: all 2s;
+  }
+  .ant-tabs-card > .ant-tabs-nav .ant-tabs-tab-active,
+  .ant-tabs-card > div > .ant-tabs-nav .ant-tabs-tab-active {
+    color: $color-white;
+  }
+  .ant-tabs-tab-btn:focus,
+  .ant-tabs-tab-remove:focus,
+  .ant-tabs-tab-btn:active,
+  .ant-tabs-tab-remove:active {
+    color: $color-white;
+  }
+
+  .ant-tabs-top > .ant-tabs-nav::before,
+  .ant-tabs-bottom > .ant-tabs-nav::before,
+  .ant-tabs-top > div > .ant-tabs-nav::before,
+  .ant-tabs-bottom > div > .ant-tabs-nav::before {
+    border: none;
+  }
+  .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: $color-red;
+    font-size: $fs-4;
+  }
+  .ant-tabs-card > .ant-tabs-nav .ant-tabs-tab,
+  .ant-tabs-card > div > .ant-tabs-nav .ant-tabs-tab {
+    padding: 0 4px;
+    margin: 0;
+    border: none;
+    background: none;
+  }
+  .ant-row {
+    color: $color-white;
+    font-size: $fs-1;
+    font-weight: $fw-1 - 100;
+  }
+  .ant-row .ant-col {
+    align-self: baseline;
+  }
+  .MuiSnackbarContent-root {
+    background-color: white;
+    color: gray;
+  }
+  .comment {
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 50px;
+  }
+  @include respon-to("medium") {
+    .ant-tabs-content-holder {
+      padding: 10px 15px;
+    }
+  }
+}
+.chiTiet__maxWidth {
+  max-width: 870px;
+  float: none;
+  margin: auto;
+  clear: both;
+}

@@ -1,0 +1,86 @@
+.ant-row {
+  .imgApp {
+    width: 100%;
+    position: relative;
+  }
+  .homeApp {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    color: $color-white;
+    width: 100%;
+
+    .maxWidth940 {
+      max-width: 960px;
+      padding: 0 10px;
+      margin: 0 auto;
+    }
+  }
+  .ant-col {
+    align-self: center;
+  }
+  .textTop:first-child {
+    margin-bottom: 0;
+  }
+  .textTop {
+    font-weight: $fw-1;
+    font-size: 28px;
+  }
+  .textMed {
+    font-weight: $fw-0;
+  }
+  .btn__App {
+    background-color: $color-red;
+    padding: 10px 20px;
+    color: #fff;
+    font-size: medium;
+    font-weight: $fw-1;
+    border: none;
+    border-radius: 4px;
+    transition: all 1s;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .textUn {
+    margin-top: 10px;
+    .tagA {
+      color: #fff;
+      border-bottom: 1px solid #fff;
+    }
+    .tagA:first-child {
+      margin: 0 10px;
+    }
+  }
+
+  .phone__Img {
+    padding: 0 28%;
+    width: 100%;
+  }
+
+  .ant-carousel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 4% 29.6% 0px 29.3%;
+    .img__App {
+      img {
+        width: 100%;
+      }
+    }
+  }
+  .slick-list {
+    border-radius: 5%;
+  }
+  @include respon-to("medium") {
+    .imgApp {
+      height: 820px;
+      object-fit: cover;
+    }
+    .apply__Left {
+      text-align: center;
+    }
+  }
+}
