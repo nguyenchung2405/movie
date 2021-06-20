@@ -1,0 +1,124 @@
+.img {
+  width: 50px;
+  height: 50px;
+}
+.colorBHD {
+  color: #8bc541;
+}
+.btnColorBHD{
+  color: #00ac4d;
+}
+.flex-start{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.opacity03{
+  opacity: 0.3;
+}
+.active{
+  opacity: 1;
+}
+.ageType {
+  color: #fff;
+  display: inline-block;
+  padding: 5px;
+  font-size: 14px;
+  min-width: 33px;
+  text-align: center;
+  margin-right: 8px;
+  border-radius: 4px;
+  background-color: #00ac4d;
+}
+.cumRap {
+  height: 700px;
+  .logoRap {
+    border: 1px solid #ebebec;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .btnLogo {
+      background-color: #fff;
+      border: none;
+      cursor: pointer;
+      padding: 20px 0;
+      border-bottom: 1px solid #ebebec;
+      transition: all .2s;
+      &:hover{
+        opacity: 1;
+      }
+    }
+  }
+  .diadiem__Rap {
+    height: 100%;
+    max-width: 100%;
+    border-top: 1px solid #ebebec;
+    border-bottom: 1px solid #ebebec;
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 10px;
+    .rapInfo {
+      cursor: pointer;
+      max-width: 100%;
+      display: flex;
+      align-items: center;
+      padding: 20px 0;
+      border-bottom: 1px solid #ebebec;
+      transition: all .2s;
+      &:hover{
+        opacity: 1;
+      }
+      .d-flex {
+        padding-left: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        .infoMovieCinema {
+          font-size: 12px;
+          color: #949494;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          margin: 5px 0;
+        }
+        a {
+          color: #fb4226 !important;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+  .listMovie {
+    border: 1px solid #ebebec;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-width: 100%;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 10px;
+    .wrapListMovie {
+      width: 100%;
+      padding: 20px 0;
+      border-bottom: 1px solid #ebebec;
+      .titleMovie {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+    }
+    .btnMovie{
+      margin: 5px 5px 5px 0;
+    }
+  }
+}

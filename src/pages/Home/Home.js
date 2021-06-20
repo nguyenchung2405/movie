@@ -3,6 +3,7 @@ import HeaderCoponent from '../../components/Header/HeaderCoponent';
 import DemoCarousel from '../../components/DemoCarousel/DemoCarousel';
 import MovieSelect from '../../components/MovieSelect/MovieSelect';
 import MovieType from "../../components/MovieType/MovieType";
+import ThongTinRap from '../../components/ThongTinRap/ThongTinRap';
 
 export default function Home() {
     return (
@@ -23,6 +24,9 @@ export default function Home() {
             </div>
             <div style={{marginTop:60}}>
             <MovieType />
+            </div>
+            <div style={{marginTop:60}}>
+                <ThongTinRap />
             </div>
         </div>
     )
