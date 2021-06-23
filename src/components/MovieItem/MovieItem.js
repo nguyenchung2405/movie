@@ -12,38 +12,35 @@ import './movieItem.scss'
 
 
 export default function MovieItem(props) {
-    const {phim} = props;
+    const { phim } = props;
     console.log("props phim", props);
 
     const classes = useStyles();
     const [isOpen, setOpen] = useState(false);
 
-    // const phim = [
-    //     {
-    //         modalVideo: < Fragment>
-    //             <ModalVideo
-    //                 channel='youtube'
-    //                 autoplay isOpen={isOpen}
-    //                 videoId="s05oOsz_SvA"
-    //                 onClose={() => setOpen(false)} />
-    //             <div className="btnPlay" style={{ width: "100%", textAlign: "center", position: "absolute", top: "40%" }}>
-    //                 <IconButton onClick={() => setOpen(true)}>
-    //                     <PlayArrowIcon className="iconPlay" />
-    //                 </IconButton>
-    //             </div>
-    //         </Fragment >,
-    //         imgPath: "./img/phim/ban-tay-diet-quy.png",
-    //     },
-    // ]
 
     return (
         <div className={classes.root}>
             <div className="card">
                 <CardActionArea style={{ marginBottom: 10 }} >
                     <div className="hoverInfor"></div>
-                    {/* {phim[0].modalVideo} */}
+                    < Fragment>
+                        <ModalVideo
+                            channel='youtube'
+                            autoplay isOpen={isOpen}
+                            videoId="s05oOsz_SvA"
+                            onClose={() => setOpen(false)} />
+                        <div className="btnPlay" style={{ width: "100%", textAlign: "center", position: "absolute", top: "40%" }}>
+                            <IconButton onClick={() => setOpen(true)}>
+                                <PlayArrowIcon className="iconPlay" />
+                            </IconButton>
+                        </div>
+                    </Fragment >
+
+
                     <a href="#">
                         <CardMedia
+                            className={classes.img}
                             component="img"
                             alt="Contemplative Reptile"
                             height="auto"
@@ -56,12 +53,11 @@ export default function MovieItem(props) {
                         <Rating name="read-only" defaultValue={4} readOnly style={{ fontSize: 10, color: "#fb4226" }} />
                     </Box>
                 </CardActionArea>
-                <div style={{position:"relative"}}>
+
+                <div style={{ position: "relative" }}>
                     <div className="hideHover">
-                        <div className={classes.nameFilm}>
-                            <span className={classes.ageType}>P</span>
-                            {phim.tenPhim}
-                        </div>
+                        <Typography noWrap> <span className={classes.ageType}>P</span>
+                            {phim.tenPhim}</Typography>
                         <Typography variant="body2" color="textSecondary" component="p" >
                             100 phút
                         </Typography>
@@ -72,6 +68,6 @@ export default function MovieItem(props) {
                 </div>
             </div>
 
-        </div>
+        </div >
     );
 }

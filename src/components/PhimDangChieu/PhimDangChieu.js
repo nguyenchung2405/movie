@@ -11,7 +11,6 @@ import { getPhimAPI } from '../../redux/action/PhimAction';
 export default function PhimDangChieu() {
     //lấy mangPhim từ redux về
     const { mangPhim } = useSelector(state => state.PhimReducer);
-    console.log("abc", mangPhim);
     const dispatch = useDispatch();
 
     const getPhim = () => {
