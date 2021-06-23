@@ -13,7 +13,7 @@ import { List, ListItem } from '@material-ui/core';
 
 
 
-export default function HeaderCoponent() {
+export default function HeaderComponent() {
     const classes = useStyles();
     const [state, setState] = React.useState({
         right: false,

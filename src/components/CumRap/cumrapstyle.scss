@@ -5,24 +5,40 @@
 .colorBHD {
   color: #8bc541;
 }
-.btnColorBHD{
+.btnColorBHD {
   color: #00ac4d;
 }
-.flex-start{
+.colorCinema{
+  color: #df0d7a;
+}
+.colorDDC{
+  color: #9c9c9c;
+}
+.colorLotte {
+  color: #ca4137;
+}
+.colorMegaGS {
+  color: #e5a813;
+}
+.flex-start {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
-.opacity03{
+.opacity03 {
   opacity: 0.3;
 }
-.active{
+.active {
   opacity: 1;
+}
+.pm-0 {
+  margin: 0;
+  padding: 0;
 }
 .ageType {
   color: #fff;
   display: inline-block;
-  padding: 5px;
+  // padding: 5px;
   font-size: 14px;
   min-width: 33px;
   text-align: center;
@@ -30,8 +46,19 @@
   border-radius: 4px;
   background-color: #00ac4d;
 }
-.cumRap {
+
+.tab {
+  display: flex;
+  justify-content: flex-start;
   height: 700px;
+  ul li {
+    list-style: none;
+  }
+  p,
+  h4 {
+    margin: 0;
+    padding: 0;
+  }
   .logoRap {
     border: 1px solid #ebebec;
     border-top-left-radius: 4px;
@@ -47,8 +74,8 @@
       cursor: pointer;
       padding: 20px 0;
       border-bottom: 1px solid #ebebec;
-      transition: all .2s;
-      &:hover{
+      transition: all 0.2s;
+      &:hover {
         opacity: 1;
       }
     }
@@ -61,7 +88,6 @@
     overflow-y: hidden;
     display: flex;
     flex-direction: column;
-    align-items: center;
     padding: 0 10px;
     .rapInfo {
       cursor: pointer;
@@ -70,8 +96,8 @@
       align-items: center;
       padding: 20px 0;
       border-bottom: 1px solid #ebebec;
-      transition: all .2s;
-      &:hover{
+      transition: all 0.2s;
+      &:hover {
         opacity: 1;
       }
       .d-flex {
@@ -86,7 +112,7 @@
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
-          margin: 5px 0;
+          // margin: 5px 0;
         }
         a {
           color: #fb4226 !important;
@@ -117,7 +143,7 @@
         margin-bottom: 20px;
       }
     }
-    .btnMovie{
+    .btnMovie {
       margin: 5px 5px 5px 0;
     }
   }

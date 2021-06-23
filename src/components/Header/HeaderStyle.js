@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
         display: "flex",
         justifyContent: "center",
         alignItems: 'center',
+        marginLeft:250,
         "& a": {
             color: "#000",
             marginRight: 20,

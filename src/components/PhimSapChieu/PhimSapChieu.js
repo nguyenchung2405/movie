@@ -29,13 +29,13 @@ export default function PhimSapChieu() {
             <Hidden xsDown>
                 <Carousel {...settings}>
                     <Container maxWidth="md">
-                        <div style={{ display: "flex" }}>
+                        <div style={{ display: "flex", justifyContent:"space-between"  }}>
                             <MovieItem />
                             <MovieItem />
                             <MovieItem />
                             <MovieItem />
                         </div>
-                        <div style={{ display: "flex" }}>
+                        <div style={{ display: "flex", justifyContent:"space-between"  }}>
                             <MovieItem />
                             <MovieItem />
                             <MovieItem />
@@ -43,13 +43,13 @@ export default function PhimSapChieu() {
                         </div>
                     </Container>
                     <Container maxWidth="md">
-                        <div style={{ display: "flex" }}>
+                        <div style={{ display: "flex", justifyContent:"space-between"  }}>
                             <MovieItem />
                             <MovieItem />
                             <MovieItem />
                             <MovieItem />
                         </div>
-                        <div style={{ display: "flex" }}>
+                        <div style={{ display: "flex", justifyContent:"space-between"  }}>
                             <MovieItem />
                             <MovieItem />
                             <MovieItem />

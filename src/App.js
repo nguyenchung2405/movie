@@ -1,14 +1,13 @@
+import React from "react";
+import "./App.css";
+import MovieList from "./components/MovieList/MovieList";
 import Home from "./pages/Home/Home";
-import DemoCumRap from "./components/ThongTinRap/DemoCumRap";
-import ThongTinRap from "./components/ThongTinRap/ThongTinRap";
 
 function App() {
   return (
     <div>
-      {/* <Home /> */}
-      <DemoCumRap />
-
-      {/* <ThongTinRap /> */}
+      <Home />
+      {/* <MovieList /> */}
     </div>
   );
 }

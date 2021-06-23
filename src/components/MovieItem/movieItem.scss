@@ -11,12 +11,21 @@
   }
 }
 .card {
+  max-width: 215px;
+  padding: 20 10 0 10;
   &:hover {
     .btnPlay {
       opacity: 1;
     }
     .hoverInfor {
       opacity: 1;
+    }
+    .hideHover{
+      opacity: 0;
+    }
+    .showHover{
+      opacity: 1;
+      visibility: visible;
     }
   }
   .hoverInfor {
@@ -28,5 +37,23 @@
     border-radius: 4px;
     opacity: 0;
     transition: all 0.2s;
+  }
+  .showHover {
+    opacity: 0;
+    visibility: hidden;
+    transition: all .3s;
+  }
+  .buyNow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 18px;
+    padding: 10px;
+    text-align: center;
+    background: linear-gradient(to left, #fb4226, #ce3017 100%);
   }
 }

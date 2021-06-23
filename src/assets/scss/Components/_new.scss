@@ -1,0 +1,109 @@
+.card-container {
+  max-width: 960px;
+  padding: 0 10px;
+  margin: auto;
+  .linear__New {
+    height: 100px;
+    max-width: 940px;
+    margin: auto;
+    img {
+      width: 100%;
+    }
+  }
+  .btn__New {
+    font-size: 14px;
+    color: #949494;
+    font-family: "SF Regular";
+    border: 1px solid #949494;
+    border-radius: 4px;
+    text-align: center;
+    background: 0 0;
+    padding: 7px 25px;
+    transition: all 0.2s;
+    margin: auto;
+    margin-top: 35px;
+    margin-bottom: 20px;
+    display: block;
+    &:hover {
+      cursor: pointer;
+      color: $color-white;
+      background: $color-red;
+    }
+  }
+  .ant-tabs-tab {
+    font-size: $fs-3;
+
+    &:hover {
+      color: $color-black;
+      font-size: $fs-4;
+    }
+  }
+  .ant-tabs-tab-btn {
+    transition: none;
+  }
+  .ant-tabs > .ant-tabs-nav .ant-tabs-nav-list,
+  .ant-tabs > div > .ant-tabs-nav .ant-tabs-nav-list {
+    transition: all 2s;
+  }
+  .ant-tabs-card > .ant-tabs-nav .ant-tabs-tab-active,
+  .ant-tabs-card > div > .ant-tabs-nav .ant-tabs-tab-active {
+    color: $color-black;
+  }
+  .ant-tabs-tab-btn:focus,
+  .ant-tabs-tab-remove:focus,
+  .ant-tabs-tab-btn:active,
+  .ant-tabs-tab-remove:active {
+    color: $color-black;
+  }
+
+  .ant-tabs-top > .ant-tabs-nav::before,
+  .ant-tabs-bottom > .ant-tabs-nav::before,
+  .ant-tabs-top > div > .ant-tabs-nav::before,
+  .ant-tabs-bottom > div > .ant-tabs-nav::before {
+    border: none;
+  }
+  .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+    color: $color-red;
+    font-size: $fs-4;
+  }
+  .ant-tabs-card > .ant-tabs-nav .ant-tabs-tab,
+  .ant-tabs-card > div > .ant-tabs-nav .ant-tabs-tab {
+    padding: 0 4px;
+    margin: 0;
+    border: none;
+    background: none;
+  }
+  .ant-card {
+    width: 100% !important;
+  }
+  .ant-card-meta-title {
+    height: 50px;
+    white-space: normal;
+    transition: all 0.5s;
+    &:hover {
+      color: $color-red;
+    }
+  }
+  .ant-card-meta-description {
+    height: 43px;
+  }
+  .ant-row {
+    text-align: center;
+    justify-self: center;
+  }
+  .ant-col {
+    margin: 5px 0;
+    text-align: start;
+  }
+  @include respon-to("medium") {
+    .ant-tabs-tab {
+      margin: 0 4px;
+    }
+    .ant-tabs-tab + .ant-tabs-tab {
+      margin: 0 4px;
+    }
+    .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+      font-size: $fs-3 - 2;
+    }
+  }
+}

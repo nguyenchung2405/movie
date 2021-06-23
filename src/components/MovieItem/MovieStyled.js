@@ -2,10 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    maxWidth: 215,
-    paddingTop: 20,
-    paddingLeft: 10,
-    paddingRight: 10,
+    maxWidth: "25%",
   },
 
   rating: {
