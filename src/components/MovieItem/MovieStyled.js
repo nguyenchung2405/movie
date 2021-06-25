@@ -2,14 +2,21 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
+    width: 215,
     paddingTop: 20,
     paddingLeft: 10,
-    paddingRight: 10
+    paddingRight: 10,
+    [theme.breakpoints.down('sm')]: {
+      maxWidth: 150,
+    },
 },
   img: {
-  width: 215,
-  height: 318,
-  borderRadius: 4
+  width: "100%",
+  height: 310,
+  borderRadius: 4,
+  [theme.breakpoints.down('md')]: {
+    height: 250,
+  },
 },
   rating: {
   backgroundColor: "rgba(12,27,54,.8)",

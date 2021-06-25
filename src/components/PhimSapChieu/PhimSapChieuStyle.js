@@ -2,6 +2,15 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
     root: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        alignItems: 'center',
+        overflow: 'hidden',
+        justifyContent: "center",
+        // height: 800,
+        width: "100%"
+    },
+    reponsive: {
         position: "relative",
         padding: 5,
     },

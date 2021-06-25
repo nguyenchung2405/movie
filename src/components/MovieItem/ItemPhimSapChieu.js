@@ -1,23 +1,24 @@
 import React, { Fragment, useState } from 'react';
 import useStyles from './MovieStyled';
+import './movieItem.scss';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import Rating from '@material-ui/lab/Rating';
 import Box from '@material-ui/core/Box';
 import ModalVideo from 'react-modal-video';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import IconButton from '@material-ui/core/IconButton';
-import './movieItem.scss'
 
 
-export default function MovieItem(props) {
+export default function ItemPhimSapChieu(props) {
     const { phim } = props;
-    console.log("props phim", props);
-
     const classes = useStyles();
     const [isOpen, setOpen] = useState(false);
 
+    const getVideoId = (url) => {
+        var arrItem = url.split('/')
+        return arrItem[arrItem.length-1]
+      }
 
     return (
         <div className={classes.root}>
@@ -28,7 +29,8 @@ export default function MovieItem(props) {
                         <ModalVideo
                             channel='youtube'
                             autoplay isOpen={isOpen}
-                            videoId="s05oOsz_SvA"
+                            // videoId={getVideoId(phim.trailer)}
+                            videoId="DUzEYcR2VtM"
                             onClose={() => setOpen(false)} />
                         <div className="btnPlay" style={{ width: "100%", textAlign: "center", position: "absolute", top: "40%" }}>
                             <IconButton onClick={() => setOpen(true)}>
@@ -36,20 +38,11 @@ export default function MovieItem(props) {
                             </IconButton>
                         </div>
                     </Fragment >
-
-
                     <a href="#">
-                        <CardMedia
-                            className={classes.img}
-                            component="img"
-                            alt="Contemplative Reptile"
-                            height="auto"
-                            image={phim.hinhAnh}
-                            title="Contemplative Reptile"
-                        />
+                        <img src={phim.hinhAnh} alt={phim.hinhAnh} className={classes.img}/>
                     </a>
                     <Box className={classes.rating}>
-                        <Typography>6.3</Typography>
+                        <Typography>{phim.danhGia}</Typography>
                         <Rating name="read-only" defaultValue={4} readOnly style={{ fontSize: 10, color: "#fb4226" }} />
                     </Box>
                 </CardActionArea>

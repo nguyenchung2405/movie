@@ -4,11 +4,12 @@ const initialState = {
     mangPhim: [],
 }
 
-export default (state = initialState, action) => {
+const PhimReducer = (state = initialState, action) => {
     switch (action.type) {
+        
         case GET_PHIM_API: {
-            state.mangPhim = action.mangPhim;
-            return {...state}
+            // state.mangPhim = action.mangPhim;
+            return {...state, mangPhim: action.mangPhim}
         }
     
 
@@ -16,3 +17,5 @@ export default (state = initialState, action) => {
         return state;
     }
 }
+
+export default PhimReducer;
