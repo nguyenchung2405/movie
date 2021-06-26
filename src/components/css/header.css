@@ -1,0 +1,35 @@
+.btn__dangXuat {
+  border: none;
+  transition: all 0.2s;
+  background-color: white;
+}
+
+.btn__dangXuat:hover {
+  cursor: pointer;
+}
+
+.MuiMenuItem-root {
+  font-size: 14px !important;
+}
+
+.MuiMenuItem-root a {
+  color: black;
+}
+
+.MuiMenuItem-root:hover {
+  background-color: #fb4226 !important;
+}
+
+.MuiMenuItem-root:hover .btn__dangXuat {
+  color: white;
+  background-color: #fb4226;
+}
+
+.MuiMenuItem-root:hover a {
+  color: white;
+}
+
+.makeStyles-root-10 .MuiListItem-gutters:hover {
+  background-color: #0000000a !important;
+}
+/*# sourceMappingURL=header.css.map */

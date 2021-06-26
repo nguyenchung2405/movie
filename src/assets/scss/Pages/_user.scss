@@ -1,0 +1,213 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  img {
+    height: 50px;
+  }
+  h3 {
+    letter-spacing: 3px;
+    font-size: 20px;
+  }
+  button {
+    border: none;
+    background-color: white;
+    transition: all 0.5s;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #fb4226;
+      color: white;
+    }
+    .anticon {
+      font-size: 30px;
+    }
+  }
+}
+.thongTin {
+  position: relative;
+  top: 150px;
+  width: 100%;
+}
+.sider {
+  width: 60%;
+  margin: 0 auto;
+  text-align: center;
+  .avatar {
+    height: 80px;
+    border-radius: 50%;
+  }
+}
+.user_content {
+  margin-bottom: 20px;
+}
+.user_Icon {
+  i {
+    width: 60px;
+    height: 60px;
+    background-color: red;
+    border-radius: 50%;
+    font-size: 25px;
+    color: white;
+    opacity: 0.7;
+    text-align: center;
+    line-height: 60px;
+  }
+}
+.user_tab {
+  border-left: 1px solid #8080803b;
+  border-right: 1px solid #8080803b;
+}
+.thongTin_dangNhap {
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+p:nth-child(2) {
+  font-size: 14px;
+  color: gray;
+}
+.btn_Cap {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 10px;
+  .btn_capNhat {
+    text-align: center;
+    padding: 12px 30px;
+    border-radius: 5px;
+    color: #fb4226;
+    font-size: 16px;
+    transition: all 0.5s;
+    font-weight: bold;
+    background-color: white;
+    &:hover {
+      cursor: pointer;
+      background-color: red;
+      opacity: 0.7;
+      color: white;
+    }
+  }
+}
+
+.datVe {
+  width: 100%;
+  border: 1px solid #8080803b;
+  font-size: 14px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  white-space: nowrap;
+  border-collapse: collapse;
+
+  th {
+    background: #f55960;
+    padding: 20px 0;
+    color: #fff;
+  }
+  td {
+    text-align: center;
+    padding: 15px;
+  }
+}
+
+.ant-row .ant-col {
+  align-self: flex-start;
+}
+.ant-tabs-tab-btn {
+  transition: none;
+  font-weight: 500;
+}
+.ant-tabs-tab:hover {
+  color: black !important;
+}
+
+.ant-tabs > .ant-tabs-nav,
+.ant-tabs > div > .ant-tabs-nav {
+  min-width: 300px;
+}
+.ant-tabs-card > .ant-tabs-nav .ant-tabs-tab-active,
+.ant-tabs-card > div > .ant-tabs-nav .ant-tabs-tab-active {
+  color: black;
+}
+
+.ant-tabs-tab-btn:focus,
+.ant-tabs-tab-remove:focus,
+.ant-tabs-tab-btn:active,
+.ant-tabs-tab-remove:active {
+  color: black;
+}
+.ant-tabs > .ant-tabs-nav .ant-tabs-nav-operations-hidden,
+.ant-tabs > div > .ant-tabs-nav .ant-tabs-nav-operations-hidden {
+  display: none;
+}
+.ant-tabs-ink-bar {
+  display: none;
+}
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  font-size: 18px;
+  font-weight: 500;
+  color: #fb4226 !important;
+}
+
+@media only screen and (width: 768px) {
+  .user_Icon {
+    i {
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      font-size: 22px;
+    }
+  }
+  .sider {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    .avatar {
+      height: 50px;
+      border-radius: 50%;
+    }
+  }
+}
+@media only screen and (min-width: 769px) {
+  .user_Mobile {
+    display: none;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .user_lap {
+    display: none;
+  }
+  .user_Mobile {
+    padding: 0 10px;
+  }
+  .user_a {
+    padding-bottom: 20px;
+  }
+  .user_Icon {
+    i {
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      font-size: 22px;
+    }
+  }
+  .ant-tabs > .ant-tabs-nav .ant-tabs-nav-list,
+  .ant-tabs > div > .ant-tabs-nav .ant-tabs-nav-list {
+    flex-direction: column;
+
+    text-align: center;
+  }
+  .ant-tabs-tab + .ant-tabs-tab {
+    margin: 0 !important;
+  }
+  hr {
+    margin: 5px;
+  }
+}
