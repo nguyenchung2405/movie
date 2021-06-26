@@ -1,3 +1,14 @@
+.btnPlay {
+  opacity: 0;
+  transition: all 0.2s;
+  .iconPlay {
+    color: #fff;
+    font-size: 60px !important;
+    background-color: #7a807a54;
+    border-radius: 50%;
+  }
+}
+
 #chiTietTong {
   background-color: rgb(10, 32, 41);
   .chiTiet {
@@ -12,9 +23,10 @@
         display: none;
       }
       .anhBiaPhim {
-        filter: blur(15px);
-        margin: -11px 0 -5px -10px;
-        width: calc(100% + 5px);
+        // filter: blur(15px);
+        // margin: -11px 0 -5px -10px;
+        // width: calc(100% + 5px);
+        
       }
       @include respon-to("medium") {
         .anhBiaPhim {
@@ -40,6 +52,12 @@
         padding-left: 0;
         padding-right: 0;
         max-width: 220px;
+        &:hover{
+          .btnPlay {
+            opacity: 1;
+          }
+        }
+        
       }
     }
     .chiTiet__thongTinPhim {

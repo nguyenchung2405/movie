@@ -7,7 +7,8 @@ import Box from '@material-ui/core/Box';
 import ModalVideo from 'react-modal-video';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import IconButton from '@material-ui/core/IconButton';
-import './movieItem.scss'
+import './movieItem.scss';
+import { NavLink } from 'react-router-dom';
 
 
 export default function ItemPhimDangChieu(props) {
@@ -17,14 +18,20 @@ export default function ItemPhimDangChieu(props) {
 
     const getVideoId = (url) => {
         var arrItem = url.split('/')
-        return arrItem[arrItem.length-1]
-      }
+        return arrItem[arrItem.length - 1]
+    }
 
     return (
         <div className={classes.root}>
             <div className="card">
                 <CardActionArea style={{ marginBottom: 10 }} >
-                    <div className="hoverInfor"></div>
+                    <NavLink to={`/phim/${phim.maPhim}`}>
+                        <div className="hoverInfor"></div>
+                        <Box className={classes.rating}>
+                            <Typography>{phim.danhGia}</Typography>
+                            <Rating name="read-only" defaultValue={4} readOnly style={{ fontSize: 10, color: "#fb4226" }} />
+                        </Box>
+                    </NavLink>
                     < Fragment>
                         <ModalVideo
                             channel='youtube'
@@ -38,13 +45,10 @@ export default function ItemPhimDangChieu(props) {
                             </IconButton>
                         </div>
                     </Fragment >
-                    <a href="#">
-                        <img src={phim.hinhAnh} alt={phim.hinhAnh} className={classes.img}/>
-                    </a>
-                    <Box className={classes.rating}>
-                        <Typography>{phim.danhGia}</Typography>
-                        <Rating name="read-only" defaultValue={4} readOnly style={{ fontSize: 10, color: "#fb4226" }} />
-                    </Box>
+
+                    <img src={phim.hinhAnh} alt={phim.hinhAnh} className={classes.img} />
+
+
                 </CardActionArea>
 
                 <div style={{ position: "relative" }}>
@@ -56,7 +60,7 @@ export default function ItemPhimDangChieu(props) {
                         </Typography>
                     </div>
                     <div className="showHover">
-                        <a className="buyNow" href="#"> MUA VÉ </a>
+                        <NavLink className="buyNow" to={`/phim/${phim.maPhim}`}> MUA VÉ </NavLink>
                     </div>
                 </div>
             </div>
