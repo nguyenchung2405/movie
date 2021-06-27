@@ -7,6 +7,7 @@ import Home from "./pages/Home/Home";
 import DangKy from "./pages/SignUp";
 import DangNhap from "./pages/SignIn";
 import User from "../src/pages/User/User";
+import Detail from "../src/pages/Detail";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { XU_LY_DANG_NHAP_THANH_CONG } from "../src/redux/constants/NguoiDungConst";
@@ -34,6 +35,7 @@ function App() {
         <Route exact path="/dangNhap" component={DangNhap} />
         <Route exact path="/dangKy" component={DangKy} />
         <Route exact path="/nguoiDung" component={User} />
+        <Route exact path="/detail" component={Detail} />
         <Route exact path="/home" component={Home} />
         <Route exact path="/" component={Home} />
         <Route path="*" component={Home} />

@@ -4,6 +4,7 @@ import {
   USER_LOGIN,
   ACCESSTOKEN,
   XU_LY_DANG_NHAP_THANH_CONG,
+  THONG_TIN_NGUOI_DUNG,
 } from "../../redux/constants/NguoiDungConst";
 export const dangKy = (data) => {
   return axios({
@@ -44,16 +45,21 @@ export const dangNhap = (userLogin) => {
   };
 };
 
-export const layThongTinNguoiDung = () => {
+export const layThongTinNguoiDung = (taiKhoan) => {
   return async (dispatch) => {
     try {
-      let result = await axios({
+      const result = await axios({
         url: "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/ThongTinTaiKhoan",
         method: "POST",
+        data: taiKhoan,
+      });
+      dispatch({
+        type: THONG_TIN_NGUOI_DUNG,
+        thongTinNguoiDung: result.data,
       });
       console.log(result.data);
     } catch (err) {
-      console.log(err.response?.data);
+      console.log(err);
     }
   };
 };

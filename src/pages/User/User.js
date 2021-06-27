@@ -1,18 +1,32 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
 import { Row, Col } from "antd";
 import "antd/dist/antd.css";
 import { Tabs } from "antd";
 import { LogoutOutlined } from "@ant-design/icons";
 import logo from "../../assets/img/web-logo.png";
+import { USER_LOGIN } from "../../redux/constants/NguoiDungConst";
+import { layThongTinNguoiDung } from "../../redux/action/NguoiDungAction";
 const { TabPane } = Tabs;
 
 export default function User(props) {
   const userLogin = useSelector((state) => state.NguoiDungReducer.tenDangNhap);
+  const { thongTinNguoiDung } = useSelector((state) => state.NguoiDungReducer);
+  const dispatch = useDispatch();
+  useEffect(async () => {
+    if (localStorage.getItem(USER_LOGIN)) {
+      let userLogin = JSON.parse(localStorage.getItem(USER_LOGIN));
+      let taiKhoan = {
+        taiKhoan: userLogin.taiKhoan,
+      };
+
+      dispatch(layThongTinNguoiDung(taiKhoan));
+    }
+  }, []);
 
   const handleCloseUser = () => {
     props.history.push("/");
-    console.log("123");
   };
   return (
     <div>
@@ -35,20 +49,19 @@ export default function User(props) {
                       src="https://i.pravatar.cc/150?u=Levi10"
                       alt="avatar"
                     />
-                    <p className="ten">{userLogin.hoTen}</p>
-                    <p className="maLoai">{userLogin.maLoaiNguoiDung}</p>
+                    <p className="ten">{thongTinNguoiDung.hoTen}</p>
                   </div>
                 </Col>
                 <Col className="user_tab" xs={24} sm={10}>
                   <Row className="user_content">
                     <Col sm={4} className="user_Icon">
-                      <i class="fas fa-envelope"></i>
+                      <i className="fas fa-envelope"></i>
                     </Col>
                     <Col sm={20}>
                       <p className="thongTin_dangNhap">
                         Email:
                         <span style={{ color: "#f55960" }}>
-                          {userLogin.email}
+                          {thongTinNguoiDung.email}
                         </span>
                       </p>
                       <p>
@@ -59,13 +72,13 @@ export default function User(props) {
                   <hr style={{ margin: "20px 0", opacity: "0.3" }} />
                   <Row className="user_content">
                     <Col sm={4} className="user_Icon">
-                      <i class="fas fa-portrait"></i>
+                      <i className="fas fa-portrait"></i>
                     </Col>
                     <Col sm={20}>
                       <p className="thongTin_dangNhap">
                         Họ Tên:
                         <span style={{ color: "#f55960" }}>
-                          {userLogin.hoTen}
+                          {thongTinNguoiDung.hoTen}
                         </span>
                       </p>
                       <p> Tên tài khoản hoạt động trên website</p>
@@ -75,13 +88,13 @@ export default function User(props) {
                   <hr style={{ margin: "20px 0", opacity: "0.3" }} />
                   <Row className="user_content">
                     <Col sm={4} className="user_Icon">
-                      <i class="fas fa-mobile-alt"></i>
+                      <i className="fas fa-mobile-alt"></i>
                     </Col>
                     <Col sm={20}>
                       <p className="thongTin_dangNhap">
                         Số Điện Thoại:
                         <span style={{ color: "#f55960" }}>
-                          {userLogin.soDT}
+                          {thongTinNguoiDung.soDT}
                         </span>
                       </p>
                       <p> Số điện thoại khi đăng ký</p>
@@ -91,13 +104,13 @@ export default function User(props) {
                 <Col xs={24} sm={10}>
                   <Row className="user_content">
                     <Col sm={4} className="user_Icon">
-                      <i class="fas fa-user"></i>
+                      <i className="fas fa-user"></i>
                     </Col>
                     <Col sm={20}>
                       <p className="thongTin_dangNhap">
                         Tài Khoản:{" "}
                         <span style={{ color: "#f55960" }}>
-                          {userLogin.taiKhoan}
+                          {thongTinNguoiDung.taiKhoan}
                         </span>
                       </p>
                       <p>Là tên tài khoản (username) để đăng nhập tài khoản.</p>
@@ -107,7 +120,7 @@ export default function User(props) {
                   <hr style={{ margin: "20px 0", opacity: "0.3" }} />
                   <Row className="user_content">
                     <Col sm={4} className="user_Icon">
-                      <i class="fas fa-lock"></i>
+                      <i className="fas fa-lock"></i>
                     </Col>
                     <Col sm={20}>
                       <p className="thongTin_dangNhap">
@@ -159,14 +172,16 @@ export default function User(props) {
                       src="https://i.pravatar.cc/150?u=Levi10"
                       alt="avatar"
                     />
-                    <p className="ten">{userLogin.hoTen}</p>
-                    <p className="maLoai">{userLogin.maLoaiNguoiDung}</p>
+                    <p className="ten">{thongTinNguoiDung.hoTen}</p>
+                    <p className="maLoai">
+                      {thongTinNguoiDung.maLoaiNguoiDung}
+                    </p>
                   </div>
                 </Col>
                 <Col className="user_tab" xs={24} sm={10}>
                   <Row className="user_content">
                     <Col sm={4} className="user_Icon">
-                      <i class="fas fa-envelope"></i>
+                      <i className="fas fa-envelope"></i>
                     </Col>
                     <Col sm={20}>
                       <p className="thongTin_dangNhap">Email:</p>
@@ -179,7 +194,7 @@ export default function User(props) {
                   <hr style={{ margin: "20px 0", opacity: "0.3" }} />
                   <Row className="user_content">
                     <Col sm={4} className="user_Icon">
-                      <i class="fas fa-portrait"></i>
+                      <i className="fas fa-portrait"></i>
                     </Col>
                     <Col sm={20}>
                       <p className="thongTin_dangNhap">Họ Tên:</p>
@@ -191,7 +206,7 @@ export default function User(props) {
                   <hr style={{ margin: "20px 0", opacity: "0.3" }} />
                   <Row className="user_content">
                     <Col sm={4} className="user_Icon">
-                      <i class="fas fa-mobile-alt"></i>
+                      <i className="fas fa-mobile-alt"></i>
                     </Col>
                     <Col sm={20}>
                       <p className="thongTin_dangNhap">Số Điện Thoại:</p>
@@ -203,13 +218,13 @@ export default function User(props) {
                 <Col xs={24} sm={10}>
                   <Row className="user_content">
                     <Col sm={4} className="user_Icon">
-                      <i class="fas fa-user"></i>
+                      <i className="fas fa-user"></i>
                     </Col>
                     <Col sm={20}>
                       <p className="thongTin_dangNhap">
                         Tài Khoản:
                         <span style={{ color: "#f55960" }}>
-                          {userLogin.taiKhoan}
+                          {thongTinNguoiDung.taiKhoan}
                         </span>
                       </p>
                       <p>Là tên tài khoản (username) để đăng nhập tài khoản.</p>
@@ -225,7 +240,7 @@ export default function User(props) {
                   />
                   <Row className="user_content">
                     <Col sm={4} className="user_Icon">
-                      <i class="fas fa-lock"></i>
+                      <i className="fas fa-lock"></i>
                     </Col>
                     <Col sm={20}>
                       <p className="thongTin_dangNhap">Mật Khẩu:</p>
@@ -265,20 +280,22 @@ export default function User(props) {
                       src="https://i.pravatar.cc/150?u=Levi10"
                       alt="avatar"
                     />
-                    <p className="ten">{userLogin.hoTen}</p>
-                    <p className="maLoai">{userLogin.maLoaiNguoiDung}</p>
+                    <p className="ten">{thongTinNguoiDung.hoTen}</p>
+                    <p className="maLoai">
+                      {thongTinNguoiDung.maLoaiNguoiDung}
+                    </p>
                   </div>
                 </Col>
                 <Col className="user_tab" xs={24} sm={10}>
                   <Row className="user_content">
                     <Col xs={24} sm={4} className="user_Icon">
-                      <i class="fas fa-envelope"></i>
+                      <i className="fas fa-envelope"></i>
                     </Col>
                     <Col sm={20}>
                       <p className="thongTin_dangNhap">
                         Email:
                         <span style={{ color: "#f55960" }}>
-                          {userLogin.email}
+                          {thongTinNguoiDung.email}
                         </span>
                       </p>
                       <p>
@@ -289,13 +306,13 @@ export default function User(props) {
                   <hr style={{ margin: "20px 0", opacity: "0.3" }} />
                   <Row className="user_content">
                     <Col xs={24} sm={4} className="user_Icon">
-                      <i class="fas fa-portrait"></i>
+                      <i className="fas fa-portrait"></i>
                     </Col>
                     <Col sm={20}>
                       <p className="thongTin_dangNhap">
                         Họ Tên:
                         <span style={{ color: "#f55960" }}>
-                          {userLogin.hoTen}
+                          {thongTinNguoiDung.hoTen}
                         </span>
                       </p>
                       <p> Tên tài khoản hoạt động trên website</p>
@@ -305,13 +322,13 @@ export default function User(props) {
                   <hr style={{ margin: "20px 0", opacity: "0.3" }} />
                   <Row className="user_content">
                     <Col xs={24} sm={4} className="user_Icon">
-                      <i class="fas fa-mobile-alt"></i>
+                      <i className="fas fa-mobile-alt"></i>
                     </Col>
                     <Col sm={20}>
                       <p className="thongTin_dangNhap">
                         Số Điện Thoại:
                         <span style={{ color: "#f55960" }}>
-                          {userLogin.soDT}
+                          {thongTinNguoiDung.soDT}
                         </span>
                       </p>
                       <p> Số điện thoại khi đăng ký</p>
@@ -321,13 +338,13 @@ export default function User(props) {
                 <Col xs={24} sm={10}>
                   <Row className="user_content">
                     <Col xs={24} sm={4} className="user_Icon">
-                      <i class="fas fa-user"></i>
+                      <i className="fas fa-user"></i>
                     </Col>
                     <Col sm={20}>
                       <p className="thongTin_dangNhap">
                         Tài Khoản:
                         <span style={{ color: "#f55960" }}>
-                          {userLogin.taiKhoan}
+                          {thongTinNguoiDung.taiKhoan}
                         </span>
                       </p>
                       <p>Là tên tài khoản (username) để đăng nhập tài khoản.</p>
@@ -337,7 +354,7 @@ export default function User(props) {
                   <hr style={{ margin: "20px 0", opacity: "0.3" }} />
                   <Row className="user_content">
                     <Col xs={24} sm={4} className="user_Icon">
-                      <i class="fas fa-lock"></i>
+                      <i className="fas fa-lock"></i>
                     </Col>
                     <Col sm={20}>
                       <p className="thongTin_dangNhap"> Mật Khẩu: .......</p>
@@ -388,14 +405,16 @@ export default function User(props) {
                       src="https://i.pravatar.cc/150?u=Levi10"
                       alt="avatar"
                     />
-                    <p className="ten">{userLogin.hoTen}</p>
-                    <p className="maLoai">{userLogin.maLoaiNguoiDung}</p>
+                    <p className="ten">{thongTinNguoiDung.hoTen}</p>
+                    <p className="maLoai">
+                      {thongTinNguoiDung.maLoaiNguoiDung}
+                    </p>
                   </div>
                 </Col>
                 <Col className="user_tab" xs={24} sm={10}>
                   <Row className="user_content">
                     <Col xs={24} sm={4} className="user_Icon">
-                      <i class="fas fa-envelope"></i>
+                      <i className="fas fa-envelope"></i>
                     </Col>
                     <Col sm={20}>
                       <p className="thongTin_dangNhap">Email:</p>
@@ -408,7 +427,7 @@ export default function User(props) {
                   <hr style={{ margin: "20px 0", opacity: "0.3" }} />
                   <Row className="user_content">
                     <Col xs={24} sm={4} className="user_Icon">
-                      <i class="fas fa-portrait"></i>
+                      <i className="fas fa-portrait"></i>
                     </Col>
                     <Col sm={20}>
                       <p className="thongTin_dangNhap">Họ Tên:</p>
@@ -420,7 +439,7 @@ export default function User(props) {
                   <hr style={{ margin: "20px 0", opacity: "0.3" }} />
                   <Row className="user_content">
                     <Col xs={24} sm={4} className="user_Icon">
-                      <i class="fas fa-mobile-alt"></i>
+                      <i className="fas fa-mobile-alt"></i>
                     </Col>
                     <Col sm={20}>
                       <p className="thongTin_dangNhap">Số Điện Thoại:</p>
@@ -432,13 +451,13 @@ export default function User(props) {
                 <Col xs={24} sm={10}>
                   <Row className="user_content">
                     <Col xs={24} sm={4} className="user_Icon">
-                      <i class="fas fa-user"></i>
+                      <i className="fas fa-user"></i>
                     </Col>
                     <Col sm={20}>
                       <p className="thongTin_dangNhap">
                         Tài Khoản:
                         <span style={{ color: "#f55960" }}>
-                          {userLogin.taiKhoan}
+                          {thongTinNguoiDung.taiKhoan}
                         </span>
                       </p>
                       <p>Là tên tài khoản (username) để đăng nhập tài khoản.</p>
@@ -453,7 +472,7 @@ export default function User(props) {
                   />
                   <Row className="user_content">
                     <Col sm={4} className="user_Icon">
-                      <i class="fas fa-lock"></i>
+                      <i className="fas fa-lock"></i>
                     </Col>
                     <Col sm={20}>
                       <p className="thongTin_dangNhap">Mật Khẩu:</p>

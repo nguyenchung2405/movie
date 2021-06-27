@@ -39,6 +39,9 @@ const useStyles = makeStyles((theme) => ({
     paddingRight: 15,
     marginRight: 10,
     color: "#9b9b9b",
+    "&:hover": {
+      color: "#9b9b9b !important",
+    },
   },
   sectionDesktop: {
     display: "flex",
