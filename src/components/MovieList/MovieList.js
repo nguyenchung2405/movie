@@ -25,19 +25,19 @@ export default function MovieList() {
   const classes = useStyles();
 
   const { mangPhim } = useSelector(state => state.PhimReducer);
-
+  console.log(mangPhim);
   const filmChunks = [];
   const chunk_size = 8;
   while (mangPhim.length > 0) {
     filmChunks.push(mangPhim.splice(0, chunk_size))
   }
   const dispatch = useDispatch();
-  const getPhim = () => {
-    dispatch(getPhimAPI())
-  }
+  // const getPhim = () => {
+  //   dispatch(getPhimAPI())
+  // }
 
   useEffect(() => {
-    getPhim();
+    // getPhim();
   }, [])
 
 

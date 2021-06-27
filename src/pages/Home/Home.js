@@ -10,9 +10,7 @@ import CumRap from "../../components/CumRap/CumRap";
 export default function Home() {
   return (
     <div>
-      <div>
-        <HeaderComponent />
-      </div>
+
       <div style={{ marginTop: 64, position: "relative" }}>
         <div>
           <DemoCarousel />
@@ -33,12 +31,11 @@ export default function Home() {
         <MovieType />
       </div>
 
-      <div style={{paddingTop:30, paddingBottom:30}}>
+      <div style={{ paddingTop: 30, paddingBottom: 30 }}>
         <CumRap />
       </div>
       <New />
       <Apply />
-      <Footer />
     </div>
   );
 }

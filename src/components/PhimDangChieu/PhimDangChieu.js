@@ -16,20 +16,20 @@ export default function PhimDangChieu(props) {
     const classes = useStyles();
     const theme = useTheme();
 
-    const { mangPhim } = useSelector(state => state.PhimReducer);
-    console.log("phim đang chiếu", mangPhim[0]);
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getPhimAPI());
 
+    }, []);
+    
+    const { mangPhim } = useSelector(state => state.PhimReducer);
+    console.log("phimd dang chieu",mangPhim)
     const filmChunks = [];
     const chunk_size = 8;
     while (mangPhim.length > 0) {
         filmChunks.push(mangPhim.splice(0, chunk_size))
     }
 
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(getPhimAPI())
-        
-    }, [])
 
     const renderPhim = () => {
         return filmChunks.map((item, index) => {
@@ -93,7 +93,7 @@ export default function PhimDangChieu(props) {
 
 
             <Grid container className={classes.sectionMobile}>
-                <Grid item xs={12} className={classes.reponsive}>
+                {/* <Grid item xs={12} className={classes.reponsive}>
                     <a>
                         <Box className={classes.rating}>
                             <Typography>6.3</Typography>
@@ -102,7 +102,7 @@ export default function PhimDangChieu(props) {
                         <span className={classes.ageType}>P</span>
                         <img src="./img/phim/trang-ti-rp.jpg" alt="./img/phim/trang-ti-rp.jpg" className={classes.img} />
                     </a>
-                </Grid>
+                </Grid> */}
                 {renderPhimReponsive()}
             </Grid>
         </Container >
