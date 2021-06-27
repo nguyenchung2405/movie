@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
-import ModalVideo from 'react-modal-video';
-import PlayArrowIcon from '@material-ui/icons/PlayArrow';
-import IconButton from '@material-ui/core/IconButton';
+import ModalVideo from "react-modal-video";
+import PlayArrowIcon from "@material-ui/icons/PlayArrow";
+import IconButton from "@material-ui/core/IconButton";
 import { Row, Col, Rate, Progress, Tabs, Card, Avatar } from "antd";
 import {
   LikeOutlined,
@@ -17,7 +17,7 @@ const { TabPane } = Tabs;
 const action = <Rate disabled value={5} />;
 
 export default function ChiTietPhim(props) {
-  const { chiTietPhim } = useSelector(state => state.PhimReducer);
+  const { chiTietPhim } = useSelector((state) => state.PhimReducer);
 
   const [isOpen, setOpen] = useState(false);
 
@@ -25,7 +25,6 @@ export default function ChiTietPhim(props) {
   const id = props.match.params.id;
   useEffect(() => {
     dispatch(layThongTinPhimAction(id));
-
   }, []);
 
   console.log("chi tiết phim", chiTietPhim);
@@ -36,41 +35,62 @@ export default function ChiTietPhim(props) {
 
   return (
     <div>
-      <Row>
+      <Row style={{ marginTop: "60px" }}>
         <Col sm={24} id="chiTietTong">
           <div className="chiTiet">
             <div className="chiTietMo">
               {/* <ModalVideoC className="chiTiet__Videores" /> */}
-              <img className="anhBiaPhim" src={chiTietPhim.hinhAnh} alt={chiTietPhim.hinhAnh} />
+              <img
+                className="anhBiaPhim"
+                src={chiTietPhim.hinhAnh}
+                alt={chiTietPhim.hinhAnh}
+              />
             </div>
             <div className="styleGradient"></div>
             <div className="chiTiet__ThongTin chiTiet__maxWidth">
               <Row>
                 <Col sm={6} xs={8} className="anhPhim">
-                  <img className="chiTiet__anhNho" src={chiTietPhim.hinhAnh} alt={chiTietPhim.hinhAnh} />
+                  <img
+                    className="chiTiet__anhNho"
+                    src={chiTietPhim.hinhAnh}
+                    alt={chiTietPhim.hinhAnh}
+                  />
 
-                  < Fragment>
+                  <Fragment>
                     <ModalVideo
-                      channel='youtube'
-                      autoplay isOpen={isOpen}
+                      channel="youtube"
+                      autoplay
+                      isOpen={isOpen}
                       // videoId={getVideoId(chiTietPhim.trailer)}
                       videoId="DUzEYcR2VtM"
-                      onClose={() => setOpen(false)} />
-                    <div className="btnPlay" style={{ width: "100%", textAlign: "center", position: "absolute", top: "40%" }}>
+                      onClose={() => setOpen(false)}
+                    />
+                    <div
+                      className="btnPlay"
+                      style={{
+                        width: "100%",
+                        textAlign: "center",
+                        position: "absolute",
+                        top: "40%",
+                      }}
+                    >
                       <IconButton onClick={() => setOpen(true)}>
                         <PlayArrowIcon className="iconPlay" />
                       </IconButton>
                     </div>
-                  </Fragment >
-
+                  </Fragment>
                 </Col>
                 <Col sm={10} className="chiTiet__thongTinPhim">
                   <div>
-                    <span className="chiTiet__thongTinPhim1 ">{chiTietPhim.ngayKhoiChieu}</span>
+                    <span className="chiTiet__thongTinPhim1 ">
+                      {chiTietPhim.ngayKhoiChieu}
+                    </span>
                   </div>
                   <div>
                     <span className="thongTinPhim2__c18">C18</span>
-                    <span className="thongTinPhim2__tenPhim">{chiTietPhim.tenPhim}</span>
+                    <span className="thongTinPhim2__tenPhim">
+                      {chiTietPhim.tenPhim}
+                    </span>
                   </div>
                   <div>
                     <span>100 phút - 0 IMDb - 2D/Digital</span>
@@ -112,7 +132,9 @@ export default function ChiTietPhim(props) {
                     <Col xs={24} sm={12} className="noiDung__Phim">
                       <Row>
                         <p style={{ width: "35%" }}>Ngày công chiếu</p>
-                        <p style={{ width: "40%" }}>{chiTietPhim.ngayKhoiChieu}</p>
+                        <p style={{ width: "40%" }}>
+                          {chiTietPhim.ngayKhoiChieu}
+                        </p>
                       </Row>
                       <Row>
                         <p style={{ width: "35%" }}>Đạo diễn </p>

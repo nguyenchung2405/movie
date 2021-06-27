@@ -268,6 +268,18 @@
   }
 }
 
+.btnPlay {
+  opacity: 0;
+  transition: all 0.2s;
+}
+
+.btnPlay .iconPlay {
+  color: #fff;
+  font-size: 60px !important;
+  background-color: #7a807a54;
+  border-radius: 50%;
+}
+
 #chiTietTong {
   background-color: #0a2029;
 }
@@ -281,6 +293,7 @@
   top: 0;
   left: 0;
   width: 100%;
+  max-height: 560px;
   overflow: hidden;
 }
 
@@ -297,6 +310,8 @@
 @media screen and (max-width: 768px) {
   #chiTietTong .chiTiet .chiTietMo .anhBiaPhim {
     filter: none;
+    max-height: 300px;
+    object-fit: cover;
   }
 }
 
@@ -314,13 +329,17 @@
   top: 50%;
   width: 100%;
   left: 50%;
-  transform: translate3d(-50%, -50%, 0);
+  transform: translate3d(-50%, -40%, 0);
 }
 
 #chiTietTong .chiTiet .chiTiet__ThongTin .anhPhim {
   padding-left: 0;
   padding-right: 0;
   max-width: 220px;
+}
+
+#chiTietTong .chiTiet .chiTiet__ThongTin .anhPhim:hover .btnPlay {
+  opacity: 1;
 }
 
 #chiTietTong .chiTiet .chiTiet__thongTinPhim {
@@ -367,6 +386,7 @@
 
 #chiTietTong .chiTiet__anhNho {
   border-radius: 4px;
+  width: 100%;
 }
 
 @media screen and (max-width: 768px) {
@@ -377,6 +397,10 @@
 
 #chiTietTong .noiDung__Mobile {
   display: none;
+}
+
+#chiTietTong .ant-tabs {
+  margin-bottom: 80px;
 }
 
 #chiTietTong .ant-tabs-tab {
