@@ -7,18 +7,18 @@ const initialState = {
 
 const PhimReducer = (state = initialState, action) => {
     switch (action.type) {
-        
+
         case GET_PHIM_API: {
             state.mangPhim = action.mangPhim;
-            return {...state}
+            return { ...state }
         };
-        case CHI_TIET_PHIM:{
-            return {...state, chiTietPhim:action.chiTietPhim}
+        case CHI_TIET_PHIM: {
+            return { ...state, chiTietPhim: action.chiTietPhim }
         }
-    
 
-    default:
-        return {...state};
+
+        default:
+            return { ...state };
     }
 }
 

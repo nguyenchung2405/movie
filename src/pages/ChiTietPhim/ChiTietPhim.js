@@ -11,10 +11,14 @@ import {
 import SnackbarContent from "@material-ui/core/SnackbarContent";
 import { useDispatch, useSelector } from "react-redux";
 import { layThongTinPhimAction } from "../../redux/action/PhimAction";
+import HeaderComponent from "../../components/Header/HeaderComponent";
+import Footer from "../../components/Footer";
 
 const { Meta } = Card;
 const { TabPane } = Tabs;
 const action = <Rate disabled value={5} />;
+
+
 
 export default function ChiTietPhim(props) {
   const { chiTietPhim } = useSelector((state) => state.PhimReducer);
@@ -28,13 +32,18 @@ export default function ChiTietPhim(props) {
   }, []);
 
   console.log("chi tiết phim", chiTietPhim);
-  // const getVideoId = (url) => {
-  //   var arrItem = url.split('/');
-  //   return arrItem[arrItem.length - 1]
-  // }
+  const getVideoId = (url) => {
+    if (!!url) {
+      var arrItem = url.split('/');
+      return arrItem[arrItem.length - 1]
+    }
+    return url
+  }
 
   return (
     <div>
+      <HeaderComponent />
+
       <Row style={{ marginTop: "60px" }}>
         <Col sm={24} id="chiTietTong">
           <div className="chiTiet">
@@ -61,8 +70,8 @@ export default function ChiTietPhim(props) {
                       channel="youtube"
                       autoplay
                       isOpen={isOpen}
-                      // videoId={getVideoId(chiTietPhim.trailer)}
-                      videoId="DUzEYcR2VtM"
+                      videoId={getVideoId(chiTietPhim.trailer)}
+                      // videoId="DUzEYcR2VtM"
                       onClose={() => setOpen(false)}
                     />
                     <div
@@ -240,6 +249,8 @@ export default function ChiTietPhim(props) {
           </div>
         </Col>
       </Row>
+
+      <Footer />
     </div>
   );
 }

@@ -1,168 +1,84 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import '../cumrapstyle.scss';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
-export default function BHD() {
+export default function BHD(props) {
+    const { logo, lstCumRap } = props.cumRap;
+    console.log("lstCumRap", lstCumRap);
+    const renderHeThongCumRap = () => {
+        return (
+            <Tabs className="tab" style={{ width: "100%" }}>
+                <TabList style={{ width: "40%" }} className="diadiem__Rap">
+                    {
+                        lstCumRap.map((rap, index) => {
+                            return (
+                                <Tab key={index}>
+                                    <div className="rapInfo opacity03 active">
+                                        <img src={logo} alt={logo} className="img" />
+                                        <div className="d-flex">
+                                            <p className="colorBHD">{rap.tenCumRap}</p>
+                                            <Typography noWrap style={{ width: "80%" }}>{rap.diaChi}</Typography>
+                                            <a href="#">[chi tiết]</a>
+                                        </div>
+                                    </div>
+                                </Tab>
+                            )
+                        })
+                    }
+                </TabList>
+                <div style={{ width: "60%" }} className="listMovie">
+                    {
+                        lstCumRap.map((dsPhim) => {
+                            const { danhSachPhim } = dsPhim;
+                            return (
+                                <TabPanel key={dsPhim.tenCumRap}>
+                                    {
+                                        danhSachPhim.map((phim, index) => {
+
+                                            return (
+                                                <div key={index}>
+                                                    <div className=" wrapListMovie">
+                                                        <div className="titleMovie ">
+                                                            <img src={phim.hinhAnh} alt={phim.hinhAnh} className="img" />
+                                                            <div style={{ paddingLeft: 15 }}>
+                                                                <h4> <span className="ageType">P</span>  {phim.tenPhim}</h4>
+                                                                <p className="">100 phút - TIX 7.7 - IMDb 0</p>
+                                                            </div>
+                                                        </div>
+                                                        <div className="flex-start">
+                                                            <h4 className="">2D Digital</h4>
+                                                            {
+                                                                phim.lstLichChieuTheoPhim.map((lichChieu, index) => {
+                                                                    return (<div key={index}>
+                                                                        <Button className="btnMovie" variant="contained">
+                                                                            <span className="btnColorBHD ">{lichChieu.ngayChieuGioChieu}</span>
+                                                                        </Button>
+                                                                    </div>
+                                                                    )
+                                                                })
+                                                            }
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            )
+                                        })
+                                    }
+                                </TabPanel>
+                            )
+                        })
+                    }
+
+                </div>
+            </Tabs>
+        )
+
+    }
     return (
-        <Tabs className="tab" style={{ width: "100%" }}>
-            <TabList style={{ width: "40%" }} className="diadiem__Rap">
-                <Tab >
-                    <div className="rapInfo opacity03 active">
-                        <img src="./img/cumrap/bhd/bhd-star-vincom-thao-dien.png" alt="thao dien" className="img" />
-                        <div className="d-flex">
-                            <p><span className="colorBHD">BHD Star</span>
-                                - Vincom Thảo Điền</p>
-                            <span className="infoMovieCinema">
-                                L5-Megamall, 159 XL Hà Nội, Q.2 L5-Megamall
-                            </span>
-                            <a href="#">[chi tiết]</a>
-                        </div>
-                    </div>
-                </Tab>
-                <Tab >
-                    <div className="rapInfo opacity03">
-                        <img src="./img/cumrap/bhd/bhd-star-bitexco.png" alt="bitexco" className="img" />
-                        <div className="d-flex">
-                            <p><span className="colorBHD">BHD Star</span>
-                                - Bitexco</p>
-                            <span className="infoMovieCinema">
-                                L5-Megamall, 159 XL Hà Nội, Q.2 L5-Megamall
-                            </span>
-                            <a href="#">[chi tiết]</a>
-                        </div>
-                    </div>
-                </Tab>
-                <Tab >
-                    <div className="rapInfo opacity03">
-                        <img src="./img/cumrap/bhd/bhd-star-pham-hung.png" alt="pham hung" className="img" />
-                        <div className="d-flex">
-                            <p><span className="colorBHD">BHD Star</span>
-                                - Phạm Hùng </p>
-                            <span className="infoMovieCinema">
-                                L5-Megamall, 159 XL Hà Nội, Q.2 L5-Megamall
-                            </span>
-                            <a href="#">[chi tiết]</a>
-                        </div>
-                    </div>
-                </Tab>
-                <Tab >
-                    <div className="rapInfo opacity03">
-                        <img src="./img/cumrap/bhd/bhd-star-vincom-3-2.png" alt="3-2" className="img" />
-                        <div className="d-flex">
-                            <p><span className="colorBHD">BHD Star</span>
-                                - 3 tháng 2</p>
-                            <span className="infoMovieCinema">
-                                L5-Megamall, 159 XL Hà Nội, Q.2 L5-Megamall
-                            </span>
-                            <a href="#">[chi tiết]</a>
-                        </div>
-                    </div>
-                </Tab>
-                <Tab >
-                    <div className="rapInfo opacity03">
-                        <img src="./img/cumrap/bhd/bhd-star-vincom-le-van-viet.png" alt="le van viet" className="img" />
-                        <div className="d-flex">
-                            <p><span className="colorBHD">BHD Star</span>
-                                - Vincom Lê Văn Việt</p>
-                            <span className="infoMovieCinema">
-                                L5-Megamall, 159 XL Hà Nội, Q.2 L5-Megamall
-                            </span>
-                            <a href="#">[chi tiết]</a>
-                        </div>
-                    </div>
-                </Tab>
-                <Tab >
-                    <div className="rapInfo opacity03">
-                        <img src="./img/cumrap/bhd/bhd-star-vincom-quang-trung.png" alt="quang trung" className="img" />
-                        <div className="d-flex">
-                            <p><span className="colorBHD">BHD Star</span>
-                                - Vincom Lê Văn Việt</p>
-                            <span className="infoMovieCinema">
-                                L5-Megamall, 159 XL Hà Nội, Q.2 L5-Megamall
-                            </span>
-                            <a href="#">[chi tiết]</a>
-                        </div>
-                    </div>
-                </Tab>
-            </TabList>
-            <div style={{ width: "60%" }} className="listMovie">
-                <TabPanel  >
-                    <div className=" wrapListMovie">
-                        <div className="titleMovie ">
-                            <img src="./img/cumrap/movie/tom-jerry-16127706651597_60x60.png" alt="tom and jerry" className="img" />
-                            <div style={{ paddingLeft: 15 }}>
-                                <h4> <span className="ageType">P</span>  Tom &amp; Jerry</h4>
-                                <p className="">100 phút - TIX 7.7 - IMDb 0</p>
-                            </div>
-                        </div>
-                        <div className="flex-start">
-                            <h4 className="">2D Digital</h4>
-                            <div>
-                                <Button className="btnMovie" variant="contained"><span className="btnColorBHD ">17:15</span>
-                                    ~ 18:55</Button>
-                                <Button className="btnMovie" variant="contained"><span className="btnColorBHD ">17:15</span>
-                                    ~ 18:55</Button>
-                                <Button className="btnMovie" variant="contained"><span className="btnColorBHD ">17:15</span>
-                                    ~ 18:55</Button>
-                                <Button className="btnMovie" variant="contained"><span className="btnColorBHD ">17:15</span>
-                                    ~ 18:55</Button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className=" wrapListMovie">
-                    <div className="titleMovie ">
-                            <img src="./img/cumrap/movie/kieu.png" alt="kieu" className="img" />
-                            <div style={{ paddingLeft: 15 }}>
-                                <h4> <span className="ageType">P</span> Kiều </h4>
-                                <p className="">100 phút - TIX 7.7 - IMDb 0</p>
-                            </div>
-                        </div>
-                        <div className="flex-start">
-                            <h4 className="">2D Digital</h4>
-                            <div>
-                                <Button className="btnMovie" variant="contained"><span className="btnColorBHD ">17:15</span>
-                                    ~ 18:55</Button>
-                                <Button className="btnMovie" variant="contained"><span className="btnColorBHD ">17:15</span>
-                                    ~ 18:55</Button>
-                                <Button className="btnMovie" variant="contained"><span className="btnColorBHD ">17:15</span>
-                                    ~ 18:55</Button>
-                                <Button className="btnMovie" variant="contained"><span className="btnColorBHD ">17:15</span>
-                                    ~ 18:55</Button>
-                            </div>
-                        </div>
-                    </div>
-
-                </TabPanel>
-                <TabPanel>
-                    <div className=" wrapListMovie">
-                        <div className="titleMovie ">
-                            <img src="./img/cumrap/movie/sieu-trom-duong-pho.png" alt="sieu trom" className="img" />
-                            <div style={{ paddingLeft: 15 }}>
-                                <h4> <span className="ageType">P</span> Siêu Trộm Đường Phố</h4>
-                                <p className="">100 phút - TIX 7.7 - IMDb 0</p>
-                            </div>
-                        </div>
-                        <div className="flex-start">
-                            <h4 className="">2D Digital</h4>
-                            <div>
-                                <Button className="btnMovie" variant="contained"><span className="btnColorBHD ">17:15</span>
-                                    ~ 18:55</Button>
-                                <Button className="btnMovie" variant="contained"><span className="btnColorBHD ">17:15</span>
-                                    ~ 18:55</Button>
-                                <Button className="btnMovie" variant="contained"><span className="btnColorBHD ">17:15</span>
-                                    ~ 18:55</Button>
-                                <Button className="btnMovie" variant="contained"><span className="btnColorBHD ">17:15</span>
-                                    ~ 18:55</Button>
-                            </div>
-                        </div>
-                    </div>
-                </TabPanel>
-                <TabPanel>không có suất chiếu</TabPanel>
-                <TabPanel>không có suất chiếu</TabPanel>
-                <TabPanel>không có suất chiếu</TabPanel>
-                <TabPanel>không có suất chiếu</TabPanel>
-            </div>
-        </Tabs>
+        <Fragment>
+            {renderHeThongCumRap()}
+        </Fragment>
     )
 }

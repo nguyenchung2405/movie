@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Hidden from '@material-ui/core/Hidden';
 import { useSelector, useDispatch } from 'react-redux';
-import { getPhimAPI } from '../../redux/action/PhimAction';
+import { layDanhSachPhim } from '../../redux/action/PhimAction';
 import Carousel from 'react-material-ui-carousel';
 import ItemPhimDangChieu from '../MovieItem/ItemPhimDangChieu';
 import Typography from '@material-ui/core/Typography';
@@ -18,18 +18,18 @@ export default function PhimDangChieu(props) {
 
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(getPhimAPI());
-
+        dispatch(layDanhSachPhim());
     }, []);
-    
+
     const { mangPhim } = useSelector(state => state.PhimReducer);
-    console.log("phimd dang chieu",mangPhim)
+   
     const filmChunks = [];
     const chunk_size = 8;
-    while (mangPhim.length > 0) {
-        filmChunks.push(mangPhim.splice(0, chunk_size))
-    }
 
+    // while (mangPhim.length > 0) {
+    //     filmChunks.push(mangPhim.splice(0, chunk_size))
+    // }
+    
 
     const renderPhim = () => {
         return filmChunks.map((item, index) => {
@@ -52,7 +52,6 @@ export default function PhimDangChieu(props) {
         })
     }
     const renderPhimReponsive = () => {
-        console.log("renderPhimReponsive", mangPhim);
         return mangPhim.map((phim, index) => {
             return (
                 <Grid item xs={12} className={classes.reponsive} key={index}>
@@ -81,7 +80,7 @@ export default function PhimDangChieu(props) {
                 navButtonsAlwaysVisible: false,
             },
         }
-        
+
     };
     return (
         <Container maxWidth="lg">

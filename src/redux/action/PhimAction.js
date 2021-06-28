@@ -1,22 +1,19 @@
 import axios from "axios";
 import { CHI_TIET_PHIM, GET_PHIM_API } from "../constants/PhimConst";
 
-export const getPhimAPI = (maNhom='GP04') => {
+export const layDanhSachPhim = (maNhom = 'GP04') => {
     return async dispatch => {
         try {
             let promise = await axios({
-                url:  `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=${maNhom}`,
+                url: `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=${maNhom}`,
                 method: 'GET',
             });
-            if (promise.status === 200) {
-                dispatch({
-                    type: GET_PHIM_API,
-                    mangPhim: [...promise.data],
-                })
-            }
-            console.log("getPhimAPI", promise);
+            dispatch({
+                type: GET_PHIM_API,
+                mangPhim: [...promise.data],
+            })
         } catch (err) {
-            console.log(err);
+            console.log(err.response.data);
         }
     }
 
@@ -33,14 +30,14 @@ export const getPhimAPI = (maNhom='GP04') => {
     //         })
     //     });
     //     promise.catch((err) => {
-    //         console.log(err);
+    //         console.log(err.response.data);
     //     });
     // }
 }
 
-export const layThongTinPhimAction = (maPhim)=>{
-    return async dispatch =>{
-        try{
+export const layThongTinPhimAction = (maPhim) => {
+    return async dispatch => {
+        try {
             const result = await axios({
                 url: `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayThongTinPhim?MaPhim=${maPhim}`,
                 method: "GET"
@@ -49,8 +46,8 @@ export const layThongTinPhimAction = (maPhim)=>{
                 type: CHI_TIET_PHIM,
                 chiTietPhim: result.data
             })
-        }catch(err){
-            console.log(err);
+        } catch (err) {
+            console.log(err.response.data);
         }
     }
 }
