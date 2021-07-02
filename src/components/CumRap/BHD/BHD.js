@@ -3,10 +3,61 @@ import '../cumrapstyle.scss';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { withStyles } from '@material-ui/core/styles';
+import MuiAccordion from '@material-ui/core/Accordion';
+import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
+import MuiAccordionDetails from '@material-ui/core/AccordionDetails';
+
+const Accordion = withStyles({
+    root: {
+        width: '100%',
+        border: '1px solid rgba(0, 0, 0, .125)',
+        boxShadow: 'none',
+        '&:not(:last-child)': {
+            borderBottom: 0,
+        },
+        '&:before': {
+            display: 'none',
+        },
+        '&$expanded': {
+            margin: 'auto',
+        },
+    },
+    expanded: {},
+})(MuiAccordion);
+
+const AccordionSummary = withStyles({
+    root: {
+        backgroundColor: 'rgba(0, 0, 0, .03)',
+        borderBottom: '1px solid rgba(0, 0, 0, .125)',
+        marginBottom: -1,
+        minHeight: 56,
+        '&$expanded': {
+            minHeight: 56,
+        },
+    },
+    content: {
+        '&$expanded': {
+            margin: '12px 0',
+        },
+    },
+    expanded: {},
+})(MuiAccordionSummary);
+const AccordionDetails = withStyles((theme) => ({
+    root: {
+        padding: theme.spacing(2),
+    },
+}))(MuiAccordionDetails);
 
 export default function BHD(props) {
     const { logo, lstCumRap } = props.cumRap;
-    console.log("lstCumRap", lstCumRap);
+
+    const [expanded, setExpanded] = React.useState('panel1');
+    const handleChange = (panel) => (event, newExpanded) => {
+        setExpanded(newExpanded ? panel : false);
+    };
+
     const renderHeThongCumRap = () => {
         return (
             <Tabs className="tab" style={{ width: "100%" }}>
@@ -36,32 +87,33 @@ export default function BHD(props) {
                                 <TabPanel key={dsPhim.tenCumRap}>
                                     {
                                         danhSachPhim.map((phim, index) => {
-
                                             return (
-                                                <div key={index}>
-                                                    <div className=" wrapListMovie">
-                                                        <div className="titleMovie ">
-                                                            <img src={phim.hinhAnh} alt={phim.hinhAnh} className="img" />
-                                                            <div style={{ paddingLeft: 15 }}>
-                                                                <h4> <span className="ageType">P</span>  {phim.tenPhim}</h4>
-                                                                <p className="">100 phút - TIX 7.7 - IMDb 0</p>
+                                                <div key={index} className=" wrapListMovie">
+                                                    <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+                                                        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                                                            <div className="titleMovie ">
+                                                                <img src={phim.hinhAnh} alt={phim.hinhAnh} className="img" />
+                                                                <div style={{ paddingLeft: 15 }}>
+                                                                    <h4> <span className="ageType">P</span>  {phim.tenPhim}</h4>
+                                                                    <p className="">100 phút - TIX 7.7 - IMDb 0</p>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div className="flex-start">
-                                                            <h4 className="">2D Digital</h4>
-                                                            {
-                                                                phim.lstLichChieuTheoPhim.map((lichChieu, index) => {
-                                                                    return (<div key={index}>
-                                                                        <Button className="btnMovie" variant="contained">
-                                                                            <span className="btnColorBHD ">{lichChieu.ngayChieuGioChieu}</span>
-                                                                        </Button>
-                                                                    </div>
-                                                                    )
-                                                                })
-                                                            }
-
-                                                        </div>
-                                                    </div>
+                                                        </AccordionSummary>
+                                                        <AccordionDetails>
+                                                            <div className="flex-start">
+                                                                <h4 className="">2D Digital</h4>
+                                                                {
+                                                                    phim.lstLichChieuTheoPhim.map((lichChieu, index) => {
+                                                                        return (
+                                                                            <Button key={index} className="btnMovie" variant="contained">
+                                                                                <span className="btnColorBHD ">{lichChieu.ngayChieuGioChieu}</span>
+                                                                            </Button>
+                                                                        )
+                                                                    })
+                                                                }
+                                                            </div>
+                                                        </AccordionDetails>
+                                                    </Accordion>
                                                 </div>
                                             )
                                         })

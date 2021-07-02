@@ -17,13 +17,12 @@ export const layDanhSachPhim = (maNhom = 'GP04') => {
         }
     }
 
-    // return dispatch => {
-    //     let promise = axios({
+    // return  dispatch => {
+    //     let promise =  axios({
     //         url: `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=${maNhom}`,
     //         method: 'GET',
     //     });
     //     promise.then((rs) => {
-    //         console.log("phim action", rs.data);
     //         dispatch({
     //             type: GET_PHIM_API,
     //             mangPhim: rs.data,
@@ -39,7 +38,7 @@ export const layThongTinPhimAction = (maPhim) => {
     return async dispatch => {
         try {
             const result = await axios({
-                url: `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayThongTinPhim?MaPhim=${maPhim}`,
+                url: `https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${maPhim}`,
                 method: "GET"
             })
             dispatch({

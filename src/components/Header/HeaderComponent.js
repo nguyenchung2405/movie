@@ -1,4 +1,4 @@
-import React from "react";
+import React, {memo} from "react";
 import { useSelector } from "react-redux";
 import useStyles from "./HeaderStyle";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -23,7 +23,7 @@ import { XU_LY_DANG_NHAP_THANH_CONG } from "../../redux/constants/NguoiDungConst
 import { NavLink } from "react-router-dom";
 import "./header.scss";
 
-export default function HeaderComponent() {
+ function HeaderComponent() {
   let { tenDangNhap } = useSelector((state) => state.NguoiDungReducer);
   const classes = useStyles();
   const [state, setState] = React.useState({
@@ -223,3 +223,4 @@ export default function HeaderComponent() {
     </div>
   );
 }
+export default memo(HeaderComponent);

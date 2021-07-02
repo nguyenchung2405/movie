@@ -2,111 +2,133 @@ import React from 'react';
 import '../cumrapstyle.scss';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import Button from '@material-ui/core/Button';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { withStyles } from '@material-ui/core/styles';
+import MuiAccordion from '@material-ui/core/Accordion';
+import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
+import MuiAccordionDetails from '@material-ui/core/AccordionDetails';
+import Typography from '@material-ui/core/Typography';
 
-export default function CNS() {
+const Accordion = withStyles({
+    root: {
+        border: '1px solid rgba(0, 0, 0, .125)',
+        boxShadow: 'none',
+        '&:not(:last-child)': {
+            borderBottom: 0,
+        },
+        '&:before': {
+            display: 'none',
+        },
+        '&$expanded': {
+            margin: 'auto',
+        },
+    },
+    expanded: {},
+})(MuiAccordion);
+
+const AccordionSummary = withStyles({
+    root: {
+        backgroundColor: 'rgba(0, 0, 0, .03)',
+        borderBottom: '1px solid rgba(0, 0, 0, .125)',
+        marginBottom: -1,
+        minHeight: 56,
+        '&$expanded': {
+            minHeight: 56,
+        },
+    },
+    content: {
+        '&$expanded': {
+            margin: '12px 0',
+        },
+    },
+    expanded: {},
+})(MuiAccordionSummary);
+const AccordionDetails = withStyles((theme) => ({
+    root: {
+        padding: theme.spacing(2),
+    },
+}))(MuiAccordionDetails);
+
+export default function CNS(props) {
+    const { heThongRapChieu } = props;
+    console.log("heThongRapChieu", heThongRapChieu);
+
+    const [expanded, setExpanded] = React.useState('panel1');
+    const handleChange = (panel) => (event, newExpanded) => {
+        setExpanded(newExpanded ? panel : false);
+    };
+    const renderRap = () => {
+        if (!!heThongRapChieu) {
+            return heThongRapChieu.map((item, index) => {
+                return (
+                    <Tab key={index} className="rapInfo">
+                        <Button variant="contained" fullWidth={true} style={{ display: "flex", justifyContent: "space-evenly" }}>
+                            <img src={item.logo} alt={item.logo} className="img" />
+                            <p>{item.tenHeThongRap}</p>
+                        </Button>
+                    </Tab>
+                )
+            })
+        }
+    }
+    const rendercumRapChieu = () => {
+        if (!!heThongRapChieu) {
+            return heThongRapChieu.map((item) => {
+                const { cumRapChieu } = item;
+                return (
+                    <TabPanel key={item.maHeThongRap} className="w-100">
+                        {
+                            cumRapChieu.map((rapItem, index) => {
+                                return (
+                                    <div className="wrapListMovieCNS">
+                                        <Accordion key={index} expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+                                            <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+                                                <div className="titleMovie ">
+                                                    <img src={item.logo} alt={item.logo} className="img" />
+                                                    <div style={{ paddingLeft: 15 }}>
+                                                        <h4>{rapItem.tenCumRap}</h4>
+                                                        <p className="">100 phút - TIX 7.7 - IMDb 0</p>
+                                                    </div>
+                                                </div>
+                                            </AccordionSummary>
+                                            <AccordionDetails>
+                                                <div className="flex-start">
+                                                    <h4 className="">2D Digital</h4>
+                                                    <div className="lichCHieu">
+                                                        {
+                                                            rapItem.lichChieuPhim.map((lichChieu, index) => {
+                                                                return (
+                                                                    <Button key={index} className="btnMovie" variant="contained">
+                                                                        <span className="btnColorBHD ">{lichChieu.ngayChieuGioChieu}</span>
+                                                                    </Button>
+                                                                )
+                                                            })
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </AccordionDetails>
+                                        </Accordion>
+                                    </div>
+                                )
+                            })
+                        }
+                    </TabPanel>
+                )
+            })
+        }
+    }
+
+
+
     return (
         <Tabs className="tab" style={{ width: "100%" }}>
-            <TabList style={{ width: "40%" }} className="diadiem__Rap">
-                <Tab >
-                    <div className="rapInfo opacity03 active">
-                        <img src="./img/cumrap/cns/cinestar-hai-ba-trung.jpg" alt="hai ba trung" className="img" />
-                        <div className="d-flex">
-                            <p><span className="colorCinema">CNS</span>
-                                - Hai Bà Trưng</p>
-                            <span className="infoMovieCinema">
-                                135 Hai Bà Trưng, Bến Nghé, Quận 1
-                            </span>
-                            <a href="#">[chi tiết]</a>
-                        </div>
-                    </div>
-                </Tab>
-                <Tab >
-                    <div className="rapInfo opacity03">
-                        <img src="./img/cumrap/cns/cinestar-quoc-thanh.jpg" alt="quoc thanh" className="img" />
-                        <div className="d-flex">
-                            <p><span className="colorCinema">CNS</span>
-                                - Quốc Thanh</p>
-                            <span className="infoMovieCinema">
-                                271 Nguyễn Trãi, Quận 1
-                            </span>
-                            <a href="#">[chi tiết]</a>
-                        </div>
-                    </div>
-                </Tab>
+            <TabList style={{ width: "40%" }} className="diadiem__RapCNS">
+                {renderRap()}
             </TabList>
-            <div style={{ width: "60%" }} className="listMovie">
-                <TabPanel>
-                    <div className=" wrapListMovie">
-                        <div className="titleMovie ">
-                            <img src="./img/cumrap/movie/tom-jerry-16127706651597_60x60.png" alt="tom and jerry" className="img" />
-                            <div style={{ paddingLeft: 15 }}>
-                                <h4> <span className="ageType">P</span>  Tom &amp; Jerry</h4>
-                                <p className="">100 phút - TIX 7.7 - IMDb 0</p>
-                            </div>
-                        </div>
-                        <div className="flex-start">
-                            <h4 className="">2D Digital</h4>
-                            <div>
-                                <Button className="btnMovie" variant="contained"><span className="colorCinema ">17:15</span>
-                                    ~ 18:55</Button>
-                                <Button className="btnMovie" variant="contained"><span className="colorCinema ">17:15</span>
-                                    ~ 18:55</Button>
-                                <Button className="btnMovie" variant="contained"><span className="colorCinema ">17:15</span>
-                                    ~ 18:55</Button>
-                                <Button className="btnMovie" variant="contained"><span className="colorCinema ">17:15</span>
-                                    ~ 18:55</Button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className=" wrapListMovie">
-                        <div className="titleMovie ">
-                            <img src="./img/cumrap/movie/kieu.png" alt="kieu" className="img" />
-                            <div style={{ paddingLeft: 15 }}>
-                                <h4> <span className="ageType">P</span> Kiều </h4>
-                                <p className="">100 phút - TIX 7.7 - IMDb 0</p>
-                            </div>
-                        </div>
-                        <div className="flex-start">
-                            <h4 className="">2D Digital</h4>
-                            <div>
-                                <Button className="btnMovie" variant="contained"><span className="colorCinema ">17:15</span>
-                                    ~ 18:55</Button>
-                                <Button className="btnMovie" variant="contained"><span className="colorCinema ">17:15</span>
-                                    ~ 18:55</Button>
-                                <Button className="btnMovie" variant="contained"><span className="colorCinema ">17:15</span>
-                                    ~ 18:55</Button>
-                                <Button className="btnMovie" variant="contained"><span className="colorCinema ">17:15</span>
-                                    ~ 18:55</Button>
-                            </div>
-                        </div>
-                    </div>
-
-                </TabPanel>
-                <TabPanel>
-                    <div className=" wrapListMovie">
-                        <div className="titleMovie ">
-                            <img src="./img/cumrap/movie/tom-jerry-16127706651597_60x60.png" alt="tom and jerry" className="img" />
-                            <div style={{ paddingLeft: 15 }}>
-                                <h4> <span className="ageType">P</span>  Tom &amp; Jerry</h4>
-                                <p className="">100 phút - TIX 7.7 - IMDb 0</p>
-                            </div>
-                        </div>
-                        <div className="flex-start">
-                            <h4 className="">2D Digital</h4>
-                            <div>
-                                <Button className="btnMovie" variant="contained"><span className="colorCinema ">17:15</span>
-                                    ~ 18:55</Button>
-                                <Button className="btnMovie" variant="contained"><span className="colorCinema ">17:15</span>
-                                    ~ 18:55</Button>
-                                <Button className="btnMovie" variant="contained"><span className="colorCinema ">17:15</span>
-                                    ~ 18:55</Button>
-                                <Button className="btnMovie" variant="contained"><span className="colorCinema ">17:15</span>
-                                    ~ 18:55</Button>
-                            </div>
-                        </div>
-                    </div>
-                </TabPanel>
+            <div style={{ width: "60%" }} className="listMovieCNS">
+                {rendercumRapChieu()}
             </div>
-        </Tabs>
+        </Tabs >
+
     )
 }

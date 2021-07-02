@@ -5,6 +5,7 @@ import ChiTietPhim from "./pages/ChiTietPhim/ChiTietPhim";
 import DangKy from "./pages/SignUp";
 import DangNhap from "./pages/SignIn";
 import User from "../src/pages/User/User";
+import PhongVe from "./components/PhongVe/PhongVe";
 
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -29,8 +30,8 @@ function App() {
   }, []);
   return (
     <Router history={history}>
-
-      <Switch>
+      <PhongVe />
+      {/* <Switch>
         <Route exact path="/home" component={Home} />
         <Route exact path="/phim/:id" component={ChiTietPhim} />
         <Route exact path="/dangNhap" component={DangNhap} />
@@ -41,7 +42,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route path="*" component={Home} />
         <Route exact path="/" component={Home} />
-      </Switch>
+      </Switch> */}
     </Router>
   );
 }
