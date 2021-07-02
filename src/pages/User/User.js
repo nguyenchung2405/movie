@@ -8,10 +8,10 @@ import { LogoutOutlined } from "@ant-design/icons";
 import logo from "../../assets/img/web-logo.png";
 import { USER_LOGIN } from "../../redux/constants/NguoiDungConst";
 import { layThongTinNguoiDung } from "../../redux/action/NguoiDungAction";
+import UpdateUser from "./UpdateUser";
 const { TabPane } = Tabs;
 
 export default function User(props) {
-  const userLogin = useSelector((state) => state.NguoiDungReducer.tenDangNhap);
   const { thongTinNguoiDung } = useSelector((state) => state.NguoiDungReducer);
   const dispatch = useDispatch();
   useEffect(async () => {
@@ -46,10 +46,10 @@ export default function User(props) {
                   <div className="sider">
                     <img
                       className="avatar"
-                      src="https://i.pravatar.cc/150?u=Levi10"
+                      src={`https://i.pravatar.cc/150?u=${thongTinNguoiDung.taiKhoan}`}
                       alt="avatar"
                     />
-                    <p className="ten">{thongTinNguoiDung.hoTen}</p>
+                    <p className="ten">{thongTinNguoiDung.taiKhoan}</p>
                   </div>
                 </Col>
                 <Col className="user_tab" xs={24} sm={10}>
@@ -124,8 +124,10 @@ export default function User(props) {
                     </Col>
                     <Col sm={20}>
                       <p className="thongTin_dangNhap">
-                        Mật Khẩu: ......
-                        <span style={{ color: "#f55960" }}></span>
+                        Mật Khẩu:
+                        <span style={{ color: "#f55960" }}>
+                          {thongTinNguoiDung.matKhau}
+                        </span>
                       </p>
                       <p>
                         Vui lòng không tiết lộ mật khẩu để bảo mật tài khoản.
@@ -163,100 +165,10 @@ export default function User(props) {
                 </tbody>
               </table>
             </TabPane>
+
+            {/**Cập Nhật thông tin người dùng lap */}
             <TabPane tab="Chỉnh Sửa Thông Tin" key="3">
-              <Row gutter={16}>
-                <Col xs={24} sm={4}>
-                  <div className="sider">
-                    <img
-                      className="avatar"
-                      src="https://i.pravatar.cc/150?u=Levi10"
-                      alt="avatar"
-                    />
-                    <p className="ten">{thongTinNguoiDung.hoTen}</p>
-                    <p className="maLoai">
-                      {thongTinNguoiDung.maLoaiNguoiDung}
-                    </p>
-                  </div>
-                </Col>
-                <Col className="user_tab" xs={24} sm={10}>
-                  <Row className="user_content">
-                    <Col sm={4} className="user_Icon">
-                      <i className="fas fa-envelope"></i>
-                    </Col>
-                    <Col sm={20}>
-                      <p className="thongTin_dangNhap">Email:</p>
-                      <input placeholder="Email" />
-                      <p>
-                        Email đăng ký nhận các tin tức hoạt động của tài khoản
-                      </p>
-                    </Col>
-                  </Row>
-                  <hr style={{ margin: "20px 0", opacity: "0.3" }} />
-                  <Row className="user_content">
-                    <Col sm={4} className="user_Icon">
-                      <i className="fas fa-portrait"></i>
-                    </Col>
-                    <Col sm={20}>
-                      <p className="thongTin_dangNhap">Họ Tên:</p>
-                      <input placeholder="Họ Tên" />
-                      <p> Tên tài khoản hoạt động trên website</p>
-                    </Col>
-                  </Row>
-
-                  <hr style={{ margin: "20px 0", opacity: "0.3" }} />
-                  <Row className="user_content">
-                    <Col sm={4} className="user_Icon">
-                      <i className="fas fa-mobile-alt"></i>
-                    </Col>
-                    <Col sm={20}>
-                      <p className="thongTin_dangNhap">Số Điện Thoại:</p>
-                      <input placeholder="Số Điện Thoại" />
-                      <p> Số điện thoại khi đăng ký</p>
-                    </Col>
-                  </Row>
-                </Col>
-                <Col xs={24} sm={10}>
-                  <Row className="user_content">
-                    <Col sm={4} className="user_Icon">
-                      <i className="fas fa-user"></i>
-                    </Col>
-                    <Col sm={20}>
-                      <p className="thongTin_dangNhap">
-                        Tài Khoản:
-                        <span style={{ color: "#f55960" }}>
-                          {thongTinNguoiDung.taiKhoan}
-                        </span>
-                      </p>
-                      <p>Là tên tài khoản (username) để đăng nhập tài khoản.</p>
-                    </Col>
-                  </Row>
-
-                  <hr
-                    style={{
-                      marginTop: "45px ",
-                      marginBottom: "20px",
-                      opacity: "0.3",
-                    }}
-                  />
-                  <Row className="user_content">
-                    <Col sm={4} className="user_Icon">
-                      <i className="fas fa-lock"></i>
-                    </Col>
-                    <Col sm={20}>
-                      <p className="thongTin_dangNhap">Mật Khẩu:</p>
-                      <input placeholder="Mật Khẩu" />
-                      <p>
-                        Vui lòng không tiết lộ mật khẩu để bảo mật tài khoản.
-                      </p>
-                    </Col>
-                  </Row>
-
-                  <hr style={{ margin: "20px 0", opacity: "0.3" }} />
-                  <div className="btn_Cap">
-                    <button className="btn_capNhat">Cập Nhật</button>
-                  </div>
-                </Col>
-              </Row>
+              <UpdateUser />
             </TabPane>
           </Tabs>
         </div>
@@ -277,10 +189,10 @@ export default function User(props) {
                   <div className="sider">
                     <img
                       className="avatar"
-                      src="https://i.pravatar.cc/150?u=Levi10"
+                      src={`https://i.pravatar.cc/150?u=${thongTinNguoiDung.taiKhoan}`}
                       alt="avatar"
                     />
-                    <p className="ten">{thongTinNguoiDung.hoTen}</p>
+                    <p className="ten">{thongTinNguoiDung.taiKhoan}</p>
                     <p className="maLoai">
                       {thongTinNguoiDung.maLoaiNguoiDung}
                     </p>
@@ -347,7 +259,7 @@ export default function User(props) {
                           {thongTinNguoiDung.taiKhoan}
                         </span>
                       </p>
-                      <p>Là tên tài khoản (username) để đăng nhập tài khoản.</p>
+                      <p>Là tên tài khoản (username) để đăng nhập .</p>
                     </Col>
                   </Row>
 
@@ -357,7 +269,12 @@ export default function User(props) {
                       <i className="fas fa-lock"></i>
                     </Col>
                     <Col sm={20}>
-                      <p className="thongTin_dangNhap"> Mật Khẩu: .......</p>
+                      <p className="thongTin_dangNhap">
+                        {" "}
+                        <span style={{ color: "#f55960" }}>
+                          {thongTinNguoiDung.matKhau}
+                        </span>
+                      </p>
                       <p>
                         Vui lòng không tiết lộ mật khẩu để bảo mật tài khoản.
                       </p>
@@ -397,97 +314,7 @@ export default function User(props) {
               </div>
             </TabPane>
             <TabPane tab="Chỉnh Sửa Thông Tin" key="3">
-              <Row gutter={16}>
-                <Col xs={24} sm={4}>
-                  <div className="sider">
-                    <img
-                      className="avatar"
-                      src="https://i.pravatar.cc/150?u=Levi10"
-                      alt="avatar"
-                    />
-                    <p className="ten">{thongTinNguoiDung.hoTen}</p>
-                    <p className="maLoai">
-                      {thongTinNguoiDung.maLoaiNguoiDung}
-                    </p>
-                  </div>
-                </Col>
-                <Col className="user_tab" xs={24} sm={10}>
-                  <Row className="user_content">
-                    <Col xs={24} sm={4} className="user_Icon">
-                      <i className="fas fa-envelope"></i>
-                    </Col>
-                    <Col sm={20}>
-                      <p className="thongTin_dangNhap">Email:</p>
-                      <input placeholder="Email" />
-                      <p>
-                        Email đăng ký nhận các tin tức hoạt động của tài khoản
-                      </p>
-                    </Col>
-                  </Row>
-                  <hr style={{ margin: "20px 0", opacity: "0.3" }} />
-                  <Row className="user_content">
-                    <Col xs={24} sm={4} className="user_Icon">
-                      <i className="fas fa-portrait"></i>
-                    </Col>
-                    <Col sm={20}>
-                      <p className="thongTin_dangNhap">Họ Tên:</p>
-                      <input placeholder="Họ Tên" />
-                      <p> Tên tài khoản hoạt động trên website</p>
-                    </Col>
-                  </Row>
-
-                  <hr style={{ margin: "20px 0", opacity: "0.3" }} />
-                  <Row className="user_content">
-                    <Col xs={24} sm={4} className="user_Icon">
-                      <i className="fas fa-mobile-alt"></i>
-                    </Col>
-                    <Col sm={20}>
-                      <p className="thongTin_dangNhap">Số Điện Thoại:</p>
-                      <input placeholder="Số Điện Thoại" />
-                      <p> Số điện thoại khi đăng ký</p>
-                    </Col>
-                  </Row>
-                </Col>
-                <Col xs={24} sm={10}>
-                  <Row className="user_content">
-                    <Col xs={24} sm={4} className="user_Icon">
-                      <i className="fas fa-user"></i>
-                    </Col>
-                    <Col sm={20}>
-                      <p className="thongTin_dangNhap">
-                        Tài Khoản:
-                        <span style={{ color: "#f55960" }}>
-                          {thongTinNguoiDung.taiKhoan}
-                        </span>
-                      </p>
-                      <p>Là tên tài khoản (username) để đăng nhập tài khoản.</p>
-                    </Col>
-                  </Row>
-                  <hr
-                    style={{
-                      marginTop: "45px ",
-                      marginBottom: "20px",
-                      opacity: "0.3",
-                    }}
-                  />
-                  <Row className="user_content">
-                    <Col sm={4} className="user_Icon">
-                      <i className="fas fa-lock"></i>
-                    </Col>
-                    <Col sm={20}>
-                      <p className="thongTin_dangNhap">Mật Khẩu:</p>
-                      <input placeholder="Mật Khẩu" />
-                      <p>
-                        Vui lòng không tiết lộ mật khẩu để bảo mật tài khoản.
-                      </p>
-                    </Col>
-                  </Row>
-                  <hr style={{ margin: "20px 0", opacity: "0.3" }} />
-                  <div className="btn_Cap">
-                    <button className="btn_capNhat">Cập Nhật</button>
-                  </div>
-                </Col>
-              </Row>
+              <UpdateUser />
             </TabPane>
           </Tabs>
         </div>

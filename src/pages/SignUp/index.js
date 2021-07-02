@@ -19,19 +19,24 @@ export default function DangKy(props) {
       hoTen: "",
     },
     validationSchema: Yup.object().shape({
-      taiKhoan: Yup.string().required("*Tài khoản không được bỏ trống!"),
+      taiKhoan: Yup.string()
+        .required("*Tài khoản không được bỏ trống!")
+        .min(6, "*Tài Khoản tối thiểu 6 kí tự"),
       matKhau: Yup.string()
         .required("*Mật khẩu không được bỏ trống!")
-        .min(1, "*Mật khẩu tối thiểu 6 ký tự!")
-        .max(32, "*Mật khẩu tối đa 32 ký tự!"),
+        .max(32, "*Mật khẩu tối đa 32 ký tự!")
+        .min(5, "*Mật khẩu tối thiểu 5 ký tự!"),
 
       email: Yup.string()
         .required("*Email không được bỏ trống!")
         .email("*Email không đúng định dạng!"),
       soDt: Yup.string()
-        .matches(/^[0-9]+$/)
-        .required("*Số Điện Thoại không được bỏ trống!"),
-      hoTen: Yup.string().required("*Họ Tên không được bỏ trống!"),
+        .matches(/^[0-9]+$/, "*Số điện thoại không đúng định dạng")
+        .required("*Số điện thoại không được bỏ trống!")
+        .min(10, "*Số điện thoại không đúng định dạng"),
+      hoTen: Yup.string()
+        .required("*Họ Tên không được bỏ trống!")
+        .min(6, "*Họ Tên tối thiểu 6 kí tự"),
     }),
     onSubmit: (values) => {
       const action = dangKy(values);
@@ -129,10 +134,8 @@ export default function DangKy(props) {
               ""
             )}
           </div>
-          <button type="submit" className="btn__dangKy">
-            Đăng Ký
-          </button>
-          <div>
+          <button className="btn__dangKy">Đăng Ký</button>
+          <div className="taiKhoan_Link">
             <span style={{ paddingRight: "5px" }}>Bạn đã có tài khoản!</span>
             <NavLink to="/dangNhap">Đăng Nhập</NavLink>
           </div>

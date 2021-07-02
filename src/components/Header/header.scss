@@ -28,3 +28,13 @@
 .makeStyles-root-10 .MuiListItem-gutters:hover {
   background-color: #0000000a !important;
 }
+.MuiListItem-button {
+  .aMobile {
+    color: #9b9b9b;
+    transition: all 0.5s;
+    &:hover {
+      cursor: pointer;
+      color: #fb4226;
+    }
+  }
+}

@@ -8,7 +8,9 @@
 
 .dangNhap__Img .dangNhap__Khung {
   max-width: 360px;
-  padding: 40px 32px 30px;
+  display: flex;
+  flex-direction: column;
+  padding: 80px 32px 40px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -21,7 +23,8 @@
 }
 
 .dangNhap__Img .dangNhap__Khung .dangNhap__Logo {
-  width: 209px;
+  width: 60%;
+  align-self: center;
   margin-bottom: 50px;
   cursor: pointer;
 }
@@ -43,7 +46,7 @@
   line-height: 1.2;
   display: block;
   width: 100%;
-  height: 40px;
+  height: 32px;
   background: 0 0;
   padding: 0 5px;
   border-width: inherit;
@@ -59,8 +62,8 @@
   border: 1px solid #949494;
   border-radius: 4px;
   text-align: center;
-  background: white;
-  color: black;
+  background: #fb4226;
+  color: #fff;
   font-weight: 700;
   padding: 7px 25px;
   transition: all 0.2s;
@@ -68,11 +71,13 @@
   letter-spacing: 2.5px;
   font-size: 16px;
   margin-top: 30px;
+  opacity: 0.9;
 }
 
 .dangNhap__Img .dangNhap__Khung .btn__DangNhap:hover {
   cursor: pointer;
-  letter-spacing: 3px;
+  transform: translateY(2px);
+  opacity: 1;
 }
 
 .dangNhap__Img .dangNhap__Khung .dangNhap__Dong {
@@ -110,7 +115,7 @@
     right: 5px;
   }
   .dangNhap__Img .dangNhap__Khung .dangNhap__Input {
-    margin: 20px 0;
+    margin: 5px 0;
   }
   .dangNhap__Img .dangNhap__Khung .dangNhap__noiDung {
     margin: 50px 0;
@@ -131,19 +136,21 @@
 
 .dangKy__Img {
   width: 100%;
-  height: 900px;
+  height: 100vh;
   background-image: url(../img/bgLogin.jpg);
   background-size: contain;
   background-position: center;
 }
 
 .dangKy__Img .dangKy__Khung {
-  max-width: 360px;
-  padding: 40px 32px 30px;
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  padding: 40px 60px 30px;
   position: absolute;
   top: 60%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -60%);
   background-image: linear-gradient(to bottom, rgba(20, 50, 93, 0.9), rgba(8, 22, 48, 0.9));
   box-shadow: 0 0 10px 0;
   color: #fff;
@@ -151,15 +158,11 @@
 }
 
 .dangKy__Img .dangKy__Khung .dangKy__Logo {
-  width: 209px;
+  width: 60%;
   margin-bottom: 10px;
   cursor: pointer;
-}
-
-@media screen and (max-width: 576px) {
-  .dangKy__Img .dangKy__Khung .dangKy__Logo {
-    margin: 5px 45px;
-  }
+  justify-items: center;
+  align-self: center;
 }
 
 .dangKy__Img .dangKy__Khung .dangKy__Input {
@@ -175,7 +178,7 @@
   width: 100%;
   height: 30px;
   background: white;
-  padding: 0px;
+  padding: 5px;
   border: solid 1px white !important;
   border-radius: 5px;
   border-width: inherit;
@@ -196,8 +199,9 @@
   border: 1px solid #949494;
   border-radius: 4px;
   text-align: center;
-  background: white;
-  color: black;
+  background: #fb4226;
+  color: #fff;
+  opacity: 0.7;
   font-weight: 700;
   padding: 7px 25px;
   transition: all 0.2s;
@@ -209,6 +213,12 @@
 
 .dangKy__Img .dangKy__Khung .btn__dangKy:hover {
   cursor: pointer;
+  transform: translateY(2px);
+  opacity: 0.8;
+}
+
+.dangKy__Img .dangKy__Khung .taiKhoan_Link {
+  text-align: center;
 }
 
 .dangKy__Img .dangKy__Khung .dangKy__Dong {
@@ -241,7 +251,7 @@
     right: 5px;
   }
   .dangKy__Img .dangKy__Khung .dangKy__Input {
-    margin: 10px 0;
+    margin: 0;
   }
   .dangKy__Img .dangKy__Khung .dangKy__noiDung {
     margin: 30px 0;
@@ -254,15 +264,15 @@
 
 @media screen and (max-width: 992px) {
   .dangKy__Img .dangKy__Khung {
-    top: 45%;
+    top: 60%;
   }
 }
 
 @media screen and (max-width: 576px) {
   .dangKy__Img .dangKy__Khung {
     max-width: none;
-    padding: 0px 32px 30px;
-    top: 50%;
+    padding: 50px 32px 30px;
+    top: 60%;
     width: 100%;
     height: 100%;
   }
@@ -717,6 +727,319 @@ p:nth-child(2) {
   }
   hr {
     margin: 5px;
+  }
+}
+
+.userUpdate {
+  border: 3px solid #f55960;
+  opacity: 0.9;
+  width: 60%;
+  margin: 0 auto;
+  padding: 30px 20px 20px;
+  box-shadow: 0px 10px 10px 10px gray;
+  border-radius: 10px;
+  margin-bottom: 60px;
+}
+
+.userUpdate .lable {
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.userUpdate .input {
+  padding: 5px;
+  width: 50%;
+  border-radius: 5px;
+  color: black;
+}
+
+.userUpdate .divBtn {
+  text-align: right;
+}
+
+.userUpdate .divBtn .btnCapNhat {
+  padding: 10px 25px;
+  background-color: white;
+  color: white;
+  border-radius: 5px;
+  text-align: right;
+  transition: all 0.5s;
+  margin-right: 15%;
+  font-weight: 600;
+  font-size: 16px;
+  background-color: #fb4226;
+}
+
+.userUpdate .divBtn .btnCapNhat:hover {
+  color: white;
+  cursor: pointer;
+  transform: translateY(-10px);
+}
+
+.userUpdate .canhBaoCap {
+  color: #fb4226;
+}
+
+.userUpdate .canhBaoTai {
+  color: gray;
+  font-weight: 400;
+}
+
+@media screen and (max-width: 576px) {
+  .userUpdate .input {
+    width: 90%;
+    padding: 0 2px;
+  }
+  .userUpdate .lable {
+    margin-bottom: 2px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .userUpdate .canhBaoCap {
+    margin-bottom: 0;
+  }
+  .userUpdate .divBtn {
+    text-align: center;
+  }
+  .userUpdate .divBtn .btnCapNhat {
+    padding: 2px 15px;
+    margin-right: 0;
+    margin-top: 20px;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .userUpdate {
+    width: 70%;
+  }
+}
+
+.adMin .headerAdmin {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 5px;
+  align-items: center;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.adMin .headerAdmin .logoAdmin {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.adMin .headerAdmin .logoAdmin img {
+  width: 50%;
+}
+
+.adMin .headerAdmin .logoAdmin .dashBoard {
+  margin: 0 15px;
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+
+.adMin .headerAdmin .logoAdmin .logoDash {
+  font-size: 27px;
+}
+
+.adMin .headerAdmin .buttonCloseAmin {
+  border: none;
+  padding-right: 10px;
+  background-color: white;
+}
+
+.adMin .headerAdmin .buttonCloseAmin .logoBoard {
+  font-size: 32px;
+  transition: all 0.5s;
+  background-color: #fb4226;
+  color: #fff;
+  border-radius: 50%;
+}
+
+.adMin .headerAdmin .buttonCloseAmin .logoBoard:hover {
+  cursor: pointer;
+  transform: translateX(2px);
+  border-radius: 50%;
+}
+
+.adMin .tabAdmin .ant-tabs-nav {
+  width: 221px;
+}
+
+.adMin .tabAdmin .table {
+  width: 99%;
+  border: 1px solid;
+  border-radius: 10px;
+  margin-top: 30px;
+  padding-right: 10px;
+  box-shadow: 0px 10px 10px 10px gray;
+}
+
+.adMin .tabAdmin .table .thead {
+  border-bottom: 1px solid;
+}
+
+.adMin .tabAdmin .table .thead tr {
+  white-space: nowrap;
+  background-color: #a9a9a985;
+}
+
+.adMin .tabAdmin .table .thead tr th {
+  padding: 15px;
+  text-align: left;
+}
+
+.adMin .tabAdmin .table .tbody {
+  padding: 0 5px;
+}
+
+.adMin .tabAdmin .table .tbody tr td {
+  padding: 5px 0;
+  line-height: 30px;
+  padding-left: 15px;
+}
+
+.adMin .tabAdmin .pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+
+.adMin .tabAdmin .pagination .btnPagination {
+  width: 84px;
+  color: #fff;
+  background-color: #fb4226;
+  font-weight: 500;
+  transition: all 0.5s;
+  opacity: 0.7;
+  border-radius: 5px;
+  margin: 0 5px;
+}
+
+.adMin .tabAdmin .pagination .btnPagination:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.adMin .tabAdmin .pagination .btnPagination:hover:disabled {
+  color: rgba(16, 16, 16, 0.3);
+  background-color: rgba(239, 239, 239, 0.3);
+}
+
+.adMin .btnThemPhim {
+  color: #fb4226 !important;
+  border: none;
+  font-weight: 500;
+  font-size: 18px;
+  text-decoration: underline !important;
+  box-shadow: none;
+  background: white;
+  padding-left: 0;
+}
+
+.adMin .btnThemPhim:hover {
+  background: white;
+}
+
+.adMin .btnThemPhim:focus {
+  background: white;
+}
+
+.adMin .btnThemPhim span {
+  text-decoration: underline;
+}
+
+.adMin .btnCapNhat {
+  width: 84px;
+  color: #fff;
+  background-color: #fb4226;
+  font-weight: 500;
+  transition: all 0.5s;
+  opacity: 0.7;
+  border-radius: 5px;
+  margin: 0 5px;
+}
+
+.adMin .btnCapNhat:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.ant-modal-content .ant-btn:hover,
+.ant-modal-content .ant-btn:focus,
+.ant-modal-content .ant-btn:active {
+  border-color: #fb4226 !important;
+  color: black !important;
+}
+
+.ant-modal-content .ant-btn-primary,
+.ant-modal-content .ant-btn-primary:active,
+.ant-modal-content .ant-btn-primary:hover,
+.ant-modal-content .ant-btn-primary:focus {
+  background-color: #fb4226 !important;
+  border-color: #fb4226 !important;
+}
+
+.ant-modal-content .ant-modal-header {
+  background-color: #a9a9a985;
+}
+
+.ant-modal-content .ant-modal-header .ant-modal-title {
+  font-size: 30px;
+  font-weight: 600;
+  text-transform: uppercase;
+  width: 50%;
+  height: 100px;
+  line-height: 2;
+}
+
+.ant-modal-content .themPhim .rowInput {
+  margin-top: 30px;
+}
+
+.ant-modal-content .themPhim .inputPhim {
+  border: none;
+  border-bottom: 2px solid gray;
+  width: 250px;
+  padding: 5px;
+}
+
+.ant-modal-content .rowTextarea {
+  margin-top: 30px;
+}
+
+.ant-modal-content .rowTextarea .textArea {
+  width: 100%;
+  padding: 5px;
+  height: 200px;
+}
+
+.ant-modal-content .themNguoiDung .rowInput {
+  margin-top: 30px;
+}
+
+.ant-modal-content .themNguoiDung .inputPhim {
+  border: none;
+  border-bottom: 2px solid gray;
+  width: 250px;
+  padding: 5px;
+}
+
+.ant-modal-content .themNguoiDung .selectNguoiDung {
+  width: 250px;
+  padding: 5px;
+}
+
+.ant-modal-content .themNguoiDung .selectNguoiDung:hover {
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 1000px) {
+  .tabAdmin {
+    display: none;
   }
 }
 

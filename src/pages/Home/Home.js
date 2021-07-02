@@ -10,7 +10,7 @@ import CumRap from "../../components/CumRap/CumRap";
 export default function Home() {
   return (
     <div>
-
+      <HeaderComponent />
       <div style={{ marginTop: 64, position: "relative" }}>
         <div>
           <DemoCarousel />
@@ -36,6 +36,7 @@ export default function Home() {
       </div>
       <New />
       <Apply />
+      <Footer />
     </div>
   );
 }
