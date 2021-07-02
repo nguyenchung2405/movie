@@ -56,10 +56,6 @@ export default function MovieType() {
     setValue(newValue);
   };
 
-  const handleChangeIndex = (index) => {
-    setValue(index);
-  };
-
   return (
     <div className={classes.root}>
       <Tabs

@@ -23,7 +23,7 @@ import { XU_LY_DANG_NHAP_THANH_CONG } from "../../redux/constants/NguoiDungConst
 import { NavLink } from "react-router-dom";
 import "./header.scss";
 
-export default function HeaderCoponent() {
+export default function HeaderComponent() {
   let { tenDangNhap } = useSelector((state) => state.NguoiDungReducer);
 
   const classes = useStyles();

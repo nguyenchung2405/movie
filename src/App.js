@@ -2,8 +2,6 @@ import { Switch, Router, Route } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home/Home";
 import ChiTietPhim from "./pages/ChiTietPhim/ChiTietPhim";
-import HeaderComponent from "./components/Header/HeaderComponent";
-import Footer from "./components/Footer";
 import DangKy from "./pages/SignUp";
 import DangNhap from "./pages/SignIn";
 import User from "../src/pages/User/User";
