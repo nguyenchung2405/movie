@@ -1,0 +1,166 @@
+.d-flex {
+  display: flex;
+  align-items: center;
+}
+
+.d-flex-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.m-0 {
+  margin: 0 !important;
+}
+
+.seat-thuong {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.seat-vip {
+  color: #f7b500;
+}
+
+.seat-dangchon {
+  color: #44c020;
+}
+
+.seat-daconguoichon {
+  color: #e7eaec;
+}
+
+.appBar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  background-color: #fff;
+}
+
+.appBar .wrap__appBar {
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 5% 5px 20px;
+  box-shadow: 0px 0px 5px 5px #99999921;
+}
+
+.appBar .wrap__appBar .MuiStepper-root {
+  padding: 0 !important;
+}
+
+.appBar .wrap__appBar .MuiStepLabel-label.MuiStepLabel-active {
+  color: #f44336 !important;
+}
+
+.appBar .wrap__appBar .MuiStepIcon-root.MuiStepIcon-active {
+  color: #f44336 !important;
+}
+
+.cumRap {
+  margin-bottom: 20px !important;
+  justify-content: space-between;
+}
+
+.danh__sach__ghe {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  font-size: 40px !important;
+  justify-content: center;
+  width: 80%;
+}
+
+.ghe__Mo_Ta {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  margin-top: 60px;
+  padding-bottom: 10px;
+  justify-content: space-around;
+}
+
+.thong__tin__ve {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+  background: #fff;
+  height: 100%;
+  padding: 0 20px;
+  box-shadow: 0px 0px 5px 5px #99999921;
+  z-index: 100;
+}
+
+.thong__tin__ve .nav {
+  height: calc(100% - 60px);
+  padding: 0 5%;
+  min-height: calc(100% - 50px);
+  overflow-y: auto;
+}
+
+.thong__tin__ve .nav .giaTien {
+  text-align: center;
+  font-size: 25px;
+  color: #44c020;
+}
+
+.thong__tin__ve .nav .giaTien p {
+  margin-bottom: 0;
+}
+
+.thong__tin__ve .nav .thong__tin__phim {
+  padding: 8px 0;
+}
+
+.thong__tin__ve .nav .thong__tin__phim .nameTag {
+  color: #fff;
+  float: left;
+  padding: 5px;
+  font-size: 14px;
+  min-width: 33px;
+  background: #fb4226;
+  text-align: center;
+  font-family: "sfMedium";
+  font-weight: 400;
+  line-height: 0.8;
+  margin-right: 5px;
+  border-radius: 4px;
+  letter-spacing: normal;
+  vertical-align: 2px;
+}
+
+.thong__tin__ve .nav .gia__ghe {
+  justify-content: space-between;
+  padding: 8px 0;
+}
+
+.thong__tin__ve .nav .gia__ghe .MuiButton-text {
+  padding: 0 !important;
+}
+
+.thong__tin__ve .nav .warning {
+  display: flex;
+  justify-content: center;
+  left: 0;
+  width: calc(100% - 4px);
+  bottom: 60px;
+  padding: 0 5%;
+  z-index: 20;
+  position: absolute;
+  background: #fff;
+  margin-top: auto;
+  text-align: center;
+  padding-bottom: 14px;
+}
+/*# sourceMappingURL=phongve.css.map */

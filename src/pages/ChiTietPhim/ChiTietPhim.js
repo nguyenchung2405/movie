@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { layThongTinPhimAction } from "../../redux/action/PhimAction";
 import HeaderComponent from "../../components/Header/HeaderComponent";
 import Footer from "../../components/Footer";
+import CNS from "./CNS/CNS";
 
 const { Meta } = Card;
 const { TabPane } = Tabs;
@@ -22,16 +23,15 @@ const action = <Rate disabled value={5} />;
 
 export default function ChiTietPhim(props) {
   const { chiTietPhim } = useSelector((state) => state.PhimReducer);
-
+  console.log("chiTietPhim", chiTietPhim)
   const [isOpen, setOpen] = useState(false);
-
   const dispatch = useDispatch();
   const id = props.match.params.id;
+
   useEffect(() => {
     dispatch(layThongTinPhimAction(id));
   }, []);
 
-  console.log("chi tiết phim", chiTietPhim);
   const getVideoId = (url) => {
     if (!!url) {
       var arrItem = url.split('/');
@@ -43,7 +43,15 @@ export default function ChiTietPhim(props) {
   return (
     <div>
       <HeaderComponent />
-
+      <Fragment>
+        <ModalVideo
+          channel="youtube"
+          autoplay
+          isOpen={isOpen}
+          videoId={getVideoId(chiTietPhim.trailer)}
+          onClose={() => setOpen(false)}
+        />
+      </Fragment>
       <Row style={{ marginTop: "60px" }}>
         <Col sm={24} id="chiTietTong">
           <div className="chiTiet">
@@ -51,8 +59,8 @@ export default function ChiTietPhim(props) {
               {/* <ModalVideoC className="chiTiet__Videores" /> */}
               <img
                 className="anhBiaPhim"
-                src={chiTietPhim.hinhAnh}
-                alt={chiTietPhim.hinhAnh}
+              src={chiTietPhim.hinhAnh}
+              alt={chiTietPhim.hinhAnh}
               />
             </div>
             <div className="styleGradient"></div>
@@ -61,19 +69,10 @@ export default function ChiTietPhim(props) {
                 <Col sm={6} xs={8} className="anhPhim">
                   <img
                     className="chiTiet__anhNho"
-                    src={chiTietPhim.hinhAnh}
-                    alt={chiTietPhim.hinhAnh}
+                  src={chiTietPhim.hinhAnh}
+                  alt={chiTietPhim.hinhAnh}
                   />
-
                   <Fragment>
-                    <ModalVideo
-                      channel="youtube"
-                      autoplay
-                      isOpen={isOpen}
-                      videoId={getVideoId(chiTietPhim.trailer)}
-                      // videoId="DUzEYcR2VtM"
-                      onClose={() => setOpen(false)}
-                    />
                     <div
                       className="btnPlay"
                       style={{
@@ -112,7 +111,7 @@ export default function ChiTietPhim(props) {
                     percent={75}
                     strokeColor="#7ed321"
                     strokeWidth={7}
-                    format={(percent) => `${chiTietPhim.danhGia} `}
+                  format={(percent) => `${chiTietPhim.danhGia} `}
                   />
                   <Rate disabled defaultValue={3} count={3} />
                   <p style={{ color: "white", marginTop: "10px" }}>
@@ -136,7 +135,10 @@ export default function ChiTietPhim(props) {
             </div>
             <div>
               <Tabs type="card" defaultActiveKey="1" centered animated={true}>
-                <TabPane tab="Thông Tin" key="1">
+                <TabPane tab="Lịch Chiếu" key="1">
+                  <CNS heThongRapChieu={chiTietPhim.heThongRapChieu}/>
+                </TabPane>
+                <TabPane tab="Thông Tin" key="2">
                   <Row>
                     <Col xs={24} sm={12} className="noiDung__Phim">
                       <Row>
@@ -185,7 +187,7 @@ export default function ChiTietPhim(props) {
                     </Col>
                   </Row>
                 </TabPane>
-                <TabPane tab="Đánh Giá" key="2">
+                <TabPane tab="Đánh Giá" key="3">
                   <div className="comment">
                     <SnackbarContent
                       message="Bạn nghĩ gì về phim này ?"

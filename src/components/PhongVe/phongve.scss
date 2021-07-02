@@ -1,0 +1,144 @@
+.d-flex {
+  display: flex;
+  align-items: center;
+}
+.d-flex-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.img {
+  width: 50px;
+  height: 50px;
+}
+.w-100 {
+  width: 100%;
+}
+.m-0 {
+  margin: 0 !important;
+}
+
+.seat-thuong {
+  // color: #3e515d;
+  color: rgba(0, 0, 0, 0.54);
+}
+.seat-vip {
+  color: #f7b500;
+}
+.seat-dangchon {
+  color: #44c020;
+}
+.seat-daconguoichon {
+  color: #e7eaec;
+}
+.appBar {
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  left: 0;
+  .wrap__appBar {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
+    box-shadow: 0px 0px 5px 5px #99999921;
+    background-color: white;
+    .MuiStepper-root {
+      padding: 0 !important;
+    }
+    .MuiStepLabel-label.MuiStepLabel-active {
+      color: #f44336 !important;
+    }
+    .MuiStepIcon-root.MuiStepIcon-active {
+      color: #f44336 !important;
+    }
+    .MuiStep-alternativeLabel {
+      width: 220px !important;
+    }
+  }
+}
+.wrap__content {
+  margin-top: 80px;
+  .cumRap {
+    justify-content: space-between;
+  }
+  .danh__sach__ghe {
+    width: 720px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .ghe__Mo_Ta {
+    margin: 0 auto;
+    display: flex;
+    margin-top: 60px;
+    padding-bottom: 10px;
+    justify-content: space-around;
+  }
+}
+
+.thong__tin__ve {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+  background: #fff;
+  height: 100vh;
+  box-shadow: 0px 0px 5px 5px #99999921;
+  z-index: 100;
+  .nav {
+    height: calc(100% - 60px);
+    padding: 0 5%;
+    min-height: calc(100% - 50px);
+    overflow-y: auto;
+    
+    .giaTien {
+      text-align: center;
+      font-size: 25px;
+      color: #44c020;
+      p {
+        margin-bottom: 0;
+      }
+    }
+    .thong__tin__phim {
+      padding: 8px 0;
+      .nameTag {
+        color: #fff;
+        float: left;
+        padding: 5px;
+        font-size: 14px;
+        min-width: 33px;
+        background: #fb4226;
+        text-align: center;
+        font-family: "sfMedium";
+        font-weight: 400;
+        line-height: 0.8;
+        margin-right: 5px;
+        border-radius: 4px;
+        letter-spacing: normal;
+        vertical-align: 2px;
+      }
+    }
+    .gia__ghe {
+      justify-content: space-between;
+      padding: 8px 0;
+      .MuiButton-text {
+        padding: 0 !important;
+      }
+    }
+    .warning {
+      display: flex;
+      justify-content: center;
+      left: 0;
+      width: calc(100% - 4px);
+      bottom: 60px;
+      padding: 0 5%;
+      z-index: 20;
+      position: absolute;
+      background: #fff;
+      margin-top: auto;
+      text-align: center;
+      padding-bottom: 14px;
+    }
+  }
+}

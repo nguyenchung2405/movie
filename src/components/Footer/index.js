@@ -1,4 +1,4 @@
-import React from "react";
+import React, {memo} from "react";
 import { Row, Col } from "antd";
 import cgv from "../../assets/img/logo/CGV-logo.png";
 import bhd from "../../assets/img/logo/BHD-logo.png";
@@ -25,7 +25,7 @@ import apple from "../../assets/img/logo/apple-logo.png";
 import face from "../../assets/img/logo/facebook-logo.png";
 import zion from "../../assets/img/logo/zion-logo.jpg";
 import boCT from "../../assets/img/logo/bocongthuong.png";
-export default function Footer() {
+function Footer() {
   return (
     <div id="footer">
       <div className="maxWidth940">
@@ -221,3 +221,4 @@ export default function Footer() {
     </div>
   );
 }
+export default memo(Footer);
