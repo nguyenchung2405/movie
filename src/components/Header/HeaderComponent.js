@@ -17,7 +17,7 @@ import {
   Drawer,
   Hidden,
 } from "@material-ui/core";
-import { history } from "../../App";
+
 import { useDispatch } from "react-redux";
 import { XU_LY_DANG_NHAP_THANH_CONG } from "../../redux/constants/NguoiDungConst";
 import { NavLink } from "react-router-dom";
@@ -101,6 +101,7 @@ export default function HeaderComponent() {
                       paddingRight: "5px",
                     }}
                     src={`https://i.pravatar.cc/150?u=${tenDangNhap.taiKhoan}`}
+                    alt="tenDangNhap"
                   />
                   {tenDangNhap.taiKhoan}
                 </Button>
@@ -114,6 +115,9 @@ export default function HeaderComponent() {
                 >
                   <MenuItem onClick={handleClose}>
                     <NavLink to="/nguoiDung">Thông tin tài khoản</NavLink>
+                  </MenuItem>
+                  <MenuItem onClick={handleClose}>
+                    <NavLink to="/admin">Admin</NavLink>
                   </MenuItem>
                   <MenuItem onClick={handleClose}>
                     <button className="btn__dangXuat" onClick={handleDangXuat}>
@@ -161,6 +165,7 @@ export default function HeaderComponent() {
                             paddingRight: "5px",
                           }}
                           src={`https://i.pravatar.cc/150?u=${tenDangNhap.taiKhoan}`}
+                          alt="dangNhap"
                         />
                         {tenDangNhap.taiKhoan}
                       </Button>

@@ -162,8 +162,8 @@ export const xoaNguoiDungAdminAction = (taiKhoan) => {
         headers: {
           Authorization:
             "Bearer " + JSON.parse(localStorage.getItem(ACCESSTOKEN)),
-          data: taiKhoan,
         },
+        data: taiKhoan,
       });
 
       console.log(result.data);
@@ -172,7 +172,7 @@ export const xoaNguoiDungAdminAction = (taiKhoan) => {
       //   xoaNguoiDung: result.data,
       // });
     } catch (err) {
-      console.log(err);
+      console.log(err.response);
     }
   };
 };

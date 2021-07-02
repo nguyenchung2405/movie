@@ -4,7 +4,10 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import Pagination from "./Pagination";
 import { useDispatch } from "react-redux";
-import { layDanhSachNguoiDungPhanTrang } from "../../redux/action/NguoiDungAction";
+import {
+  layDanhSachNguoiDungPhanTrang,
+  xoaNguoiDungAdminAction,
+} from "../../redux/action/NguoiDungAction";
 import SearchAdmin from "./SearchAdmin";
 
 export default function TableNguoiDungAdmin(props) {
@@ -12,7 +15,10 @@ export default function TableNguoiDungAdmin(props) {
   const danhSachNguoiDungPhanTrang = useSelector(
     (state) => state.NguoiDungReducer.danhSachNguoiDungPhanTrang.items
   );
-
+  // const user = useSelector(
+  //   (state) => state.NguoiDungReducer.xoaNguoiDungAdmin.taiKhoan
+  // );
+  // console.log(user);
   const [filters, setFilters] = useState({
     maNhom: "GP01",
     soTrang: 1,
@@ -38,6 +44,15 @@ export default function TableNguoiDungAdmin(props) {
       tuKhoa: newFilters.searchTerm,
     });
   }
+
+  const handleXoaNguoiDung = (newtaiKhoan) => {
+    const taiKhoan = {
+      taiKhoan: newtaiKhoan,
+    };
+    const paramString = queryString.stringify(taiKhoan);
+    const action = xoaNguoiDungAdminAction(paramString);
+    dispatch(action);
+  };
   const renderDanhSachNguoiDung = () => {
     return danhSachNguoiDungPhanTrang.map((nguoiDung, index) => {
       return (
@@ -52,7 +67,10 @@ export default function TableNguoiDungAdmin(props) {
             <button className="btnCapNhat" onClick={() => {}}>
               Sửa
             </button>
-            <button className="btnCapNhat" onClick={() => {}}>
+            <button
+              className="btnCapNhat"
+              onClick={() => handleXoaNguoiDung(nguoiDung.taiKhoan)}
+            >
               Xóa
             </button>
           </td>
