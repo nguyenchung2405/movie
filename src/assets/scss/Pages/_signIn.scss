@@ -6,7 +6,9 @@
   background-position: center;
   .dangNhap__Khung {
     max-width: 360px;
-    padding: 40px 32px 30px;
+    display: flex;
+    flex-direction: column;
+    padding: 80px 32px 40px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -21,7 +23,9 @@
     color: #fff;
     border-radius: 6px;
     .dangNhap__Logo {
-      width: 209px;
+      width: 60%;
+
+      align-self: center;
       margin-bottom: 50px;
       cursor: pointer;
     }
@@ -41,7 +45,7 @@
         line-height: 1.2;
         display: block;
         width: 100%;
-        height: 40px;
+        height: 32px;
         background: 0 0;
         padding: 0 5px;
         border-width: inherit;
@@ -58,8 +62,8 @@
       border: 1px solid #949494;
       border-radius: 4px;
       text-align: center;
-      background: white;
-      color: black;
+      background: $color-red;
+      color: $color-white;
       font-weight: $fw-1;
       padding: 7px 25px;
       transition: all 0.2s;
@@ -67,9 +71,12 @@
       letter-spacing: 2.5px;
       font-size: $fs-2;
       margin-top: 30px;
+      opacity: 0.9;
       &:hover {
         cursor: pointer;
-        letter-spacing: 3px;
+
+        transform: translateY(2px);
+        opacity: 1;
       }
     }
     .dangNhap__Dong {
@@ -103,7 +110,7 @@
         right: 5px;
       }
       .dangNhap__Input {
-        margin: 20px 0;
+        margin: 5px 0;
       }
       .dangNhap__noiDung {
         margin: 50px 0;

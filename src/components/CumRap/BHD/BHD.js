@@ -1,13 +1,13 @@
 import React, { Fragment } from 'react';
 import '../cumrapstyle.scss';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { withStyles } from '@material-ui/core/styles';
 import MuiAccordion from '@material-ui/core/Accordion';
 import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
 import MuiAccordionDetails from '@material-ui/core/AccordionDetails';
+import { NavLink } from 'react-router-dom';
 
 const Accordion = withStyles({
     root: {
@@ -102,15 +102,17 @@ export default function BHD(props) {
                                                         <AccordionDetails>
                                                             <div className="flex-start">
                                                                 <h4 className="">2D Digital</h4>
-                                                                {
-                                                                    phim.lstLichChieuTheoPhim.map((lichChieu, index) => {
-                                                                        return (
-                                                                            <Button key={index} className="btnMovie" variant="contained">
-                                                                                <span className="btnColorBHD ">{lichChieu.ngayChieuGioChieu}</span>
-                                                                            </Button>
-                                                                        )
-                                                                    })
-                                                                }
+                                                                <div className="lichCHieu">
+                                                                    {
+                                                                        phim.lstLichChieuTheoPhim.map((lichChieu, index) => {
+                                                                            return (
+                                                                                <NavLink key={index} to={`/phongve/${lichChieu.maLichChieu}`} className="btnMovie" variant="contained">
+                                                                                    <span className="btnColorBHD ">{lichChieu.ngayChieuGioChieu}</span>
+                                                                                </NavLink>
+                                                                            )
+                                                                        })
+                                                                    }
+                                                                </div>
                                                             </div>
                                                         </AccordionDetails>
                                                     </Accordion>

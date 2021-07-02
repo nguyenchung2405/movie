@@ -47,8 +47,6 @@ export default function ItemPhimDangChieu(props) {
                     </Fragment >
 
                     <img src={phim.hinhAnh} alt={phim.hinhAnh} className={classes.img} />
-
-
                 </CardActionArea>
 
                 <div style={{ position: "relative" }}>

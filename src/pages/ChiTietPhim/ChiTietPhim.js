@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { layThongTinPhimAction } from "../../redux/action/PhimAction";
 import HeaderComponent from "../../components/Header/HeaderComponent";
 import Footer from "../../components/Footer";
-import CNS from "../../components/CumRap/CNS/CNS";
+import CNS from "./CNS/CNS";
 
 const { Meta } = Card;
 const { TabPane } = Tabs;

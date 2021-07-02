@@ -211,3 +211,83 @@ p:nth-child(2) {
     margin: 5px;
   }
 }
+.userUpdate {
+  border: 3px solid #f55960;
+  opacity: 0.9;
+  width: 60%;
+  margin: 0 auto;
+  padding: 30px 20px 20px;
+  box-shadow: 0px 10px 10px 10px gray;
+  border-radius: 10px;
+
+  margin-bottom: 60px;
+
+  .lable {
+    font-size: 17px;
+    font-weight: 500;
+  }
+  .input {
+    padding: 5px;
+    width: 50%;
+    border-radius: 5px;
+    color: black;
+  }
+
+  .divBtn {
+    text-align: right;
+    .btnCapNhat {
+      padding: 10px 25px;
+      background-color: white;
+      color: white;
+      border-radius: 5px;
+      text-align: right;
+      transition: all 0.5s;
+      margin-right: 15%;
+      font-weight: 600;
+      font-size: 16px;
+      background-color: #fb4226;
+
+      &:hover {
+        color: white;
+
+        cursor: pointer;
+        transform: translateY(-10px);
+      }
+    }
+  }
+  .canhBaoCap {
+    color: #fb4226;
+  }
+  .canhBaoTai {
+    color: gray;
+    font-weight: 400;
+  }
+  @include respon-to("small") {
+    .input {
+      width: 90%;
+      padding: 0 2px;
+    }
+    .lable {
+      margin-bottom: 2px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .canhBaoCap {
+      margin-bottom: 0;
+    }
+    .divBtn {
+      text-align: center;
+      .btnCapNhat {
+        padding: 2px 15px;
+        margin-right: 0;
+        margin-top: 20px;
+        font-size: 14px;
+      }
+    }
+  }
+}
+@include respon-to("small") {
+  .userUpdate {
+    width: 70%;
+  }
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../cumrapstyle.scss';
+import './cns.scss';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import Button from '@material-ui/core/Button';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
@@ -7,7 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 import MuiAccordion from '@material-ui/core/Accordion';
 import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
 import MuiAccordionDetails from '@material-ui/core/AccordionDetails';
-import Typography from '@material-ui/core/Typography';
+import { NavLink } from 'react-router-dom';
 
 const Accordion = withStyles({
     root: {
@@ -98,9 +98,11 @@ export default function CNS(props) {
                                                         {
                                                             rapItem.lichChieuPhim.map((lichChieu, index) => {
                                                                 return (
-                                                                    <Button key={index} className="btnMovie" variant="contained">
-                                                                        <span className="btnColorBHD ">{lichChieu.ngayChieuGioChieu}</span>
-                                                                    </Button>
+                                                                    <div style={{padding:5}}>
+                                                                        <NavLink key={index} to={`/phongve/${lichChieu.maLichChieu}`} className="btnMovie" variant="contained">
+                                                                            <span className="btnColorBHD ">{lichChieu.ngayChieuGioChieu}</span>
+                                                                        </NavLink>
+                                                                    </div>
                                                                 )
                                                             })
                                                         }

@@ -25,6 +25,7 @@ import "./header.scss";
 
  function HeaderComponent() {
   let { tenDangNhap } = useSelector((state) => state.NguoiDungReducer);
+
   const classes = useStyles();
   const [state, setState] = React.useState({
     right: false,
@@ -53,6 +54,7 @@ import "./header.scss";
   const handleClose = () => {
     setAnchorEl(null);
   };
+
   const dispatch = useDispatch();
   const handleDangXuat = () => {
     localStorage.clear();
@@ -76,10 +78,10 @@ import "./header.scss";
           <div className={classes.grow} />
           <Hidden smDown>
             <div className={classes.title}>
-              <a href="#">Lịch chiếu</a>
-              <a href="#">Cụm rạp</a>
-              <NavLink to="/new">Tin tức</NavLink>
-              <a href="#">Ứng dụng</a>
+              <a href="#lichChieu">Lịch chiếu</a>
+              <a href="#cummap">Cụm rạp</a>
+              <a href="#tintuc">Tin tức</a>
+              <a href="#ungDung">Ứng dụng</a>
             </div>
           </Hidden>
           <div className={classes.grow} />
@@ -98,9 +100,9 @@ import "./header.scss";
                       borderRadius: "50%",
                       paddingRight: "5px",
                     }}
-                    src={`https://i.pravatar.cc/150?u=${tenDangNhap.hoTen}`}
+                    src={`https://i.pravatar.cc/150?u=${tenDangNhap.taiKhoan}`}
                   />
-                  {tenDangNhap.hoTen}
+                  {tenDangNhap.taiKhoan}
                 </Button>
                 <Menu
                   style={{ top: 50 }}
@@ -158,9 +160,9 @@ import "./header.scss";
                             borderRadius: "50%",
                             paddingRight: "5px",
                           }}
-                          src={`https://i.pravatar.cc/150?u=${tenDangNhap.hoTen}`}
+                          src={`https://i.pravatar.cc/150?u=${tenDangNhap.taiKhoan}`}
                         />
-                        {tenDangNhap.hoTen}
+                        {tenDangNhap.taiKhoan}
                       </Button>
                       <Menu
                         style={{ top: 22, left: 12 }}
@@ -200,16 +202,24 @@ import "./header.scss";
                 </ListItem>
 
                 <ListItem button>
-                  <a href="#">Lịch chiếu</a>
+                  <a className="aMobile" href="#">
+                    Lịch chiếu
+                  </a>
                 </ListItem>
                 <ListItem button>
-                  <a href="#">Cụm rạp</a>
+                  <a className="aMobile" href="#">
+                    Cụm rạp
+                  </a>
                 </ListItem>
                 <ListItem button>
-                  <a href="#">Tin tức</a>
+                  <a className="aMobile" href="#">
+                    Tin tức
+                  </a>
                 </ListItem>
                 <ListItem button>
-                  <a href="#">Ứng dụng</a>
+                  <a className="aMobile" href="#">
+                    Ứng dụng
+                  </a>
                 </ListItem>
 
                 <ListItem button>
