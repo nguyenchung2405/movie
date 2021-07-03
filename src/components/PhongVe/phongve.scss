@@ -19,7 +19,6 @@
 }
 
 .seat-thuong {
-  // color: #3e515d;
   color: rgba(0, 0, 0, 0.54);
 }
 .seat-vip {
@@ -28,8 +27,14 @@
 .seat-dangchon {
   color: #44c020;
 }
-.seat-daconguoichon {
+.seat-dadat {
   color: #e7eaec;
+}
+.btn__datve {
+  color: #fff !important;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(223deg, #b4ec51 0, #429321 100%);
 }
 .appBar {
   z-index: 99;
@@ -55,6 +60,9 @@
       width: 220px !important;
     }
   }
+  .avatar {
+    cursor: pointer;
+  }
 }
 .wrap__content {
   margin-top: 80px;
@@ -67,6 +75,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    overflow-x: auto;
   }
   .ghe__Mo_Ta {
     margin: 0 auto;
@@ -91,7 +100,7 @@
     padding: 0 5%;
     min-height: calc(100% - 50px);
     overflow-y: auto;
-    
+
     .giaTien {
       text-align: center;
       font-size: 25px;
@@ -99,6 +108,9 @@
       p {
         margin-bottom: 0;
       }
+    }
+    .tenPhim {
+      display: flex;
     }
     .thong__tin__phim {
       padding: 8px 0;
@@ -131,7 +143,7 @@
       justify-content: center;
       left: 0;
       width: calc(100% - 4px);
-      bottom: 60px;
+      bottom: 40px;
       padding: 0 5%;
       z-index: 20;
       position: absolute;
@@ -140,5 +152,10 @@
       text-align: center;
       padding-bottom: 14px;
     }
+  }
+  .dat__ve {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
   }
 }
