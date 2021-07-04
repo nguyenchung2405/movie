@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Row, Col } from "antd";
 import axios from "axios";
-import { themPhimAction } from "../../redux/action/AdminAction";
-import { connect } from "react-redux";
+
 export default class ThemPhim extends Component {
   state = {
     maPhim: "",

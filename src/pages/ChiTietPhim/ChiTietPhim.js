@@ -23,7 +23,6 @@ const action = <Rate disabled value={5} />;
 
 export default function ChiTietPhim(props) {
   const { chiTietPhim } = useSelector((state) => state.PhimReducer);
-  console.log("chiTietPhim", chiTietPhim)
   const [isOpen, setOpen] = useState(false);
   const dispatch = useDispatch();
   const id = props.match.params.id;

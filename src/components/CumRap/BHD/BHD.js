@@ -83,6 +83,7 @@ export default function BHD(props) {
                     {
                         lstCumRap.map((dsPhim) => {
                             const { danhSachPhim } = dsPhim;
+                            console.log("danhSachPhim", danhSachPhim)
                             return (
                                 <TabPanel key={dsPhim.tenCumRap}>
                                     {
