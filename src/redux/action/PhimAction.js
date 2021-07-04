@@ -1,4 +1,5 @@
 import axios from "axios";
+import { ACCESSTOKEN } from "../constants/NguoiDungConst";
 import {
   CHI_TIET_PHIM,
   DANH_SACH_PHIM_PHAN_TRANG,
@@ -23,22 +24,21 @@ export const layDanhSachPhim = (maNhom = "GP04") => {
 };
 
 export const layThongTinPhimAction = (maPhim) => {
-  return async dispatch => {
+  return async (dispatch) => {
     try {
       const result = await axios({
         url: `https://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${maPhim}`,
-        method: "GET"
-      })
+        method: "GET",
+      });
       dispatch({
         type: CHI_TIET_PHIM,
-        chiTietPhim: result.data
-      })
+        chiTietPhim: result.data,
+      });
     } catch (err) {
       console.log(err.response.data);
     }
-  }
+  };
 };
-
 
 export const danhSachPhimPhanTrang = (paramString) => {
   return async (dispatch) => {
@@ -51,9 +51,26 @@ export const danhSachPhimPhanTrang = (paramString) => {
         type: DANH_SACH_PHIM_PHAN_TRANG,
         danhSachPhimPhanTrang: result.data,
       });
-      console.log(result.data);
     } catch (error) {
-      console.log(error);
+      console.log(error.response?.data);
+    }
+  };
+};
+
+export const xoaPhimAdminAction = (maPhim) => {
+  return async (dispatch) => {
+    try {
+      const result = await axios({
+        url: `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`,
+        method: "DELETE",
+        headers: {
+          Authorization:
+            "Bearer " + JSON.parse(localStorage.getItem(ACCESSTOKEN)),
+        },
+      });
+      alert(result.data);
+    } catch (err) {
+      alert(err.response?.data);
     }
   };
 };

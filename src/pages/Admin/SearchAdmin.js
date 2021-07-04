@@ -25,6 +25,8 @@ export default function SearchAdmin(props) {
     <div>
       <form>
         <input
+          className="inputSearch"
+          placeholder="Nhập vào tài khoản hoặc họ tên người dùng"
           type="text"
           value={searchTerm}
           onChange={handleSearchTermChange}

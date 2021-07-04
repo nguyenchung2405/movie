@@ -1,4 +1,4 @@
-import React, {memo} from "react";
+import React, { memo } from "react";
 import { useSelector } from "react-redux";
 import useStyles from "./HeaderStyle";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -23,7 +23,7 @@ import { XU_LY_DANG_NHAP_THANH_CONG } from "../../redux/constants/NguoiDungConst
 import { NavLink } from "react-router-dom";
 import "./header.scss";
 
- function HeaderComponent() {
+function HeaderComponent(props) {
   let { tenDangNhap } = useSelector((state) => state.NguoiDungReducer);
 
   const classes = useStyles();
@@ -116,9 +116,11 @@ import "./header.scss";
                   <MenuItem onClick={handleClose}>
                     <NavLink to="/nguoiDung">Thông tin tài khoản</NavLink>
                   </MenuItem>
-                  <MenuItem onClick={handleClose}>
-                    <NavLink to="/admin">Admin</NavLink>
-                  </MenuItem>
+                  {tenDangNhap.maLoaiNguoiDung === "QuanTri" && (
+                    <MenuItem onClick={handleClose}>
+                      <NavLink to="/admin">Admin</NavLink>
+                    </MenuItem>
+                  )}
                   <MenuItem onClick={handleClose}>
                     <button className="btn__dangXuat" onClick={handleDangXuat}>
                       Đăng Xuất

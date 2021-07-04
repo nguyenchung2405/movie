@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 export default function Pagination(props) {
   const { currentPage, totalPages } = useSelector(
-    (state) => state.NguoiDungReducer.danhSachNguoiDungPhanTrang
+    (state) => state.AdminReducer.danhSachNguoiDungPhanTrang
   );
 
   const { onePageChange } = props;

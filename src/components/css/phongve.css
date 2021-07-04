@@ -12,7 +12,6 @@
 .img {
   width: 50px;
   height: 50px;
-  margin-right: 10px;
 }
 
 .w-100 {
@@ -40,19 +39,18 @@
 }
 
 .appBar {
-  width: 100%;
+  z-index: 99;
   position: fixed;
   top: 0;
-  z-index: 99;
-  background-color: #fff;
+  left: 0;
 }
 
 .appBar .wrap__appBar {
-  width: 70%;
   display: flex;
   justify-content: space-between;
-  padding: 5px 5% 5px 20px;
+  padding: 5px 10px;
   box-shadow: 0px 0px 5px 5px #99999921;
+  background-color: white;
 }
 
 .appBar .wrap__appBar .MuiStepper-root {
@@ -67,22 +65,27 @@
   color: #f44336 !important;
 }
 
-.cumRap {
-  margin-bottom: 20px !important;
+.appBar .wrap__appBar .MuiStep-alternativeLabel {
+  width: 220px !important;
+}
+
+.wrap__content {
+  margin-top: 80px;
+}
+
+.wrap__content .cumRap {
   justify-content: space-between;
 }
 
-.danh__sach__ghe {
+.wrap__content .danh__sach__ghe {
+  width: 720px;
+  margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-  margin: 0 auto;
-  font-size: 40px !important;
   justify-content: center;
-  width: 80%;
 }
 
-.ghe__Mo_Ta {
-  width: 80%;
+.wrap__content .ghe__Mo_Ta {
   margin: 0 auto;
   display: flex;
   margin-top: 60px;
@@ -96,8 +99,7 @@
   top: 0;
   width: 100%;
   background: #fff;
-  height: 100%;
-  padding: 0 20px;
+  height: 100vh;
   box-shadow: 0px 0px 5px 5px #99999921;
   z-index: 100;
 }

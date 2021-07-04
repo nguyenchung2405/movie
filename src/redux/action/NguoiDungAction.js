@@ -9,7 +9,6 @@ import {
   DANH_SACH_LOAI_NGUOI_DUNG,
   DANH_SACH_NGUOI_DUNG,
   DANH_SACH_NGUOI_DUNG_PHAN_TRANG,
-  XOA_NGUOI_DUNG_ADMIN,
 } from "../../redux/constants/NguoiDungConst";
 export const dangKy = (data) => {
   return axios({
@@ -157,22 +156,17 @@ export const xoaNguoiDungAdminAction = (taiKhoan) => {
   return async (dispatch) => {
     try {
       const result = await axios({
-        url: `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/XoaNguoiDung?${taiKhoan}`,
-        method: "DETELE",
+        url: `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`,
+        method: "DELETE",
         headers: {
           Authorization:
             "Bearer " + JSON.parse(localStorage.getItem(ACCESSTOKEN)),
         },
-        data: taiKhoan,
       });
-
+      alert(result.data);
       console.log(result.data);
-      // dispatch({
-      //   type: XOA_NGUOI_DUNG_ADMIN,
-      //   xoaNguoiDung: result.data,
-      // });
     } catch (err) {
-      console.log(err.response);
+      alert(err.response?.data);
     }
   };
 };

@@ -952,6 +952,13 @@ p:nth-child(2) {
   text-decoration: underline;
 }
 
+.adMin .inputSearch {
+  width: 60%;
+  padding: 5px;
+  border-radius: 2px;
+  margin-top: 50px;
+}
+
 .adMin .btnCapNhat {
   width: 84px;
   color: #fff;
@@ -964,6 +971,21 @@ p:nth-child(2) {
 }
 
 .adMin .btnCapNhat:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.adMin .btnCapNhatSua {
+  width: 84px;
+  color: #fff;
+  font-weight: 500;
+  transition: all 0.5s;
+  opacity: 0.7;
+  border-radius: 5px;
+  margin: 0 5px;
+}
+
+.adMin .btnCapNhatSua:hover {
   cursor: pointer;
   opacity: 1;
 }
@@ -1035,6 +1057,32 @@ p:nth-child(2) {
 
 .ant-modal-content .themNguoiDung .selectNguoiDung:hover {
   cursor: pointer;
+}
+
+.ant-modal-content .themNguoiDung .div_btnThemNguoiDung {
+  text-align: right;
+  margin-right: 20px;
+}
+
+.ant-modal-content .themNguoiDung .div_btnThemNguoiDung .btnThemNguoiDung {
+  padding: 8px 20px;
+  margin-top: 30px;
+  background-color: #fb4226;
+  color: #fff;
+  opacity: 0.7;
+  border-color: #fb4226;
+  border-radius: 3px;
+  transition: all 0.5s;
+  font-size: 18px;
+}
+
+.ant-modal-content .themNguoiDung .div_btnThemNguoiDung .btnThemNguoiDung:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.ant-modal-content .ant-modal-footer {
+  display: none;
 }
 
 @media only screen and (max-width: 1000px) {

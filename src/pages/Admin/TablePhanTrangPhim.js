@@ -3,7 +3,10 @@ import queryString from "query-string";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { danhSachPhimPhanTrang } from "../../redux/action/PhimAction";
+import {
+  danhSachPhimPhanTrang,
+  xoaPhimAdminAction,
+} from "../../redux/action/PhimAction";
 import PaginationPhim from "./PaginationPhim";
 
 export default function TablePhanTrangPhim(props) {
@@ -15,6 +18,7 @@ export default function TablePhanTrangPhim(props) {
     maNhom: "GP01",
     soTrang: 1,
     soPhanTuTrenTrang: 10,
+    maPhim: "",
   });
 
   const paramString = queryString.stringify(filters);
@@ -29,6 +33,14 @@ export default function TablePhanTrangPhim(props) {
       soTrang: newPage,
     });
   }
+  const handleXoaPhim = (maPhim) => {
+    const action = xoaPhimAdminAction(maPhim);
+    dispatch(action);
+    setFilters({
+      ...filters,
+      maPhim: maPhim,
+    });
+  };
   const renderDanhSachPhim = () => {
     return danhSachPhimPhanTrangAdmin.map((Phim, index) => {
       return (
@@ -39,6 +51,7 @@ export default function TablePhanTrangPhim(props) {
             <img
               style={{ width: "70px", height: "70px", objectFit: "cover" }}
               src={Phim.hinhAnh}
+              alt="hinhAnh"
             />
           </td>
           <td>
@@ -50,7 +63,14 @@ export default function TablePhanTrangPhim(props) {
           <td style={{ width: "200px" }}>{Phim.ngayKhoiChieu}</td>
           <td>
             <button className="btnCapNhat">Sửa</button>
-            <button className="btnCapNhat">Xóa</button>
+            <button
+              className="btnCapNhat"
+              onClick={() => {
+                handleXoaPhim(Phim.maPhim);
+              }}
+            >
+              Xóa
+            </button>
           </td>
         </tr>
       );

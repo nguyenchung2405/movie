@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { Tabs, Modal, Button, Row, Col } from "antd";
+import { Tabs, Modal, Button } from "antd";
 import { LogoutOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import logo from "../../assets/img/web-logo.png";
 import TableNguoiDungAdmin from "./TableNguoiDungAdmin";
 import TablePhanTrangPhim from "./TablePhanTrangPhim";
+import ThemNguoiDung from "./ThemNguoiDung";
+import ThemPhim from "./ThemPhim";
 export default function Admin(props) {
   const { TabPane } = Tabs;
   const [visible, setVisible] = useState(false);
@@ -13,6 +15,7 @@ export default function Admin(props) {
   const _handleCloseAdmin = () => {
     props.history.push("/");
   };
+
   return (
     <div className="adMin">
       <div className="headerAdmin">
@@ -46,55 +49,7 @@ export default function Admin(props) {
               onCancel={() => setVisible(false)}
               width={1000}
             >
-              <div className="themPhim">
-                <Row className="rowInput">
-                  <Col span={12}>
-                    <h2>Mã Phim</h2>
-                    <div>
-                      <input className="inputPhim" type="text" />
-                    </div>
-                  </Col>
-                  <Col span={12}>
-                    <h2>Ngày Khởi Chiếu</h2>
-                    <div>
-                      <input className="inputDate" type="date" />
-                    </div>
-                  </Col>
-                </Row>
-                <Row className="rowInput">
-                  <Col span={12}>
-                    <h2>Tên Phim</h2>
-                    <div>
-                      <input className="inputPhim" type="text" />
-                    </div>
-                  </Col>
-                  <Col span={12}>
-                    <h2>Đánh Giá</h2>
-                    <div>
-                      <input className="inputPhim" type="text" />
-                    </div>
-                  </Col>
-                </Row>
-                <Row className="rowInput">
-                  <Col span={12}>
-                    <h2>Trailer</h2>
-                    <div>
-                      <input className="inputPhim" type="text" />
-                    </div>
-                  </Col>
-                  <Col span={12}>
-                    <h2>Hình Ảnh</h2>
-                    <div>
-                      <input className="inputPhim" type="text" />
-                    </div>
-                  </Col>
-                </Row>
-                <Row className="rowTextarea">
-                  <Col span={24}>
-                    <textarea className="textArea"></textarea>
-                  </Col>
-                </Row>
-              </div>
+              <ThemPhim />
             </Modal>
             <TablePhanTrangPhim />
           </TabPane>
@@ -114,53 +69,7 @@ export default function Admin(props) {
               onCancel={() => setVisible1(false)}
               width={1000}
             >
-              <div className="themNguoiDung">
-                <Row className="rowInput">
-                  <Col span={12}>
-                    <h2>Tài Khoản</h2>
-                    <div>
-                      <input className="inputPhim" type="text" />
-                    </div>
-                  </Col>
-                  <Col span={12}>
-                    <h2>Email </h2>
-                    <div>
-                      <input className="inputPhim" type="text" />
-                    </div>
-                  </Col>
-                </Row>
-                <Row className="rowInput">
-                  <Col span={12}>
-                    <h2>Mật Khẩu</h2>
-                    <div>
-                      <input className="inputPhim" type="password" />
-                    </div>
-                  </Col>
-                  <Col span={12}>
-                    <h2>Số Điện Thoại</h2>
-                    <div>
-                      <input className="inputPhim" type="text" />
-                    </div>
-                  </Col>
-                </Row>
-                <Row className="rowInput">
-                  <Col span={12}>
-                    <h2>Họ Tên Người Dùng</h2>
-                    <div>
-                      <input className="inputPhim" type="text" />
-                    </div>
-                  </Col>
-                  <Col span={12}>
-                    <h2>Loại Người Dùng</h2>
-                    <div>
-                      <select className="selectNguoiDung">
-                        <option>KhachHang</option>
-                        <option>QuanTri</option>
-                      </select>
-                    </div>
-                  </Col>
-                </Row>
-              </div>
+              <ThemNguoiDung />
             </Modal>
             <TableNguoiDungAdmin />
           </TabPane>

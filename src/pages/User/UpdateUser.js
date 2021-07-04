@@ -1,12 +1,8 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import logoDangKy from "../../assets/img/logoDangNhap.png";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import {
-  layThongTinNguoiDung,
-  capNhatThongTinNguoiDung,
-} from "../../redux/action/NguoiDungAction";
+import { capNhatThongTinNguoiDung } from "../../redux/action/NguoiDungAction";
 import { USER_LOGIN } from "../../redux/constants/NguoiDungConst";
 
 export default function UpdateUser(props) {

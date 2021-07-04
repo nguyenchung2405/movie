@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import queryString from "query-string";
 import { useEffect } from "react";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 import { useSelector } from "react-redux";
+import { Modal, Button, Row, Col } from "antd";
 import Pagination from "./Pagination";
 import { useDispatch } from "react-redux";
 import {
@@ -9,20 +12,19 @@ import {
   xoaNguoiDungAdminAction,
 } from "../../redux/action/NguoiDungAction";
 import SearchAdmin from "./SearchAdmin";
-
+import { suaNguoiDungAction } from "../../redux/action/AdminAction";
 export default function TableNguoiDungAdmin(props) {
   const dispatch = useDispatch();
+  const [visible, setVisible] = useState(false);
   const danhSachNguoiDungPhanTrang = useSelector(
-    (state) => state.NguoiDungReducer.danhSachNguoiDungPhanTrang.items
+    (state) => state.AdminReducer.danhSachNguoiDungPhanTrang.items
   );
-  // const user = useSelector(
-  //   (state) => state.NguoiDungReducer.xoaNguoiDungAdmin.taiKhoan
-  // );
-  // console.log(user);
+
   const [filters, setFilters] = useState({
     maNhom: "GP01",
     soTrang: 1,
     soPhanTuTrenTrang: 20,
+    taiKhoan: "",
   });
 
   const paramString = queryString.stringify(filters);
@@ -37,22 +39,58 @@ export default function TableNguoiDungAdmin(props) {
       soTrang: newPage,
     });
   }
-
   function handleFiltersChange(newFilters) {
-    setFilters({
+    let queries = {
       ...filters,
       tuKhoa: newFilters.searchTerm,
-    });
+    };
+    !queries.tuKhoa && delete queries.tuKhoa;
+    setFilters(queries);
   }
 
-  const handleXoaNguoiDung = (newtaiKhoan) => {
-    const taiKhoan = {
-      taiKhoan: newtaiKhoan,
-    };
-    const paramString = queryString.stringify(taiKhoan);
-    const action = xoaNguoiDungAdminAction(paramString);
+  const handleXoaNguoiDung = (taiKhoan) => {
+    const action = xoaNguoiDungAdminAction(taiKhoan);
     dispatch(action);
+    setFilters({
+      ...filters,
+      taiKhoan: taiKhoan,
+    });
   };
+  const formik = useFormik({
+    initialValues: {
+      taiKhoan: "",
+      matKhau: "",
+      email: "",
+      soDt: "",
+      maNhom: "GP01",
+      maLoaiNguoiDung: "KhachHang",
+      hoTen: "",
+    },
+    validationSchema: Yup.object().shape({
+      taiKhoan: Yup.string()
+        .required("*Tài khoản không được bỏ trống!")
+        .min(6, "*Tài Khoản tối thiểu 6 kí tự"),
+      matKhau: Yup.string()
+        .required("*Mật khẩu không được bỏ trống!")
+        .max(32, "*Mật khẩu tối đa 32 ký tự!")
+        .min(5, "*Mật khẩu tối thiểu 5 ký tự!"),
+
+      email: Yup.string()
+        .required("*Email không được bỏ trống!")
+        .email("*Email không đúng định dạng!"),
+      soDt: Yup.string()
+        .matches(/^[0-9]+$/, "*Số điện thoại không đúng định dạng")
+        .required("*Số điện thoại không được bỏ trống!")
+        .min(10, "*Số điện thoại không đúng định dạng"),
+      hoTen: Yup.string()
+        .required("*Họ Tên không được bỏ trống!")
+        .min(6, "*Họ Tên tối thiểu 6 kí tự"),
+    }),
+    onSubmit: (values) => {
+      const action = suaNguoiDungAction(values);
+      dispatch(action);
+    },
+  });
   const renderDanhSachNguoiDung = () => {
     return danhSachNguoiDungPhanTrang.map((nguoiDung, index) => {
       return (
@@ -62,11 +100,139 @@ export default function TableNguoiDungAdmin(props) {
           <td>{nguoiDung.matKhau}</td>
           <td>{nguoiDung.hoTen}</td>
           <td>{nguoiDung.email}</td>
+          <td>{nguoiDung.maLoaiNguoiDung}</td>
           <td>{nguoiDung.soDt}</td>
+
           <td>
-            <button className="btnCapNhat" onClick={() => {}}>
+            <Button
+              className="btnCapNhatSua"
+              type="primary"
+              onClick={() => setVisible(true)}
+            >
               Sửa
-            </button>
+            </Button>
+            <Modal
+              title="Cập Nhật Tài Khoản"
+              centered
+              visible={visible}
+              onOk={() => setVisible(false)}
+              onCancel={() => setVisible(false)}
+              width={1000}
+            >
+              <form className="themNguoiDung" onSubmit={formik.handleSubmit}>
+                <Row className="rowInput">
+                  <Col span={12}>
+                    <h2>Tài Khoản</h2>
+                    <div>
+                      <input
+                        className="inputPhim"
+                        type="text"
+                        placeholder="Tài Khoản"
+                        name="taiKhoan"
+                      />
+                    </div>
+                    {formik.touched && formik.errors ? (
+                      <p style={{ color: "red" }}>{formik.errors.taiKhoan}</p>
+                    ) : (
+                      ""
+                    )}
+                  </Col>
+                  <Col span={12}>
+                    <h2>Email </h2>
+                    <div>
+                      <input
+                        className="inputPhim"
+                        type="text"
+                        placeholder="Email"
+                        name="email"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                      />
+                    </div>
+                    {formik.touched && formik.errors ? (
+                      <p style={{ color: "red" }}>{formik.errors.email}</p>
+                    ) : (
+                      ""
+                    )}
+                  </Col>
+                </Row>
+                <Row className="rowInput">
+                  <Col span={12}>
+                    <h2>Mật Khẩu</h2>
+                    <div>
+                      <input
+                        className="inputPhim"
+                        type="password"
+                        placeholder="Mật Khẩu"
+                        name="matKhau"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                      />
+                    </div>
+                    {formik.touched && formik.errors ? (
+                      <p style={{ color: "red" }}>{formik.errors.matKhau}</p>
+                    ) : (
+                      ""
+                    )}
+                  </Col>
+                  <Col span={12}>
+                    <h2>Số Điện Thoại</h2>
+                    <div>
+                      <input
+                        className="inputPhim"
+                        type="text"
+                        placeholder="Số điện thoại"
+                        name="soDt"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                      />
+                    </div>
+                    {formik.touched && formik.errors ? (
+                      <p style={{ color: "red" }}>{formik.errors.soDt}</p>
+                    ) : (
+                      ""
+                    )}
+                  </Col>
+                </Row>
+                <Row className="rowInput">
+                  <Col span={12}>
+                    <h2>Họ Tên Người Dùng</h2>
+                    <div>
+                      <input
+                        className="inputPhim"
+                        type="text"
+                        placeholder="Họ Tên"
+                        name="hoTen"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                      />
+                    </div>
+                    {formik.touched && formik.errors ? (
+                      <p style={{ color: "red" }}>{formik.errors.hoTen}</p>
+                    ) : (
+                      ""
+                    )}
+                  </Col>
+                  <Col span={12}>
+                    <h2>Loại Người Dùng</h2>
+                    <div>
+                      <select
+                        className="selectNguoiDung"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        name="maLoaiNguoiDung"
+                      >
+                        <option>KhachHang</option>
+                        <option>QuanTri</option>
+                      </select>
+                    </div>
+                  </Col>
+                </Row>
+                <div className="div_btnThemNguoiDung">
+                  <button className="btnThemNguoiDung">Cập Nhật</button>
+                </div>
+              </form>
+            </Modal>
             <button
               className="btnCapNhat"
               onClick={() => handleXoaNguoiDung(nguoiDung.taiKhoan)}
@@ -89,6 +255,7 @@ export default function TableNguoiDungAdmin(props) {
             <th>Mật Khẩu</th>
             <th>Họ Tên</th>
             <th>Email</th>
+            <th>Mã Loại Người Dùng</th>
             <th>Số Điện Thọai</th>
             <th>Các Chức Năng</th>
           </tr>
