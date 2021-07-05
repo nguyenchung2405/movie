@@ -92,13 +92,12 @@ export default function TableNguoiDungAdmin(props) {
       setFilters(...filters, values);
     },
   });
-
+  const handleEditNguoiDung = (nd) => {
+    setVisible(true);
+  };
   const renderDanhSachNguoiDung = () => {
     return danhSachNguoiDungPhanTrang.map((nguoiDung, index) => {
-      const handleEditNguoiDung = (nd) => {
-        setVisible(true);
-        let nd = { ...nguoiDung };
-      };
+      let nd = { ...nguoiDung };
       return (
         <tr key={index}>
           <td>{index + 1}</td>
