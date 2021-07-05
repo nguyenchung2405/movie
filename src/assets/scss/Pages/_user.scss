@@ -108,12 +108,13 @@ p:nth-child(2) {
 
   th {
     background: #f55960;
-    padding: 20px 0;
+    padding: 20px 10px;
     color: #fff;
+    text-align: left;
   }
   td {
-    text-align: center;
-    padding: 15px;
+    text-align: left;
+    padding: 5px 10px;
   }
 }
 

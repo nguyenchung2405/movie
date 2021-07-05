@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import moment from "moment";
 import { Row, Col } from "antd";
 import axios from "axios";
 
@@ -19,6 +20,14 @@ export default class ThemPhim extends Component {
       this.setState({ hinhAnh: e.target.files[0] }, () => {
         console.log(this.state);
       });
+    }
+    if (target.name === "ngayKhoiChieu") {
+      this.setState(
+        { ngayKhoiChieu: moment(e.target.value).format("L") },
+        () => {
+          console.log(this.state);
+        }
+      );
     } else {
       this.setState({ [e.target.name]: e.target.value }, () => {
         console.log(this.state);
@@ -41,11 +50,9 @@ export default class ThemPhim extends Component {
         console.log(res);
       })
       .catch((err) => {
+        alert(err.response?.data);
         console.log(err.response?.data);
       });
-
-    // const action = themPhimAction(form_data);
-    // this.props.dispatch(action);
   };
   render() {
     return (

@@ -1,5 +1,7 @@
 import React, { memo } from "react";
 import { useSelector } from "react-redux";
+
+import { Link } from "react-scroll";
 import useStyles from "./HeaderStyle";
 import MenuIcon from "@material-ui/icons/Menu";
 import Location from "../Location/Location";
@@ -78,10 +80,18 @@ function HeaderComponent(props) {
           <div className={classes.grow} />
           <Hidden smDown>
             <div className={classes.title}>
-              <a href="#lichChieu">Lịch chiếu</a>
-              <a href="#cummap">Cụm rạp</a>
-              <a href="#tintuc">Tin tức</a>
-              <a href="#ungDung">Ứng dụng</a>
+              <Link smooth={true} duration={500} offset={-60} to="lichChieu">
+                Lịch chiếu
+              </Link>
+              <Link to="cumRap" smooth={true} duration={500} offset={-60}>
+                Cụm rạp
+              </Link>
+              <Link to="new" smooth={true} duration={500} offset={-60}>
+                Tin tức
+              </Link>
+              <Link to="ungDung" smooth={true} duration={500} offset={-60}>
+                Ứng dụng
+              </Link>
             </div>
           </Hidden>
           <div className={classes.grow} />

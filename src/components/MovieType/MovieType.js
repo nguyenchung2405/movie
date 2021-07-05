@@ -1,12 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { useTheme } from '@material-ui/core/styles';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Box from '@material-ui/core/Box';
-import { makeStyles } from '@material-ui/core/styles';
-import PhimDangChieu from '../Phim/PhimDangChieu';
-import PhimSapChieu from '../Phim/PhimSapChieu';
+import React from "react";
+import PropTypes from "prop-types";
+import { useTheme } from "@material-ui/core/styles";
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import Box from "@material-ui/core/Box";
+import { makeStyles } from "@material-ui/core/styles";
+import PhimDangChieu from "../Phim/PhimDangChieu";
+import PhimSapChieu from "../Phim/PhimSapChieu";
 
 const useStyles = makeStyles({
   root: {
@@ -25,11 +25,7 @@ function TabPanel(props) {
       aria-labelledby={`full-width-tab-${index}`}
       {...other}
     >
-      {value === index && (
-        <Box p={3}>
-          {children}
-        </Box>
-      )}
+      {value === index && <Box p={3}>{children}</Box>}
     </div>
   );
 }
@@ -43,7 +39,7 @@ TabPanel.propTypes = {
 function a11yProps(index) {
   return {
     id: `full-width-tab-${index}`,
-    'aria-controls': `full-width-tabpanel-${index}`,
+    "aria-controls": `full-width-tabpanel-${index}`,
   };
 }
 
@@ -57,7 +53,7 @@ export default function MovieType() {
   };
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} id="lichChieu">
       <Tabs
         value={value}
         onChange={handleChange}
@@ -70,15 +66,13 @@ export default function MovieType() {
         <Tab label="Sắp Chiếu" {...a11yProps(1)} />
       </Tabs>
 
-      
-        <TabPanel value={value} index={0} dir={theme.direction}>
-          <PhimDangChieu />
-        </TabPanel>
+      <TabPanel value={value} index={0} dir={theme.direction}>
+        <PhimDangChieu />
+      </TabPanel>
 
-        <TabPanel value={value} index={1} dir={theme.direction}>
-          <PhimSapChieu />
-          
-        </TabPanel>
+      <TabPanel value={value} index={1} dir={theme.direction}>
+        <PhimSapChieu />
+      </TabPanel>
     </div>
   );
 }

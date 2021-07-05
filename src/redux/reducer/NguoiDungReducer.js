@@ -7,7 +7,9 @@ import {
 
 let initialState = {
   tenDangNhap: null,
-  thongTinNguoiDung: [],
+  thongTinNguoiDung: {
+    thongTinDatVe: [],
+  },
   danhSachLoaiNguoiDung: [],
   danhSachNguoiDung: [],
 };

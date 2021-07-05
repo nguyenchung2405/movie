@@ -9,6 +9,7 @@ import logo from "../../assets/img/web-logo.png";
 import { USER_LOGIN } from "../../redux/constants/NguoiDungConst";
 import { layThongTinNguoiDung } from "../../redux/action/NguoiDungAction";
 import UpdateUser from "./UpdateUser";
+import ThongTinDatVe from "./ThongTinDatVe";
 const { TabPane } = Tabs;
 
 export default function User(props) {
@@ -140,30 +141,7 @@ export default function User(props) {
               </Row>
             </TabPane>
             <TabPane tab="Lịch Sử Đặt Vé" key="2">
-              <table className="datVe">
-                <thead>
-                  <tr>
-                    <th>Tên phim</th>
-                    <th>Ngày đặt</th>
-                    <th>Thời lượng phim</th>
-                    <th>Rạp</th>
-                    <th>Ghế số</th>
-                    <th>Mã Vé</th>
-                    <th>Giá vé</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>agular</td>
-                    <td>agular</td>
-                    <td>agular</td>
-                    <td>agular</td>
-                    <td>agular</td>
-                    <td>agular</td>
-                    <td>agular</td>
-                  </tr>
-                </tbody>
-              </table>
+              <ThongTinDatVe />
             </TabPane>
 
             {/**Cập Nhật thông tin người dùng lap */}
@@ -287,30 +265,7 @@ export default function User(props) {
             </TabPane>
             <TabPane tab="Lịch Sử Đặt Vé" key="2">
               <div style={{ overflow: "auto" }}>
-                <table className="datVe">
-                  <thead>
-                    <tr>
-                      <th>Tên phim</th>
-                      <th>Ngày đặt</th>
-                      <th>Thời lượng phim</th>
-                      <th>Rạp</th>
-                      <th>Ghế số</th>
-                      <th>Mã Vé</th>
-                      <th>Giá vé</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>agular</td>
-                      <td>agular</td>
-                      <td>agular</td>
-                      <td>agular</td>
-                      <td>agular</td>
-                      <td>agular</td>
-                      <td>agular</td>
-                    </tr>
-                  </tbody>
-                </table>
+                <ThongTinDatVe />
               </div>
             </TabPane>
             <TabPane tab="Chỉnh Sửa Thông Tin" key="3">
