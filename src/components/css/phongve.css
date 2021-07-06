@@ -34,8 +34,15 @@
   color: #44c020;
 }
 
-.seat-daconguoichon {
+.seat-dadat {
   color: #e7eaec;
+}
+
+.btn__datve {
+  color: #fff !important;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(223deg, #b4ec51 0, #429321 100%);
 }
 
 .appBar {
@@ -69,6 +76,10 @@
   width: 220px !important;
 }
 
+.appBar .avatar {
+  cursor: pointer;
+}
+
 .wrap__content {
   margin-top: 80px;
 }
@@ -83,6 +94,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  overflow-x: auto;
 }
 
 .wrap__content .ghe__Mo_Ta {
@@ -121,6 +133,10 @@
   margin-bottom: 0;
 }
 
+.thong__tin__ve .nav .tenPhim {
+  display: flex;
+}
+
 .thong__tin__ve .nav .thong__tin__phim {
   padding: 8px 0;
 }
@@ -156,7 +172,7 @@
   justify-content: center;
   left: 0;
   width: calc(100% - 4px);
-  bottom: 60px;
+  bottom: 40px;
   padding: 0 5%;
   z-index: 20;
   position: absolute;
@@ -164,5 +180,11 @@
   margin-top: auto;
   text-align: center;
   padding-bottom: 14px;
+}
+
+.thong__tin__ve .dat__ve {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }
 /*# sourceMappingURL=phongve.css.map */

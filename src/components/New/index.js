@@ -36,7 +36,7 @@ const { Meta } = Card;
 const { TabPane } = Tabs;
 export default function New() {
   return (
-    <div className="card-container">
+    <div className="card-container" id="new">
       <div className="linear__New">
         <img src={backNew} alt="backNew" />
       </div>

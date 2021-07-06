@@ -203,7 +203,10 @@
   }
   .themNguoiDung {
     .rowInput {
-      margin-top: 30px;
+      height: 119px;
+      .ant-col {
+        height: 99px;
+      }
     }
     .inputPhim {
       border: none;

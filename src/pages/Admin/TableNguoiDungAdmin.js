@@ -89,10 +89,15 @@ export default function TableNguoiDungAdmin(props) {
     onSubmit: (values) => {
       const action = suaNguoiDungAction(values);
       dispatch(action);
+      setFilters(...filters, values);
     },
   });
+  const handleEditNguoiDung = (nd) => {
+    setVisible(true);
+  };
   const renderDanhSachNguoiDung = () => {
     return danhSachNguoiDungPhanTrang.map((nguoiDung, index) => {
+      let nd = { ...nguoiDung };
       return (
         <tr key={index}>
           <td>{index + 1}</td>
@@ -107,7 +112,9 @@ export default function TableNguoiDungAdmin(props) {
             <Button
               className="btnCapNhatSua"
               type="primary"
-              onClick={() => setVisible(true)}
+              onClick={() => {
+                handleEditNguoiDung(nd);
+              }}
             >
               Sửa
             </Button>
@@ -125,10 +132,13 @@ export default function TableNguoiDungAdmin(props) {
                     <h2>Tài Khoản</h2>
                     <div>
                       <input
+                        value={nd.taiKhoan}
                         className="inputPhim"
                         type="text"
-                        placeholder="Tài Khoản"
+                        placeholder="Nhập tài khoản cần thay đổi thông tin"
                         name="taiKhoan"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
                       />
                     </div>
                     {formik.touched && formik.errors ? (
@@ -244,6 +254,7 @@ export default function TableNguoiDungAdmin(props) {
       );
     });
   };
+
   return (
     <>
       <SearchAdmin onSubmit={handleFiltersChange} />
