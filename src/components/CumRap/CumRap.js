@@ -9,7 +9,7 @@ import { layThongTinLichChieu } from '../../redux/action/CumRapAction';
 
 export default function CumRap() {
     const { thongTinLichCHieu } = useSelector(state => state.CumRapReducer);
-
+    
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(layThongTinLichChieu())

@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import useStyles from "./HeaderStyle";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -22,8 +22,9 @@ import { useDispatch } from "react-redux";
 import { XU_LY_DANG_NHAP_THANH_CONG } from "../../redux/constants/NguoiDungConst";
 import { NavLink } from "react-router-dom";
 import "./header.scss";
+import weblogo from '../../assets/img/web-logo.png';
 
-function HeaderComponent(props) {
+export default function HeaderComponent(props) {
   let { tenDangNhap } = useSelector((state) => state.NguoiDungReducer);
 
   const classes = useStyles();
@@ -70,8 +71,8 @@ function HeaderComponent(props) {
         <Toolbar>
           <NavLink to="/">
             <img
-              src="./img/header/web-logo.png"
-              alt="./img/header/web-logo.png"
+              src={weblogo}
+              alt={weblogo}
               className={classes.logo}
             />
           </NavLink>
@@ -127,7 +128,6 @@ function HeaderComponent(props) {
                     </button>
                   </MenuItem>
                 </Menu>
-                )
               </div>
             ) : (
               <NavLink to="/dangNhap" className={classes.avatar}>
@@ -240,4 +240,3 @@ function HeaderComponent(props) {
     </div>
   );
 }
-export default memo(HeaderComponent);

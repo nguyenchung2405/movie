@@ -99,7 +99,8 @@ export default function CNS(props) {
                                                             rapItem.lichChieuPhim.map((lichChieu, index) => {
                                                                 return (
                                                                     <div style={{padding:5}}>
-                                                                        <NavLink key={index} to={`/phongve/${lichChieu.maLichChieu}`} className="btnMovie" variant="contained">
+                                                                        <NavLink key={index} to={`/phongve/${lichChieu.maLichChieu}`} 
+                                                                        className="btnMovie" variant="contained" target="_blank">
                                                                             <span className="btnColorBHD ">{lichChieu.ngayChieuGioChieu}</span>
                                                                         </NavLink>
                                                                     </div>
