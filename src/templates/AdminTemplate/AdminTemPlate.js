@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Redirect, Route } from "react-router-dom";
 
 import { USER_LOGIN } from "../../redux/constants/NguoiDungConst";
