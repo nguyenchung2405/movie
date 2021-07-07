@@ -48,4 +48,12 @@
   cursor: pointer;
   color: #fb4226;
 }
+
+.MuiTab-textColorSecondary.Mui-selected {
+  color: #fb4226 !important;
+}
+
+.PrivateTabIndicator-colorSecondary-19 {
+  background-color: #fb4226 !important;
+}
 /*# sourceMappingURL=header.css.map */

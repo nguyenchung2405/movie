@@ -628,9 +628,13 @@ p:nth-child(2) {
   text-align: left;
 }
 
-.datVe td {
+.datVe tr {
+  border-bottom: 1px solid #a9a9a9c7;
+}
+
+.datVe tr td {
   text-align: left;
-  padding: 5px 10px;
+  padding: 10px 10px;
 }
 
 .ant-row .ant-col {

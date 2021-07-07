@@ -112,9 +112,12 @@ p:nth-child(2) {
     color: #fff;
     text-align: left;
   }
-  td {
-    text-align: left;
-    padding: 5px 10px;
+  tr {
+    border-bottom: 1px solid #a9a9a9c7;
+    td {
+      text-align: left;
+      padding: 10px 10px;
+    }
   }
 }
 

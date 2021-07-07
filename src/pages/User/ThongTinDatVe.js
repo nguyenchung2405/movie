@@ -15,7 +15,7 @@ export default function ThongTinDatVe(props) {
               : Ve.tenPhim}
           </td>
           <td>{Ve.ngayDat}</td>
-          <td>{Ve.thoiLuongPhim}</td>
+          <td>{Ve.thoiLuongPhim} phút</td>
           <td>{Ve.danhSachGhe[0].tenHeThongRap}</td>
           <td>{Ve.danhSachGhe[0].tenGhe}</td>
 

@@ -80,6 +80,13 @@
   cursor: pointer;
 }
 
+.appBar .MuiButton-label {
+  color: #9b9b9b;
+  text-transform: capitalize;
+  font-weight: 400;
+  font-size: 13px;
+}
+
 .wrap__content {
   margin-top: 80px;
 }

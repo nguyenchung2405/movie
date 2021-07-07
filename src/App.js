@@ -7,13 +7,15 @@ import DangNhap from "./pages/SignIn";
 import User from "../src/pages/User/User";
 import PhongVe from "./components/PhongVe/PhongVe";
 import LoadingTemplate from "./templates/LoadingTemplate/LoadingTemplate";
-
+import LoginTemplate from "./templates/LoginTemplate/LoginTemplate";
+import Admin from "./pages/Admin/Admin";
+import AdminTemplate from "./templates/AdminTemplate/AdminTemPlate";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { XU_LY_DANG_NHAP_THANH_CONG } from "../src/redux/constants/NguoiDungConst";
 //cấu hình chuyển hướng trang trên route
 import { createBrowserHistory } from "history";
-import Admin from "./pages/Admin/Admin";
+
 export const history = createBrowserHistory(); //cho phép điều hướng trang
 
 function App() {
@@ -35,12 +37,14 @@ function App() {
       {/* <LoadingTemplate /> */}
       <Switch>
         <LoadingTemplate exact path="/home" component={Home} />
-        <LoadingTemplate exact path="/phim/:id" component={ChiTietPhim} />
-        <LoadingTemplate exact path="/phongve/:id" component={PhongVe} />
+
+        <LoginTemplate exact path="/phim/:id" Component={ChiTietPhim} />
+
+        <LoginTemplate exact path="/phongve/:id" Component={PhongVe} />
         <LoadingTemplate exact path="/dangNhap" component={DangNhap} />
         <LoadingTemplate exact path="/dangKy" component={DangKy} />
-        <LoadingTemplate exact path="/nguoiDung" component={User} />
-        <LoadingTemplate exact path="/admin" component={Admin} />
+        <LoginTemplate exact path="/nguoiDung" Component={User} />
+        <AdminTemplate exact path="/admin" Component={Admin} />
         <LoadingTemplate path="*" component={Home} />
         <LoadingTemplate exact path="/" component={Home} />
       </Switch>
