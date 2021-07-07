@@ -3,11 +3,11 @@ import { ACCESSTOKEN } from '../constants/NguoiDungConst';
 import { DAT_VE_THANH_CONG, LAY_DANH_SACH_PHONG_VE } from '../constants/PhongVeConst';
 
 
-export const layDanhSachPhongVeACtion = (maNhom)=>{
+export const layDanhSachPhongVeACtion = (maLichChieu)=>{
     return async dispatch =>{
         try{
             let {status, data} = await axios({
-                url : `https://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${maNhom}`,
+                url : `https://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${maLichChieu}`,
                 method: 'GET',
             })
             if(status=== 200){

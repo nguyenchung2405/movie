@@ -62,10 +62,10 @@ export default function CNS(props) {
             return heThongRapChieu.map((item, index) => {
                 return (
                     <Tab key={index} className="rapInfo">
-                        <Button variant="contained" fullWidth={true} style={{ display: "flex", justifyContent: "space-evenly" }}>
+                        <div className="info__Item">
                             <img src={item.logo} alt={item.logo} className="img" />
-                            <p>{item.tenHeThongRap}</p>
-                        </Button>
+                            <h4 style={{marginLeft:10}}>{item.tenHeThongRap}</h4>
+                        </div>
                     </Tab>
                 )
             })
@@ -98,8 +98,9 @@ export default function CNS(props) {
                                                         {
                                                             rapItem.lichChieuPhim.map((lichChieu, index) => {
                                                                 return (
-                                                                    <div style={{padding:5}}>
-                                                                        <NavLink key={index} to={`/phongve/${lichChieu.maLichChieu}`} className="btnMovie" variant="contained">
+                                                                    <div style={{ padding: 5 }}>
+                                                                        <NavLink key={index} to={`/phongve/${lichChieu.maLichChieu}`}
+                                                                            className="btnMovie" variant="contained" target="_blank">
                                                                             <span className="btnColorBHD ">{lichChieu.ngayChieuGioChieu}</span>
                                                                         </NavLink>
                                                                     </div>
@@ -124,10 +125,10 @@ export default function CNS(props) {
 
     return (
         <Tabs className="tab" style={{ width: "100%" }}>
-            <TabList style={{ width: "40%" }} className="diadiem__RapCNS">
+            <TabList style={{ width: "37%" }} className="diadiem__RapCNS">
                 {renderRap()}
             </TabList>
-            <div style={{ width: "60%" }} className="listMovieCNS">
+            <div style={{ width: "63%" }} className="listMovieCNS">
                 {rendercumRapChieu()}
             </div>
         </Tabs >

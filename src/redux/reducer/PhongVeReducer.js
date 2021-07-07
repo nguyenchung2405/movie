@@ -1,10 +1,14 @@
-import { DAT_GHE, DAT_VE_THANH_CONG, LAY_DANH_SACH_PHONG_VE } from "../constants/PhongVeConst";
+import { DAT_GHE, DAT_VE_THANH_CONG, LAY_DANH_SACH_PHONG_VE, LAY_THONG_TIN_EMAIL, LAY_THONG_TIN_SDT } from "../constants/PhongVeConst";
 import Swal from 'sweetalert2';
 
 
 const initialState = {
     danhSachPhongVe: [],
     danhSachGheDangDat: [],
+    danhSachGheDaDat: [],
+    
+    email: "abc@.gmail.com",
+    sdt: "0987654321",
 }
 
 const PhongVeReducer = (state = initialState, action) => {
@@ -34,7 +38,17 @@ const PhongVeReducer = (state = initialState, action) => {
             return { ...state, danhSachGheDangDat: mangGheDangDat };
         }
         case DAT_VE_THANH_CONG: {
+            state.danhSachGheDaDat = state.danhSachGheDangDat;
+
             return { ...state, danhSachGheDangDat: [] }
+        }
+        case LAY_THONG_TIN_SDT: {
+            const sdt = {...action.sdt};
+            return { ...state, sdt:sdt };
+        }
+        case LAY_THONG_TIN_EMAIL: {
+            const email = action.email;
+            return { ...state, email:email };
         }
         default:
             return state

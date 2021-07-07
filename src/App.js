@@ -6,6 +6,7 @@ import DangKy from "./pages/SignUp";
 import DangNhap from "./pages/SignIn";
 import User from "../src/pages/User/User";
 import PhongVe from "./components/PhongVe/PhongVe";
+import LoadingTemplate from "./templates/LoadingTemplate/LoadingTemplate";
 
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -31,16 +32,17 @@ function App() {
   }, []);
   return (
     <Router history={history}>
+      {/* <LoadingTemplate /> */}
       <Switch>
-        <Route exact path="/home" component={Home} />
-        <Route exact path="/phim/:id" component={ChiTietPhim} />
-        <Route exact path="/phongve/:id" component={PhongVe} />
-        <Route exact path="/dangNhap" component={DangNhap} />
-        <Route exact path="/dangKy" component={DangKy} />
-        <Route exact path="/nguoiDung" component={User} />
-        <Route exact path="/admin" component={Admin} />        
-        <Route path="*" component={Home} />
-        <Route exact path="/" component={Home} />
+        <LoadingTemplate exact path="/home" component={Home} />
+        <LoadingTemplate exact path="/phim/:id" component={ChiTietPhim} />
+        <LoadingTemplate exact path="/phongve/:id" component={PhongVe} />
+        <LoadingTemplate exact path="/dangNhap" component={DangNhap} />
+        <LoadingTemplate exact path="/dangKy" component={DangKy} />
+        <LoadingTemplate exact path="/nguoiDung" component={User} />
+        <LoadingTemplate exact path="/admin" component={Admin} />
+        <LoadingTemplate path="*" component={Home} />
+        <LoadingTemplate exact path="/" component={Home} />
       </Switch>
     </Router>
   );

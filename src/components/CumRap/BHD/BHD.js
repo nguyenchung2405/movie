@@ -61,7 +61,7 @@ export default function BHD(props) {
     const renderHeThongCumRap = () => {
         return (
             <Tabs className="tab" style={{ width: "100%" }}>
-                <TabList style={{ width: "40%" }} className="diadiem__Rap">
+                <TabList style={{ width: "37%" }} className="diadiem__Rap">
                     {
                         lstCumRap.map((rap, index) => {
                             return (
@@ -79,11 +79,10 @@ export default function BHD(props) {
                         })
                     }
                 </TabList>
-                <div style={{ width: "60%" }} className="listMovie">
+                <div style={{ width: "63%" }} className="listMovie">
                     {
                         lstCumRap.map((dsPhim) => {
                             const { danhSachPhim } = dsPhim;
-                            console.log("danhSachPhim", danhSachPhim)
                             return (
                                 <TabPanel key={dsPhim.tenCumRap}>
                                     {
@@ -107,7 +106,8 @@ export default function BHD(props) {
                                                                     {
                                                                         phim.lstLichChieuTheoPhim.map((lichChieu, index) => {
                                                                             return (
-                                                                                <NavLink key={index} to={`/phongve/${lichChieu.maLichChieu}`} className="btnMovie" variant="contained">
+                                                                                <NavLink key={index} to={`/phongve/${lichChieu.maLichChieu}`} 
+                                                                                className="btnMovie" variant="contained" target="_blank">
                                                                                     <span className="btnColorBHD ">{lichChieu.ngayChieuGioChieu}</span>
                                                                                 </NavLink>
                                                                             )
