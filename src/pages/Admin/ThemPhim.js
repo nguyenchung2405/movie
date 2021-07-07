@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import moment from "moment";
 import { Row, Col } from "antd";
 import axios from "axios";
-
+import { danhSachPhimPhanTrang } from "../../redux/action/PhimAction";
 export default class ThemPhim extends Component {
   state = {
     maPhim: "",
@@ -16,18 +15,11 @@ export default class ThemPhim extends Component {
 
   handleChange = (e) => {
     let target = e.target;
+
     if (target.name === "hinhAnh") {
       this.setState({ hinhAnh: e.target.files[0] }, () => {
         console.log(this.state);
       });
-    }
-    if (target.name === "ngayKhoiChieu") {
-      this.setState(
-        { ngayKhoiChieu: moment(e.target.value).format("L") },
-        () => {
-          console.log(this.state);
-        }
-      );
     } else {
       this.setState({ [e.target.name]: e.target.value }, () => {
         console.log(this.state);
@@ -47,12 +39,13 @@ export default class ThemPhim extends Component {
       data: form_data,
     })
       .then((res) => {
+        alert("Thêm Phim Thành Công");
         console.log(res);
       })
       .catch((err) => {
-        alert(err.response?.data);
         console.log(err.response?.data);
       });
+    danhSachPhimPhanTrang();
   };
   render() {
     return (
@@ -65,17 +58,6 @@ export default class ThemPhim extends Component {
                 name="maPhim"
                 className="inputPhim"
                 type="text"
-                onChange={this.handleChange}
-              />
-            </div>
-          </Col>
-          <Col span={12}>
-            <h2>Ngày Khởi Chiếu</h2>
-            <div>
-              <input
-                name="ngayKhoiChieu"
-                className="inputDate"
-                type="date"
                 onChange={this.handleChange}
               />
             </div>
@@ -131,6 +113,7 @@ export default class ThemPhim extends Component {
         </Row>
         <Row className="rowTextarea">
           <Col span={24}>
+            <h2>Mô Tả</h2>
             <textarea
               name="moTa"
               className="textArea"

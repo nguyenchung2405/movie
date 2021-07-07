@@ -19,9 +19,6 @@ export default function UpdateUser(props) {
       hoTen: "",
     },
     validationSchema: Yup.object().shape({
-      // taiKhoan: Yup.string()
-      //   .required("*Tài khoản không thể cập nhật!")
-      //   .min(6, "*Tài Khoản tối thiểu 6 kí tự"),
       matKhau: Yup.string()
         .required("*Mật khẩu không được bỏ trống!")
         .max(32, "*Mật khẩu tối đa 32 ký tự!")

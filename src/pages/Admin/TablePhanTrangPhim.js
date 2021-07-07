@@ -34,12 +34,14 @@ export default function TablePhanTrangPhim(props) {
     });
   }
   const handleXoaPhim = (maPhim) => {
-    const action = xoaPhimAdminAction(maPhim);
+    let action = xoaPhimAdminAction(maPhim);
     dispatch(action);
-    setFilters({
+    let queries = {
       ...filters,
       maPhim: maPhim,
-    });
+    };
+    !queries.maPhim && delete queries.maPhim;
+    setFilters(maPhim);
   };
   const renderDanhSachPhim = () => {
     return danhSachPhimPhanTrangAdmin.map((Phim, index) => {
@@ -62,7 +64,6 @@ export default function TablePhanTrangPhim(props) {
           <td>{Phim.maNhom}</td>
           <td style={{ width: "200px" }}>{Phim.ngayKhoiChieu}</td>
           <td>
-            <button className="btnCapNhat">Sửa</button>
             <button
               className="btnCapNhat"
               onClick={() => {

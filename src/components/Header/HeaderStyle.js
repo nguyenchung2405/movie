@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
       transition: "all .2s",
       fontWeight: 500,
       "&:hover": {
-        color: "red",
+        color: "#fb4226",
       },
     },
   },

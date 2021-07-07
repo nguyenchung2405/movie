@@ -1030,6 +1030,26 @@ p:nth-child(2) {
   padding: 5px;
 }
 
+.ant-modal-content .themPhim .div_btnThemPhim {
+  text-align: right;
+}
+
+.ant-modal-content .themPhim .div_btnThemPhim .btnThemPhim {
+  padding: 8px 20px;
+  background-color: #fb4226;
+  color: #fff;
+  opacity: 0.7;
+  border-color: #fb4226;
+  border-radius: 3px;
+  transition: all 0.5s;
+  font-size: 18px;
+}
+
+.ant-modal-content .themPhim .div_btnThemPhim .btnThemPhim:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
 .ant-modal-content .rowTextarea {
   margin-top: 30px;
 }
@@ -1037,7 +1057,7 @@ p:nth-child(2) {
 .ant-modal-content .rowTextarea .textArea {
   width: 100%;
   padding: 5px;
-  height: 200px;
+  height: 150px;
 }
 
 .ant-modal-content .themNguoiDung .rowInput {
@@ -1066,7 +1086,6 @@ p:nth-child(2) {
 
 .ant-modal-content .themNguoiDung .div_btnThemNguoiDung {
   text-align: right;
-  margin-right: 20px;
 }
 
 .ant-modal-content .themNguoiDung .div_btnThemNguoiDung .btnThemNguoiDung {

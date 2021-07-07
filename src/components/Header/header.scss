@@ -2,9 +2,14 @@
   border: none;
   transition: all 0.2s;
   background-color: white;
+  width: 100%;
+  text-align: left;
   &:hover {
     cursor: pointer;
   }
+}
+.btnAdmin {
+  width: 100%;
 }
 .MuiMenuItem-root {
   font-size: 14px !important;

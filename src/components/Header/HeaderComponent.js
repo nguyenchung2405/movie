@@ -128,7 +128,9 @@ function HeaderComponent(props) {
                   </MenuItem>
                   {tenDangNhap.maLoaiNguoiDung === "QuanTri" && (
                     <MenuItem onClick={handleClose}>
-                      <NavLink to="/admin">Admin</NavLink>
+                      <NavLink className="btnAdmin" to="/admin">
+                        Admin
+                      </NavLink>
                     </MenuItem>
                   )}
                   <MenuItem onClick={handleClose}>
@@ -137,7 +139,6 @@ function HeaderComponent(props) {
                     </button>
                   </MenuItem>
                 </Menu>
-                )
               </div>
             ) : (
               <NavLink to="/dangNhap" className={classes.avatar}>
@@ -192,6 +193,7 @@ function HeaderComponent(props) {
                         <MenuItem onClick={handleClose}>
                           <NavLink to="/nguoiDung">Thông tin tài khoản</NavLink>
                         </MenuItem>
+
                         <MenuItem onClick={handleClose}>
                           <button
                             className="btn__dangXuat"

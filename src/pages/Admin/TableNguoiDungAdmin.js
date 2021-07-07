@@ -13,9 +13,11 @@ import {
 } from "../../redux/action/NguoiDungAction";
 import SearchAdmin from "./SearchAdmin";
 import { suaNguoiDungAction } from "../../redux/action/AdminAction";
+
 export default function TableNguoiDungAdmin(props) {
   const dispatch = useDispatch();
   const [visible, setVisible] = useState(false);
+  const [ndEdit, setNdEdit] = useState({});
   const danhSachNguoiDungPhanTrang = useSelector(
     (state) => state.AdminReducer.danhSachNguoiDungPhanTrang.items
   );
@@ -25,6 +27,7 @@ export default function TableNguoiDungAdmin(props) {
     soTrang: 1,
     soPhanTuTrenTrang: 20,
     taiKhoan: "",
+    ndEdit: "",
   });
 
   const paramString = queryString.stringify(filters);
@@ -67,9 +70,8 @@ export default function TableNguoiDungAdmin(props) {
       hoTen: "",
     },
     validationSchema: Yup.object().shape({
-      taiKhoan: Yup.string()
-        .required("*Tài khoản không được bỏ trống!")
-        .min(6, "*Tài Khoản tối thiểu 6 kí tự"),
+      taiKhoan: Yup.string().required("*Tài khoản không được bỏ trống!"),
+
       matKhau: Yup.string()
         .required("*Mật khẩu không được bỏ trống!")
         .max(32, "*Mật khẩu tối đa 32 ký tự!")
@@ -89,15 +91,17 @@ export default function TableNguoiDungAdmin(props) {
     onSubmit: (values) => {
       const action = suaNguoiDungAction(values);
       dispatch(action);
-      setFilters(...filters, values);
     },
   });
+
   const handleEditNguoiDung = (nd) => {
+    console.log({ nd });
+    setNdEdit(nd);
     setVisible(true);
   };
+
   const renderDanhSachNguoiDung = () => {
     return danhSachNguoiDungPhanTrang.map((nguoiDung, index) => {
-      let nd = { ...nguoiDung };
       return (
         <tr key={index}>
           <td>{index + 1}</td>
@@ -113,136 +117,11 @@ export default function TableNguoiDungAdmin(props) {
               className="btnCapNhatSua"
               type="primary"
               onClick={() => {
-                handleEditNguoiDung(nd);
+                handleEditNguoiDung(nguoiDung);
               }}
             >
               Sửa
             </Button>
-            <Modal
-              title="Cập Nhật Tài Khoản"
-              centered
-              visible={visible}
-              onOk={() => setVisible(false)}
-              onCancel={() => setVisible(false)}
-              width={1000}
-            >
-              <form className="themNguoiDung" onSubmit={formik.handleSubmit}>
-                <Row className="rowInput">
-                  <Col span={12}>
-                    <h2>Tài Khoản</h2>
-                    <div>
-                      <input
-                        value={nd.taiKhoan}
-                        className="inputPhim"
-                        type="text"
-                        placeholder="Nhập tài khoản cần thay đổi thông tin"
-                        name="taiKhoan"
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                      />
-                    </div>
-                    {formik.touched && formik.errors ? (
-                      <p style={{ color: "red" }}>{formik.errors.taiKhoan}</p>
-                    ) : (
-                      ""
-                    )}
-                  </Col>
-                  <Col span={12}>
-                    <h2>Email </h2>
-                    <div>
-                      <input
-                        className="inputPhim"
-                        type="text"
-                        placeholder="Email"
-                        name="email"
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                      />
-                    </div>
-                    {formik.touched && formik.errors ? (
-                      <p style={{ color: "red" }}>{formik.errors.email}</p>
-                    ) : (
-                      ""
-                    )}
-                  </Col>
-                </Row>
-                <Row className="rowInput">
-                  <Col span={12}>
-                    <h2>Mật Khẩu</h2>
-                    <div>
-                      <input
-                        className="inputPhim"
-                        type="password"
-                        placeholder="Mật Khẩu"
-                        name="matKhau"
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                      />
-                    </div>
-                    {formik.touched && formik.errors ? (
-                      <p style={{ color: "red" }}>{formik.errors.matKhau}</p>
-                    ) : (
-                      ""
-                    )}
-                  </Col>
-                  <Col span={12}>
-                    <h2>Số Điện Thoại</h2>
-                    <div>
-                      <input
-                        className="inputPhim"
-                        type="text"
-                        placeholder="Số điện thoại"
-                        name="soDt"
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                      />
-                    </div>
-                    {formik.touched && formik.errors ? (
-                      <p style={{ color: "red" }}>{formik.errors.soDt}</p>
-                    ) : (
-                      ""
-                    )}
-                  </Col>
-                </Row>
-                <Row className="rowInput">
-                  <Col span={12}>
-                    <h2>Họ Tên Người Dùng</h2>
-                    <div>
-                      <input
-                        className="inputPhim"
-                        type="text"
-                        placeholder="Họ Tên"
-                        name="hoTen"
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                      />
-                    </div>
-                    {formik.touched && formik.errors ? (
-                      <p style={{ color: "red" }}>{formik.errors.hoTen}</p>
-                    ) : (
-                      ""
-                    )}
-                  </Col>
-                  <Col span={12}>
-                    <h2>Loại Người Dùng</h2>
-                    <div>
-                      <select
-                        className="selectNguoiDung"
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                        name="maLoaiNguoiDung"
-                      >
-                        <option>KhachHang</option>
-                        <option>QuanTri</option>
-                      </select>
-                    </div>
-                  </Col>
-                </Row>
-                <div className="div_btnThemNguoiDung">
-                  <button className="btnThemNguoiDung">Cập Nhật</button>
-                </div>
-              </form>
-            </Modal>
             <button
               className="btnCapNhat"
               onClick={() => handleXoaNguoiDung(nguoiDung.taiKhoan)}
@@ -254,7 +133,7 @@ export default function TableNguoiDungAdmin(props) {
       );
     });
   };
-
+  const handleCapNhat = (nd) => {};
   return (
     <>
       <SearchAdmin onSubmit={handleFiltersChange} />
@@ -273,6 +152,140 @@ export default function TableNguoiDungAdmin(props) {
         </thead>
         <tbody className="tbody">{renderDanhSachNguoiDung()}</tbody>
       </table>
+      <Modal
+        title="Cập Nhật Tài Khoản"
+        centered
+        visible={visible}
+        onOk={() => setVisible(false)}
+        onCancel={() => setVisible(false)}
+        width={1000}
+      >
+        <form className="themNguoiDung" onSubmit={formik.handleSubmit}>
+          <Row className="rowInput">
+            <Col span={12}>
+              <div style={{ display: "flex" }}>
+                <h2>Tài Khoản</h2>
+              </div>
+              <div>
+                <input
+                  className="inputPhim"
+                  type="text"
+                  name="taiKhoan"
+                  placeholder={ndEdit.taiKhoan}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                />
+              </div>
+
+              {formik.touched && formik.errors ? (
+                <p style={{ color: "red" }}>{formik.errors.taiKhoan}</p>
+              ) : (
+                ""
+              )}
+            </Col>
+            <Col span={12}>
+              <h2>Email </h2>
+              <div>
+                <input
+                  className="inputPhim"
+                  placeholder={ndEdit.email}
+                  type="text"
+                  name="email"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                />
+              </div>
+              {formik.touched && formik.errors ? (
+                <p style={{ color: "red" }}>{formik.errors.email}</p>
+              ) : (
+                ""
+              )}
+            </Col>
+          </Row>
+          <Row className="rowInput">
+            <Col span={12}>
+              <h2>Mật Khẩu</h2>
+              <div>
+                <input
+                  className="inputPhim"
+                  placeholder={ndEdit.matKhau}
+                  type="password"
+                  name="matKhau"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                />
+              </div>
+              {formik.touched && formik.errors ? (
+                <p style={{ color: "red" }}>{formik.errors.matKhau}</p>
+              ) : (
+                ""
+              )}
+            </Col>
+            <Col span={12}>
+              <h2>Số Điện Thoại</h2>
+              <div>
+                <input
+                  className="inputPhim"
+                  placeholder={ndEdit.soDt}
+                  type="text"
+                  name="soDt"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                />
+              </div>
+              {formik.touched && formik.errors ? (
+                <p style={{ color: "red" }}>{formik.errors.soDt}</p>
+              ) : (
+                ""
+              )}
+            </Col>
+          </Row>
+          <Row className="rowInput">
+            <Col span={12}>
+              <h2>Họ Tên Người Dùng</h2>
+              <div>
+                <input
+                  className="inputPhim"
+                  placeholder={ndEdit.hoTen}
+                  type="text"
+                  name="hoTen"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                />
+              </div>
+              {formik.touched && formik.errors ? (
+                <p style={{ color: "red" }}>{formik.errors.hoTen}</p>
+              ) : (
+                ""
+              )}
+            </Col>
+            <Col span={12}>
+              <h2>Loại Người Dùng</h2>
+              <div>
+                <select
+                  className="selectNguoiDung"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  name="maLoaiNguoiDung"
+                >
+                  <option>KhachHang</option>
+                  <option>QuanTri</option>
+                </select>
+              </div>
+            </Col>
+          </Row>
+          <div className="div_btnThemNguoiDung">
+            <button
+              className="btnThemNguoiDung"
+              onClick={() => {
+                handleCapNhat(ndEdit);
+              }}
+            >
+              Cập Nhật
+            </button>
+          </div>
+        </form>
+      </Modal>
       <Pagination onePageChange={handlePageChange} />
     </>
   );
