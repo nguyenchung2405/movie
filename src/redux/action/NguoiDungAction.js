@@ -33,7 +33,7 @@ export const dangNhap = (userLogin) => {
         method: "POST",
         data: userLogin,
       });
-      console.log(result.data);
+
       dispatch({
         type: XU_LY_DANG_NHAP_THANH_CONG,
         tenDangNhap: result.data,
@@ -64,7 +64,6 @@ export const layThongTinNguoiDung = (taiKhoan) => {
         type: THONG_TIN_NGUOI_DUNG,
         thongTinNguoiDung: result.data,
       });
-      console.log(result.data);
     } catch (err) {
       console.log(err);
     }
@@ -89,8 +88,6 @@ export const capNhatThongTinNguoiDung = (taiKhoan) => {
         type: CAP_NHAT_THONG_TIN_NGUOI_DUNG,
         capNhatThongTinNguoiDung: result.data,
       });
-
-      console.log(result.data);
     } catch (err) {
       alert(err.response?.data);
       console.log(err);
@@ -109,7 +106,6 @@ export const layDanhSachLoaiNguoiDung = () => {
         type: DANH_SACH_LOAI_NGUOI_DUNG,
         danhSachLoaiNguoiDung: result.data,
       });
-      console.log(result.data);
     } catch (err) {
       console.log(err);
     }
@@ -127,7 +123,6 @@ export const layDanhSachNguoiDung = () => {
         type: DANH_SACH_NGUOI_DUNG,
         danhSachNguoiDung: result.data,
       });
-      console.log(result.data);
     } catch (err) {
       console.log(err);
     }
@@ -145,7 +140,6 @@ export const layDanhSachNguoiDungPhanTrang = (paramString) => {
         type: DANH_SACH_NGUOI_DUNG_PHAN_TRANG,
         danhSachNguoiDungPhanTrang: result.data,
       });
-      console.log(result.data);
     } catch (err) {
       console.log(err);
     }
@@ -164,7 +158,6 @@ export const xoaNguoiDungAdminAction = (taiKhoan) => {
         },
       });
       alert(result.data);
-      console.log(result.data);
     } catch (err) {
       alert(err.response?.data);
     }

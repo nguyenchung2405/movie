@@ -14,7 +14,6 @@ export const themNguoiDungAction = (nguoiDung) => {
         },
       });
       alert("Thêm người dùng thành công");
-      console.log(result.data);
     } catch (error) {
       console.log(error.response?.data);
     }
@@ -34,7 +33,6 @@ export const suaNguoiDungAction = (taiKhoan) => {
         },
       });
 
-      console.log(result.data);
       alert("Cập Nhật Thành Công");
     } catch (err) {
       alert(err.response?.data);
@@ -52,7 +50,6 @@ export const themPhimAction = (form_data) => {
         data: form_data,
       });
 
-      console.log(result.data);
       alert("Thêm phim thành công");
     } catch (err) {
       alert(err.response?.data);

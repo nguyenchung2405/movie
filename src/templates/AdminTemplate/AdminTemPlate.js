@@ -1,14 +1,19 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Redirect, Route } from "react-router-dom";
-import { useSelector } from "react-redux";
+
+import { USER_LOGIN } from "../../redux/constants/NguoiDungConst";
+
 const AdminTemplate = ({ path, Component }) => {
-  let { tenDangNhap } = useSelector((state) => state.NguoiDungReducer);
+  let userLogin = JSON.parse(localStorage.getItem(USER_LOGIN));
 
   return (
     <Route
       path={path}
       render={(routeProps) => {
-        if (localStorage.getItem("userLogin") && tenDangNhap === "QuanTri") {
+        if (
+          localStorage.getItem("userLogin") &&
+          userLogin.maLoaiNguoiDung === "QuanTri"
+        ) {
           return <Component {...routeProps} />;
         }
         alert("Vui lòng đăng nhập bằng tài khoản Admin");
