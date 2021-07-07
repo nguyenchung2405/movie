@@ -38,7 +38,7 @@ function App() {
       <Switch>
         <LoadingTemplate exact path="/home" component={Home} />
 
-        <LoginTemplate exact path="/phim/:id" Component={ChiTietPhim} />
+        <LoadingTemplate exact path="/phim/:id" component={ChiTietPhim} />
 
         <LoginTemplate exact path="/phongve/:id" Component={PhongVe} />
         <LoadingTemplate exact path="/dangNhap" component={DangNhap} />
