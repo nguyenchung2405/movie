@@ -18,7 +18,7 @@ export const dangKy = (data) => {
   })
     .then((res) => {
       alert("Đăng ký thành công");
-      // history.goBack();
+      history.goBack();
     })
     .catch((err) => {
       alert(err.response?.data);

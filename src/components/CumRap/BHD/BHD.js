@@ -8,6 +8,7 @@ import MuiAccordion from '@material-ui/core/Accordion';
 import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
 import MuiAccordionDetails from '@material-ui/core/AccordionDetails';
 import { NavLink } from 'react-router-dom';
+import { USER_LOGIN } from '../../../redux/constants/NguoiDungConst';
 
 const Accordion = withStyles({
     root: {
@@ -106,8 +107,10 @@ export default function BHD(props) {
                                                                     {
                                                                         phim.lstLichChieuTheoPhim.map((lichChieu, index) => {
                                                                             return (
-                                                                                <NavLink key={index} to={`/phongve/${lichChieu.maLichChieu}`} 
-                                                                                className="btnMovie" variant="contained" target="_blank">
+                                                                                <NavLink key={index}
+                                                                                    className="btnMovie" variant="contained"
+                                                                                    to={`/phongve/${lichChieu.maLichChieu}`}
+                                                                                    target="_blank">
                                                                                     <span className="btnColorBHD ">{lichChieu.ngayChieuGioChieu}</span>
                                                                                 </NavLink>
                                                                             )

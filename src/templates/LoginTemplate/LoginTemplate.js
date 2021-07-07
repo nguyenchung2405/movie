@@ -1,6 +1,7 @@
 import React from "react";
 import { Redirect, Route } from "react-router-dom";
 import Swal from 'sweetalert2';
+import LoadingTemplate from "../LoadingTemplate/LoadingTemplate";
 
 const LoginTemplate = ({ path, Component }) => {
   return (
@@ -11,22 +12,12 @@ const LoginTemplate = ({ path, Component }) => {
           return <Component {...routeProps} />;
         }
         Swal.fire({
-          title: 'Oops...',
-          text: "Bạn chưa đăng nhập để thực hiện tác vụ này",
+          position: 'center',
           icon: 'error',
-          showCancelButton: true,
-          confirmButtonColor: 'rgb(251, 66, 38)',
-          cancelButtonColor: '#757575',
-          confirmButtonText: 'Đăng nhập'
-        }).then((result) => {
-          if (result.isConfirmed) {
-            Swal.fire(
-              'Deleted!',
-              'Your file has been deleted.',
-              'success'
-            )
-          }
-        })
+          title: 'Vui lòng đăng nhập',
+          showConfirmButton: false,
+          timer: 1500
+        });
         return <Redirect to="/dangNhap" />;
       }}
     />
