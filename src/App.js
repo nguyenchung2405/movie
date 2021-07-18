@@ -34,17 +34,19 @@ function App() {
   }, []);
   return (
     <Router history={history}>
-      {/* <LoadingTemplate /> */}
       <Switch>
+      {/* <Route exact path="/phongve/:id" component={PhongVe} />
+      <Route exact path="/dangNhap" component={DangNhap} /> */}
+
         <LoadingTemplate exact path="/home" component={Home} />
-
         <LoadingTemplate exact path="/phim/:id" component={ChiTietPhim} />
-
-        <LoginTemplate exact path="/phongve/:id" Component={PhongVe} />
-        <Route exact path="/dangNhap" component={DangNhap} />
+        <LoadingTemplate exact path="/phongve/:id" component={PhongVe} />
+        <LoadingTemplate exact path="/dangNhap" component={DangNhap} />
         <LoadingTemplate exact path="/dangKy" component={DangKy} />
+
         <LoginTemplate exact path="/nguoiDung" Component={User} />
         <AdminTemplate exact path="/admin" Component={Admin} />
+        
         <LoadingTemplate path="*" component={Home} />
         <LoadingTemplate exact path="/" component={Home} />
       </Switch>

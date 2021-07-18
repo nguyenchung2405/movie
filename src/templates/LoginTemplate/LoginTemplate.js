@@ -1,7 +1,6 @@
 import React from "react";
 import { Redirect, Route } from "react-router-dom";
 import Swal from 'sweetalert2';
-import LoadingTemplate from "../LoadingTemplate/LoadingTemplate";
 
 const LoginTemplate = ({ path, Component }) => {
   return (

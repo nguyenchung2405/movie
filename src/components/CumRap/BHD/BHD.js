@@ -7,8 +7,10 @@ import { withStyles } from '@material-ui/core/styles';
 import MuiAccordion from '@material-ui/core/Accordion';
 import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
 import MuiAccordionDetails from '@material-ui/core/AccordionDetails';
-import { NavLink } from 'react-router-dom';
 import { USER_LOGIN } from '../../../redux/constants/NguoiDungConst';
+import { Redirect } from 'react-router-dom';
+import Swal from 'sweetalert2';
+
 
 const Accordion = withStyles({
     root: {
@@ -107,12 +109,36 @@ export default function BHD(props) {
                                                                     {
                                                                         phim.lstLichChieuTheoPhim.map((lichChieu, index) => {
                                                                             return (
-                                                                                <NavLink key={index}
-                                                                                    className="btnMovie" variant="contained"
-                                                                                    to={`/phongve/${lichChieu.maLichChieu}`}
-                                                                                    target="_blank">
+                                                                                // <NavLink key={index}
+                                                                                //     className="btnMovie" variant="contained"
+                                                                                //     to={`/phongve/${lichChieu.maLichChieu}`}
+                                                                                //     target="_blank">
+                                                                                //     <span className="btnColorBHD ">{lichChieu.ngayChieuGioChieu}</span>
+                                                                                // </NavLink>
+                                                                                <button className="btnMovie" type="button" key={index}
+                                                                                    onClick={() => {
+                                                                                        if (localStorage.getItem(USER_LOGIN)) {
+                                                                                            return <Redirect to={`/phongve/${lichChieu.maLichChieu}`} />;
+                                                                                        } else {
+                                                                                            Swal.fire({
+                                                                                                title: 'Opps...',
+                                                                                                text: "Bạn chưa đăng nhập để thực hiện tác vụ này",
+                                                                                                icon: 'error',
+                                                                                                showCancelButton: true,
+                                                                                                confirmButtonColor: 'rgb(251, 66, 38)',
+                                                                                                cancelButtonColor: '#757575',
+                                                                                                confirmButtonText: 'Đăng nhập',
+                                                                                                cancelButtonText: 'Để sau',
+                                                                                            }).then((result) => {
+                                                                                                if (result.isConfirmed) {
+                                                                                                    return <Redirect to="/dangNhap" />;
+                                                                                                }
+                                                                                            })
+                                                                                        }
+                                                                                    }}
+                                                                                >
                                                                                     <span className="btnColorBHD ">{lichChieu.ngayChieuGioChieu}</span>
-                                                                                </NavLink>
+                                                                                </button>
                                                                             )
                                                                         })
                                                                     }
