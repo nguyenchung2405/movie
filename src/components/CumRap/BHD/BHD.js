@@ -8,9 +8,8 @@ import MuiAccordion from '@material-ui/core/Accordion';
 import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
 import MuiAccordionDetails from '@material-ui/core/AccordionDetails';
 import { USER_LOGIN } from '../../../redux/constants/NguoiDungConst';
-import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import Swal from 'sweetalert2';
-
 
 const Accordion = withStyles({
     root: {
@@ -55,12 +54,19 @@ const AccordionDetails = withStyles((theme) => ({
 
 export default function BHD(props) {
     const { logo, lstCumRap } = props.cumRap;
-
+    const history = useHistory();
     const [expanded, setExpanded] = React.useState('panel1');
     const handleChange = (panel) => (event, newExpanded) => {
         setExpanded(newExpanded ? panel : false);
     };
-
+    const handleRoute = (url) => {
+        if (localStorage.getItem(USER_LOGIN)) {
+            const win = window.open(url, "_blank");
+            win.focus();
+        } else {
+            history.push(url);
+        }
+    }
     const renderHeThongCumRap = () => {
         return (
             <Tabs className="tab" style={{ width: "100%" }}>
@@ -109,16 +115,10 @@ export default function BHD(props) {
                                                                     {
                                                                         phim.lstLichChieuTheoPhim.map((lichChieu, index) => {
                                                                             return (
-                                                                                // <NavLink key={index}
-                                                                                //     className="btnMovie" variant="contained"
-                                                                                //     to={`/phongve/${lichChieu.maLichChieu}`}
-                                                                                //     target="_blank">
-                                                                                //     <span className="btnColorBHD ">{lichChieu.ngayChieuGioChieu}</span>
-                                                                                // </NavLink>
                                                                                 <button className="btnMovie" type="button" key={index}
                                                                                     onClick={() => {
                                                                                         if (localStorage.getItem(USER_LOGIN)) {
-                                                                                            return <Redirect to={`/phongve/${lichChieu.maLichChieu}`} />;
+                                                                                            return handleRoute(`/phongve/${lichChieu.maLichChieu}`);
                                                                                         } else {
                                                                                             Swal.fire({
                                                                                                 title: 'Opps...',
@@ -131,7 +131,7 @@ export default function BHD(props) {
                                                                                                 cancelButtonText: 'Để sau',
                                                                                             }).then((result) => {
                                                                                                 if (result.isConfirmed) {
-                                                                                                    return <Redirect to="/dangNhap" />;
+                                                                                                    return handleRoute("/dangNhap");
                                                                                                 }
                                                                                             })
                                                                                         }

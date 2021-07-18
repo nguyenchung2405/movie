@@ -7,7 +7,9 @@ import { withStyles } from '@material-ui/core/styles';
 import MuiAccordion from '@material-ui/core/Accordion';
 import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
 import MuiAccordionDetails from '@material-ui/core/AccordionDetails';
-import { NavLink } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import { USER_LOGIN } from '../../../redux/constants/NguoiDungConst';
+import Swal from 'sweetalert2';
 
 const Accordion = withStyles({
     root: {
@@ -51,12 +53,19 @@ const AccordionDetails = withStyles((theme) => ({
 
 export default function CNS(props) {
     const { heThongRapChieu } = props;
-    console.log("heThongRapChieu", heThongRapChieu);
-
+    const history = useHistory();
     const [expanded, setExpanded] = React.useState('panel1');
     const handleChange = (panel) => (event, newExpanded) => {
         setExpanded(newExpanded ? panel : false);
     };
+    const handleRoute = (url) => {
+        if (localStorage.getItem(USER_LOGIN)) {
+            const win = window.open(url, "_blank");
+            win.focus();
+        } else {
+            history.push(url);
+        }
+    }
     const renderRap = () => {
         if (!!heThongRapChieu) {
             return heThongRapChieu.map((item, index) => {
@@ -64,7 +73,7 @@ export default function CNS(props) {
                     <Tab key={index} className="rapInfo">
                         <div className="info__Item">
                             <img src={item.logo} alt={item.logo} className="img" />
-                            <h4 style={{marginLeft:10}}>{item.tenHeThongRap}</h4>
+                            <h4 style={{ marginLeft: 10 }}>{item.tenHeThongRap}</h4>
                         </div>
                     </Tab>
                 )
@@ -98,12 +107,30 @@ export default function CNS(props) {
                                                         {
                                                             rapItem.lichChieuPhim.map((lichChieu, index) => {
                                                                 return (
-                                                                    <div style={{ padding: 5 }}>
-                                                                        <NavLink key={index} to={`/phongve/${lichChieu.maLichChieu}`}
-                                                                            className="btnMovie" variant="contained" target="_blank">
-                                                                            <span className="btnColorBHD ">{lichChieu.ngayChieuGioChieu}</span>
-                                                                        </NavLink>
-                                                                    </div>
+                                                                    <button className="btnMovie" type="button" key={index}
+                                                                        onClick={() => {
+                                                                            if (localStorage.getItem(USER_LOGIN)) {
+                                                                                return handleRoute(`/phongve/${lichChieu.maLichChieu}`);
+                                                                            } else {
+                                                                                Swal.fire({
+                                                                                    title: 'Opps...',
+                                                                                    text: "Bạn chưa đăng nhập để thực hiện tác vụ này",
+                                                                                    icon: 'error',
+                                                                                    showCancelButton: true,
+                                                                                    confirmButtonColor: 'rgb(251, 66, 38)',
+                                                                                    cancelButtonColor: '#757575',
+                                                                                    confirmButtonText: 'Đăng nhập',
+                                                                                    cancelButtonText: 'Để sau',
+                                                                                }).then((result) => {
+                                                                                    if (result.isConfirmed) {
+                                                                                        return handleRoute("/dangNhap");
+                                                                                    }
+                                                                                })
+                                                                            }
+                                                                        }}
+                                                                    >
+                                                                        <span className="btnColorBHD ">{lichChieu.ngayChieuGioChieu}</span>
+                                                                    </button>
                                                                 )
                                                             })
                                                         }

@@ -35,9 +35,6 @@ function App() {
   return (
     <Router history={history}>
       <Switch>
-      {/* <Route exact path="/phongve/:id" component={PhongVe} />
-      <Route exact path="/dangNhap" component={DangNhap} /> */}
-
         <LoadingTemplate exact path="/home" component={Home} />
         <LoadingTemplate exact path="/phim/:id" component={ChiTietPhim} />
         <LoadingTemplate exact path="/phongve/:id" component={PhongVe} />
