@@ -26,6 +26,7 @@
       cursor: pointer;
       background-color: #fb4226;
       color: white;
+      border-radius: 50%;
     }
     .anticon {
       font-size: 30px;
@@ -223,9 +224,10 @@ p:nth-child(2) {
   padding: 30px 20px 20px;
   box-shadow: 0px 10px 10px 10px gray;
   border-radius: 10px;
-
   margin-bottom: 60px;
-
+  div{
+    height: 84px;
+  }
   .lable {
     font-size: 17px;
     font-weight: 500;

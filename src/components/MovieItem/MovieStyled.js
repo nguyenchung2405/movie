@@ -17,6 +17,9 @@ const useStyles = makeStyles((theme) => ({
   [theme.breakpoints.down('md')]: {
     height: 250,
   },
+  [theme.breakpoints.down('sm')]: {
+    height: 200,
+  },
 },
   rating: {
   backgroundColor: "rgba(12,27,54,.8)",

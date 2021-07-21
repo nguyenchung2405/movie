@@ -1,17 +1,17 @@
+import { LogoutOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
+import { Button, Modal, Tabs } from "antd";
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { Tabs, Modal, Button } from "antd";
-import { LogoutOutlined, MenuUnfoldOutlined } from "@ant-design/icons";
 import logo from "../../assets/img/web-logo.png";
-import TableNguoiDungAdmin from "./TableNguoiDungAdmin";
-import TablePhanTrangPhim from "./TablePhanTrangPhim";
-import ThemNguoiDung from "./ThemNguoiDung";
-import ThemPhim from "./ThemPhim";
+import ThemNguoiDung from "./AddUserAdmin/ThemNguoiDung";
+import TablePhanTrangPhim from "./TableFilmAdmin/TablePhanTrangPhim";
+import TableNguoiDungAdmin from "./TableUserAdmin/TableNguoiDungAdmin";
+import ThemPhim from "./AddFilmAdmin/ThemPhim";
+import AddUser from "./AddUserAdmin/AddUser";
 export default function Admin(props) {
   const { TabPane } = Tabs;
   const [visible, setVisible] = useState(false);
-  const [visible1, setVisible1] = useState(false);
-
+  const [visibleUser, setVisibleUser] = useState(false);
   const _handleCloseAdmin = () => {
     props.history.push("/");
   };
@@ -57,19 +57,20 @@ export default function Admin(props) {
             <Button
               className="btnThemPhim"
               type="primary"
-              onClick={() => setVisible1(true)}
+              onClick={() => setVisibleUser(true)}
             >
               Thêm Người Dùng
             </Button>
             <Modal
               title="Thêm Người Dùng"
               centered
-              visible={visible1}
-              onOk={() => setVisible1(false)}
-              onCancel={() => setVisible1(false)}
+              visible={visibleUser}
+              onOk={() => setVisibleUser(false)}
+              onCancel={() => setVisibleUser(false)}
               width={1000}
             >
-              <ThemNguoiDung />
+              <AddUser closerModal={setVisibleUser}/>  
+                {/* <ThemNguoiDung closeModal={setVisibleUser}/>  */}
             </Modal>
             <TableNguoiDungAdmin />
           </TabPane>

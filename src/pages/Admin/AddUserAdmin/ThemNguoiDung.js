@@ -1,10 +1,10 @@
 import React from "react";
 import { Row, Col } from "antd";
-import { useFormik } from "formik";
+import { ErrorMessage, Field, Form, useFormik } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
-import { themNguoiDungAction } from "../../redux/action/AdminAction";
-export default function ThemNguoiDung() {
+import { themNguoiDungAction } from "../../../redux/action/UserAdminAction";
+export default function ThemNguoiDung(props) {
   const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
@@ -36,31 +36,29 @@ export default function ThemNguoiDung() {
         .required("*Họ Tên không được bỏ trống!")
         .min(6, "*Họ Tên tối thiểu 6 kí tự"),
     }),
-    onSubmit: (values) => {
-      const action = themNguoiDungAction(values);
-      dispatch(action);
+    onSubmit: (values,{resetForm}) => {
+     const action = themNguoiDungAction(values);
+     dispatch(action);
+     resetForm({values:""});
     },
   });
   return (
-    <form className="themNguoiDung" onSubmit={formik.handleSubmit}>
+    <Form className="themNguoiDung" onSubmit={formik.handleSubmit}>
       <Row className="rowInput">
         <Col span={12}>
           <h2>Tài Khoản</h2>
           <div>
-            <input
+            <Field
               className="inputPhim"
               type="text"
               placeholder="Tài Khoản"
               name="taiKhoan"
+              value={formik.values.taiKhoan}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
           </div>
-          {formik.touched && formik.errors ? (
-            <p style={{ color: "red" }}>{formik.errors.taiKhoan}</p>
-          ) : (
-            ""
-          )}
+          <ErrorMessage name="taiKhoan">{msg => <div style={{color:"red"}}>{msg}</div>}</ErrorMessage>
         </Col>
         <Col span={12}>
           <h2>Email </h2>
@@ -70,6 +68,7 @@ export default function ThemNguoiDung() {
               type="text"
               placeholder="Email"
               name="email"
+              value={formik.values.email}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
@@ -90,6 +89,7 @@ export default function ThemNguoiDung() {
               type="password"
               placeholder="Mật Khẩu"
               name="matKhau"
+              value={formik.values.matKhau}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
@@ -109,6 +109,7 @@ export default function ThemNguoiDung() {
               placeholder="Số điện thoại"
               name="soDt"
               onChange={formik.handleChange}
+              value={formik.values.soDt}
               onBlur={formik.handleBlur}
             />
           </div>
@@ -128,6 +129,7 @@ export default function ThemNguoiDung() {
               type="text"
               placeholder="Họ Tên"
               name="hoTen"
+              value={formik.values.hoTen}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
             />
@@ -156,6 +158,6 @@ export default function ThemNguoiDung() {
       <div className="div_btnThemNguoiDung">
         <button className="btnThemNguoiDung">Thêm</button>
       </div>
-    </form>
+    </Form>
   );
 }

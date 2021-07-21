@@ -55,7 +55,7 @@ export default function Apply() {
                 </Col>
                 <Col className="apply__right" md={12}>
                   <img className="phone__Img" src={mobile} alt="mobile" />
-                  <Carousel className="carousel__App" autoplay dots={false}>
+                  <Carousel className="carousel__App" autoplay dots={false} swipeToSlide>
                     <div className="img__App">
                       <img src={slide1} alt="slide_1" />
                     </div>

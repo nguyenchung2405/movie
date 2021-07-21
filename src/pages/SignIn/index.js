@@ -2,34 +2,34 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import logoDangNhap from "../../assets/img/logoDangNhap.png";
 import { NavLink } from "react-router-dom";
-import { useFormik } from "formik";
+
+import { ErrorMessage, Field, Formik, Form } from 'formik';
+
 import * as Yup from "yup";
 import { dangNhap } from "../../redux/action/NguoiDungAction";
 export default function DangNhap(props) {
   const dispatch = useDispatch();
-  const formik = useFormik({
-    initialValues: {
-      taiKhoan: "",
-      matKhau: "",
-    },
-    validationSchema: Yup.object().shape({
-      taiKhoan: Yup.string().required("*Tài khoản không được bỏ trống!"),
-      matKhau: Yup.string()
-        .required("*Mật khẩu không được bỏ trống!")
-        .min(1, "*Mật khẩu tối thiểu 6 ký tự!")
-        .max(32, "*Mật khẩu tối đa 32 ký tự!"),
-    }),
-    onSubmit: (value) => {
-      const action = dangNhap(value);
-      dispatch(action);
-    },
-  });
-
+  const validate=Yup.object().shape({
+    taiKhoan: Yup.string().required("*Tài khoản không được bỏ trống!"),
+    matKhau: Yup.string().required("*Mật khẩu không được bỏ trống!")
+  })
+ 
   const handleClose = () => {
     props.history.push("/");
   };
   return (
-    <form onSubmit={formik.handleSubmit}>
+    <Formik
+    initialValues={{ 
+      taiKhoan: "",
+      matKhau: "",
+    }}
+    validationSchema={validate}
+    onSubmit={(values)=>{
+      const action = dangNhap(values);
+      dispatch(action); 
+    }}
+    render={(formikProps)=>(
+    <Form>
       <div className="dangNhap__Img">
         <div className="dangNhap__Khung">
           <img
@@ -43,34 +43,28 @@ export default function DangNhap(props) {
             và bảo mật thông tin!
           </div>
           <div className="dangNhap__Input">
-            <input
+           <Field
               className="input"
               type="text"
               placeholder="Tài Khoản"
               name="taiKhoan"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
+              onChange={formikProps.handleChange}
+              onBlur={formikProps.handleBlur}
             />
-            {formik.touched && formik.errors ? (
-              <p className="canhBao">{formik.errors.taiKhoan}</p>
-            ) : (
-              ""
-            )}
+            <ErrorMessage name="taiKhoan">{msg => <div className="canhBao">{msg}</div>}</ErrorMessage>
+
           </div>
           <div className="dangNhap__Input">
-            <input
+           <Field
               className="input"
               type="password"
               placeholder="Mật Khẩu"
               name="matKhau"
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
+              onChange={formikProps.handleChange}
+              onBlur={formikProps.handleBlur}
             />
-            {formik.touched && formik.errors ? (
-              <p className="canhBao">{formik.errors.matKhau}</p>
-            ) : (
-              ""
-            )}
+            <ErrorMessage name="matKhau">{msg => <div className="canhBao">{msg}</div>}</ErrorMessage>
+
           </div>
           <button className="btn__DangNhap">Đăng Nhập</button>
           <div>
@@ -84,6 +78,7 @@ export default function DangNhap(props) {
           </div>
         </div>
       </div>
-    </form>
+    </Form>
+    )}/>
   );
 }

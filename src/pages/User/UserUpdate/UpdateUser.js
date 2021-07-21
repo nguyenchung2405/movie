@@ -2,8 +2,8 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { capNhatThongTinNguoiDung } from "../../redux/action/NguoiDungAction";
-import { USER_LOGIN } from "../../redux/constants/NguoiDungConst";
+import { capNhatThongTinNguoiDung } from "../../../redux/action/NguoiDungAction";
+import { USER_LOGIN } from "../../../redux/constants/NguoiDungConst";
 
 export default function UpdateUser(props) {
   const dispatch = useDispatch();
@@ -12,6 +12,7 @@ export default function UpdateUser(props) {
     initialValues: {
       taiKhoan: "",
       matKhau: "",
+      confirmPassWord:"",
       email: "",
       soDt: "",
       maNhom: "GP01",
@@ -23,6 +24,9 @@ export default function UpdateUser(props) {
         .required("*Mật khẩu không được bỏ trống!")
         .max(32, "*Mật khẩu tối đa 32 ký tự!")
         .min(5, "*Mật khẩu tối thiểu 5 ký tự!"),
+      confirmPassWord: Yup.string()
+        .oneOf([Yup.ref("matKhau"),null], "Mật Khẩu không đúng")
+        .required("*Vui lòng nhập lại mật khẩu"),
 
       email: Yup.string()
         .required("*Email không được bỏ trống!")
@@ -128,6 +132,22 @@ export default function UpdateUser(props) {
           />
           {formik.touched && formik.errors ? (
             <p className="canhBaoCap">{formik.errors.matKhau}</p>
+          ) : (
+            ""
+          )}
+        </div>
+        <div className="matKhau">
+          <p className="lable">Nhập Lại Mật Khẩu</p>
+          <input
+            className="input"
+            type="password"
+            placeholder=" Nhập Lại Mật Khẩu"
+            name="confirmPassWord"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+          {formik.touched && formik.errors ? (
+            <p className="canhBaoCap">{formik.errors.confirmPassWord}</p>
           ) : (
             ""
           )}

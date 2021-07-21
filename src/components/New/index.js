@@ -47,17 +47,15 @@ export default function New() {
               <Card
                 hoverable
                 style={{ width: 240 }}
-                cover={<img alt="example" src={quangCao1} />}
+                cover={<img alt="example" src={quangCao3} />}
                 actions={[
                   <LikeOutlined key="edit" />,
                   <CommentOutlined key="setting" />,
                   <EllipsisOutlined key="ellipsis" />,
                 ]}
               >
-                <Meta
-                  title="Review: Tàn Tích Quỷ Ám (Relic) - Ba thế hệ và mối liên kết "
-                  description="Review: Tàn Tích Quỷ Ám (Relic) - Ba thế hệ và mối liên kết"
-                />
+              <div className="titleNew"><a target="_blank"  className="newA" href="https://ghienreview.com/review-va-giai-thich-phim-relic-tan-tich-quy-am-lieu-co-dang-xem/">Review: Tàn Tích Quỷ Ám (Relic) - Ba thế hệ và mối liên kết</a></div>
+               <Meta description="Review: Tàn Tích Quỷ Ám (Relic) - Ba thế hệ và mối liên kết"/> 
               </Card>
             </Col>
             <Col xs={24} sm={12}>
@@ -70,11 +68,9 @@ export default function New() {
                   <CommentOutlined key="setting" />,
                   <EllipsisOutlined key="ellipsis" />,
                 ]}
-              >
-                <Meta
-                  title="Review: Dinh Thự Oan Khuất (Ghost Of War)"
-                  description="Tuy là một bộ phim có chất lượng tốt, nhưng có vẻ Dinh Thự Oan Khuất vẫn chưa đủ để đem khán giả trở lại phòng vé!"
-                />
+              > 
+                <div className="titleNew"><a target="_blank"  className="newA" href="https://vnreview.vn/danh-gia-phim/-/view_content/content/3223952/dinh-thu-oan-khuat-phim-kinh-di-gay-am-anh-tot-do-va-noi-dung-day-bat-ngo">Review: Dinh Thự Oan Khuất (Ghost Of War)</a></div>
+               <Meta description="Tuy là một bộ phim có chất lượng tốt, nhưng có vẻ Dinh Thự Oan Khuất vẫn chưa đủ để đem khán giả trở lại phòng vé!"/> 
               </Card>
             </Col>
           </Row>
@@ -90,10 +86,8 @@ export default function New() {
                   <EllipsisOutlined key="ellipsis" />,
                 ]}
               >
-                <Meta
-                  title="PROMISING YOUNG WOMAN | Bông hồng nước Anh Carey Mulligan và màn trả thù đàn ông để đời "
-                  description="Đề cử giải Oscar danh giá vừa gọi tên Carey Mulligan ở hạng mục nữ chính xuất sắc nhất cho vai diễn đẫm máu nhất sự nghiệp của cô trong phim Promising Young Woman (tựa Việt: Cô Gái Trẻ Hứa Hẹn). "
-                />
+                <div className="titleNew"><a target="_blank"  className="newA" href="https://zingnews.vn/bong-hong-nuoc-anh-nhan-de-cu-oscar-nho-bo-phim-tra-thu-sac-sao-post1198085.html">PROMISING YOUNG WOMAN | Bông hồng nước Anh Carey Mulligan và màn trả thù đàn ông để đời</a></div>
+                <Meta description="Đề cử giải Oscar danh giá vừa gọi tên Carey Mulligan ở hạng mục nữ chính xuất sắc nhất cho vai diễn đẫm máu nhất sự nghiệp của cô trong phim Promising Young Woman (tựa Việt: Cô Gái Trẻ Hứa Hẹn). "/> 
               </Card>
             </Col>
             <Col xs={24} sm={8}>
@@ -107,10 +101,8 @@ export default function New() {
                   <EllipsisOutlined key="ellipsis" />,
                 ]}
               >
-                <Meta
-                  title="VỪA ĐẸP LẠI VỪA TÀI NĂNG, DÀN SAO NAM CỦA PHIM “BÀN TAY DIỆT QUỶ” ĐẢM BẢO ĐỐN TIM HỘI CHỊ EM"
-                  description="Quy tụ 3 nam tài tử vừa điển trai, vừa được đánh giá cao về năng lực diễn xuất là Park Seo Joon, Woo Do Hwan và Choi Woo Sik, tác phẩm kinh dị – hành động “Bàn Tay Diệt Quỷ” hứa hẹn sẽ làm cho hội chị em phải mê mẩn vào tháng tới."
-                />
+                <div className="titleNew"><a target="_blank"  className="newA" href="https://dep.com.vn/vua-dep-lai-vua-tai-nang-dan-sao-nam-cua-phim-ban-tay-diet-quy-san-sang-don-tim-hoi-chi-em/">VỪA ĐẸP LẠI VỪA TÀI NĂNG, DÀN SAO NAM CỦA PHIM “BÀN TAY DIỆT QUỶ” ĐẢM BẢO ĐỐN TIM HỘI CHỊ EM</a></div>
+                <Meta description="Quy tụ 3 nam tài tử vừa điển trai, vừa được đánh giá cao về năng lực diễn xuất là Park Seo Joon, Woo Do Hwan và Choi Woo Sik, tác phẩm kinh dị – hành động “Bàn Tay Diệt Quỷ” hứa hẹn sẽ làm cho hội chị em phải mê mẩn vào tháng tới."/> 
               </Card>
             </Col>
             <Col xs={24} sm={8}>
@@ -161,17 +153,15 @@ export default function New() {
               <Card
                 hoverable
                 style={{ width: 240 }}
-                cover={<img alt="example" src={quangCao3} />}
+                cover={<img alt="example" src={quangCao1} />}
                 actions={[
                   <LikeOutlined key="edit" />,
                   <CommentOutlined key="setting" />,
                   <EllipsisOutlined key="ellipsis" />,
                 ]}
               >
-                <Meta
-                  title="Ấn định chắc nịch ngày khởi chiếu 16.04, Lý Hải tung clip Lật Mặt: 48H đậm chất "
-                  description="Trước thềm khởi chiếu 16.04 này, Lý Hải bất ngờ tung clip rượt đuổi gay cấn thót tim fans hâm mộ"
-                />
+                <div className="titleNew"><a target="_blank"  className="newA" href="https://tix.vn/goc-dien-anh/7965-an-dinh-chac-nich-ngay-khoi-chieu-16-04-ly-hai-tung-clip-lat-mat-48h-dam-chat">Ấn định chắc nịch ngày khởi chiếu 16.04, Lý Hải tung clip Lật Mặt: 48H đậm chất</a></div>
+                <Meta description="Trước thềm khởi chiếu 16.04 này, Lý Hải bất ngờ tung clip rượt đuổi gay cấn thót tim fans hâm mộ"/> 
               </Card>
             </Col>
             <Col xs={24} sm={12}>
@@ -185,10 +175,8 @@ export default function New() {
                   <EllipsisOutlined key="ellipsis" />,
                 ]}
               >
-                <Meta
-                  title="[MORTAL KOMBAT: CUỘC CHIẾN SINH TỬ] -  GỌI TÊN NHỮNG PHIM ĐIỆN ẢNH NỔI TIẾNG ĐƯỢC CHUYỂN THỂ TỪ CÁC TỰA GAME ĐÌNH ĐÁM"
-                  description="Bên cạnh những kịch bản gốc mới mẻ và đầy bất ngờ, Hollywood cũng không thiếu những tác phẩm đình đám được chuyển thể từ tiểu thuyết, phim hoạt hình"
-                />
+                <div className="titleNew"><a target="_blank"  className="newA" href="https://tix.vn/goc-dien-anh/7964-mortal-kombat-cuoc-chien-sinh-tu-goi-ten-nhung-phim-dien-anh-noi-tieng-duoc-chuyen-the-tu-cac-tua-game-dinh-dam">[MORTAL KOMBAT: CUỘC CHIẾN SINH TỬ] -  GỌI TÊN NHỮNG PHIM ĐIỆN ẢNH NỔI TIẾNG ĐƯỢC CHUYỂN THỂ TỪ CÁC TỰA GAME ĐÌNH ĐÁM</a></div>
+                <Meta description="Bên cạnh những kịch bản gốc mới mẻ và đầy bất ngờ, Hollywood cũng không thiếu những tác phẩm đình đám được chuyển thể từ tiểu thuyết, phim hoạt hình"/> 
               </Card>
             </Col>
           </Row>
@@ -284,10 +272,9 @@ export default function New() {
                   <EllipsisOutlined key="ellipsis" />,
                 ]}
               >
-                <Meta
-                  title="BHD 59K/VÉ CẢ TUẦN !!! "
-                  description="Tận hưởng Ưu Đãi lên đến 3 VÉ BHD Star mỗi tuần chỉ với giá 59k/vé khi mua vé trên TIX hoặc Mục Vé Phim trên ZaloPay."
-                />
+                <div className="titleNew"><a target="_blank"  className="newA" href="https://tix.vn/khuyen-mai/7958-bhd-59k-ve-ca-tuan">BHD 59K/VÉ CẢ TUẦN !!!</a></div>
+                <Meta description="Tận hưởng Ưu Đãi lên đến 3 VÉ BHD Star mỗi tuần chỉ với giá 59k/vé khi mua vé trên TIX hoặc Mục Vé Phim trên ZaloPay."/> 
+                
               </Card>
             </Col>
             <Col xs={24} sm={12}>
@@ -301,10 +288,8 @@ export default function New() {
                   <EllipsisOutlined key="ellipsis" />,
                 ]}
               >
-                <Meta
-                  title="TIX 1K/VÉ NGẠI CHI GIÁ VÉ"
-                  description="Đồng giá 1k/vé cả tuần tất cả các rạp trên TIX + Nhận thêm 02 voucher thanh toán ZaloPay thả ga"
-                />
+                <div className="titleNew"><a target="_blank"  className="newA" href="https://tix.vn/khuyen-mai/7955-tix-1k-ve-ngai-chi-gia-ve">TIX 1K/VÉ NGẠI CHI GIÁ VÉ</a></div>
+                <Meta description="Đồng giá 1k/vé cả tuần tất cả các rạp trên TIX + Nhận thêm 02 voucher thanh toán ZaloPay thả ga"/> 
               </Card>
             </Col>
           </Row>

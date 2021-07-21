@@ -8,8 +8,8 @@ import { LogoutOutlined } from "@ant-design/icons";
 import logo from "../../assets/img/web-logo.png";
 import { USER_LOGIN } from "../../redux/constants/NguoiDungConst";
 import { layThongTinNguoiDung } from "../../redux/action/NguoiDungAction";
-import UpdateUser from "./UpdateUser";
-import ThongTinDatVe from "./ThongTinDatVe";
+import UpdateUser from "./UserUpdate/UpdateUser";
+import ThongTinDatVe from "./ThongTinDatVe/ThongTinDatVe";
 const { TabPane } = Tabs;
 
 export default function User(props) {

@@ -3,11 +3,8 @@ import queryString from "query-string";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import {
-  danhSachPhimPhanTrang,
-  xoaPhimAdminAction,
-} from "../../redux/action/PhimAction";
-import PaginationPhim from "./PaginationPhim";
+import { danhSachPhimPhanTrang, xoaPhimAdminAction} from "../../../redux/action/FilmAdminAction";
+import PaginationPhim from "../TablePaginationPhimAdmin/PaginationPhim";
 
 export default function TablePhanTrangPhim(props) {
   const dispatch = useDispatch();
@@ -36,13 +33,8 @@ export default function TablePhanTrangPhim(props) {
   const handleXoaPhim = (maPhim) => {
     let action = xoaPhimAdminAction(maPhim);
     dispatch(action);
-    let queries = {
-      ...filters,
-      maPhim: maPhim,
-    };
-    !queries.maPhim && delete queries.maPhim;
-    setFilters(maPhim);
   };
+
   const renderDanhSachPhim = () => {
     return danhSachPhimPhanTrangAdmin.map((Phim, index) => {
       return (
@@ -62,7 +54,7 @@ export default function TablePhanTrangPhim(props) {
               : Phim.moTa}
           </td>
           <td>{Phim.maNhom}</td>
-          <td style={{ width: "200px" }}>{Phim.ngayKhoiChieu}</td>
+          <td style={{ width: "200px" }} >{Phim.ngayKhoiChieu.substr(0, 10)}</td>
           <td>
             <button
               className="btnCapNhat"

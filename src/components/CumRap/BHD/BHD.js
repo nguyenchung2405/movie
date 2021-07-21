@@ -108,7 +108,7 @@ export default function BHD(props) {
                                                                             return (
                                                                                 <NavLink key={index} to={`/phongve/${lichChieu.maLichChieu}`} 
                                                                                 className="btnMovie" variant="contained" target="_blank">
-                                                                                    <span className="btnColorBHD ">{lichChieu.ngayChieuGioChieu}</span>
+                                                                                    <span className="btnColorBHD ">{(lichChieu.ngayChieuGioChieu).substr(0,10)}</span>
                                                                                 </NavLink>
                                                                             )
                                                                         })

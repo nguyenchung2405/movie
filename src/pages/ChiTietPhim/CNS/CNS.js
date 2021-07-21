@@ -101,7 +101,7 @@ export default function CNS(props) {
                                                                     <div style={{ padding: 5 }}>
                                                                         <NavLink key={index} to={`/phongve/${lichChieu.maLichChieu}`}
                                                                             className="btnMovie" variant="contained" target="_blank">
-                                                                            <span className="btnColorBHD ">{lichChieu.ngayChieuGioChieu}</span>
+                                                                            <span className="btnColorBHD ">{(lichChieu.ngayChieuGioChieu).substr(0,10)}</span>
                                                                         </NavLink>
                                                                     </div>
                                                                 )

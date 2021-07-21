@@ -1,8 +1,6 @@
 import axios from "axios";
-import { ACCESSTOKEN } from "../constants/NguoiDungConst";
 import {
   CHI_TIET_PHIM,
-  DANH_SACH_PHIM_PHAN_TRANG,
   GET_PHIM_API,
 } from "../constants/PhimConst";
 
@@ -40,37 +38,3 @@ export const layThongTinPhimAction = (maPhim) => {
   };
 };
 
-export const danhSachPhimPhanTrang = (paramString) => {
-  return async (dispatch) => {
-    try {
-      const result = await axios({
-        url: `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhimPhanTrang?${paramString}`,
-        method: "GET",
-      });
-      dispatch({
-        type: DANH_SACH_PHIM_PHAN_TRANG,
-        danhSachPhimPhanTrang: result.data,
-      });
-    } catch (error) {
-      console.log(error.response?.data);
-    }
-  };
-};
-
-export const xoaPhimAdminAction = (maPhim) => {
-  return async (dispatch) => {
-    try {
-      const result = await axios({
-        url: `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`,
-        method: "DELETE",
-        headers: {
-          Authorization:
-            "Bearer " + JSON.parse(localStorage.getItem(ACCESSTOKEN)),
-        },
-      });
-      alert(result.data);
-    } catch (err) {
-      alert(err.response?.data);
-    }
-  };
-};

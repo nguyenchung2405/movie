@@ -90,7 +90,7 @@ export default function ChiTietPhim(props) {
                 <Col sm={10} className="chiTiet__thongTinPhim">
                   <div>
                     <span className="chiTiet__thongTinPhim1 ">
-                      {chiTietPhim.ngayKhoiChieu}
+                      {(chiTietPhim.ngayKhoiChieu)}
                     </span>
                   </div>
                   <div>
@@ -143,7 +143,7 @@ export default function ChiTietPhim(props) {
                       <Row>
                         <p style={{ width: "35%" }}>Ngày công chiếu</p>
                         <p style={{ width: "40%" }}>
-                          {chiTietPhim.ngayKhoiChieu}
+                          {(chiTietPhim.ngayKhoiChieu)}
                         </p>
                       </Row>
                       <Row>

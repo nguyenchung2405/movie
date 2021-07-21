@@ -167,7 +167,7 @@ function Footer() {
                   <img className="social_image_logo" src={androi} alt="7" />
                 </a>
               </Col>
-              <Col xs={12} className="text__Cente reponMed">
+              <Col xs={12} className="text__Center reponMed">
                 <p className="title">SOCIAL</p>
                 <a target="_blank" rel="noreferrer" href="#b">
                   <img className="social_image_logo" src={face} alt="8" />

@@ -71,13 +71,12 @@
   letter-spacing: 2.5px;
   font-size: 16px;
   margin-top: 30px;
-  opacity: 0.9;
+  opacity: 1;
 }
 
 .dangNhap__Img .dangNhap__Khung .btn__DangNhap:hover {
   cursor: pointer;
-  transform: translateY(2px);
-  opacity: 1;
+  opacity: 0.9;
 }
 
 .dangNhap__Img .dangNhap__Khung .dangNhap__Dong {
@@ -201,7 +200,7 @@
   text-align: center;
   background: #fb4226;
   color: #fff;
-  opacity: 0.7;
+  opacity: 1;
   font-weight: 700;
   padding: 7px 25px;
   transition: all 0.2s;
@@ -213,8 +212,7 @@
 
 .dangKy__Img .dangKy__Khung .btn__dangKy:hover {
   cursor: pointer;
-  transform: translateY(2px);
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 .dangKy__Img .dangKy__Khung .taiKhoan_Link {
@@ -532,6 +530,7 @@
   cursor: pointer;
   background-color: #fb4226;
   color: white;
+  border-radius: 50%;
 }
 
 .header button .anticon {
@@ -744,6 +743,10 @@ p:nth-child(2) {
   box-shadow: 0px 10px 10px 10px gray;
   border-radius: 10px;
   margin-bottom: 60px;
+}
+
+.userUpdate div {
+  height: 84px;
 }
 
 .userUpdate .lable {
@@ -1155,6 +1158,23 @@ p:nth-child(2) {
   cursor: pointer;
   color: #fff;
   background: #fb4226;
+}
+
+.card-container .titleNew {
+  height: 50px;
+  font-weight: 500;
+  font-size: 16px;
+  margin-bottom: 5px;
+  overflow: hidden;
+}
+
+.card-container .titleNew .newA {
+  color: #29303b;
+  transition: all 0.2s;
+}
+
+.card-container .titleNew .newA:hover {
+  color: #fb4226;
 }
 
 .card-container .ant-tabs-tab {
