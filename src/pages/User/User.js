@@ -42,7 +42,7 @@ export default function User(props) {
         <div className="thongTin">
           <Tabs defaultActiveKey="1" animated tabPosition="left">
             <TabPane tab="Thông Tin Cá Nhân" key="1">
-              <Row gutter={16}>
+              <Row  className="infoTable">
                 <Col xs={24} sm={4}>
                   <div className="sider">
                     <img
@@ -140,9 +140,14 @@ export default function User(props) {
                 </Col>
               </Row>
             </TabPane>
-            <TabPane tab="Lịch Sử Đặt Vé" key="2">
-              <ThongTinDatVe />
-            </TabPane>
+          
+              <TabPane tab="Lịch Sử Đặt Vé" key="2">
+              <div  className="thongTinDatVe">
+                <ThongTinDatVe />
+                </div>
+              </TabPane>
+           
+           
 
             {/**Cập Nhật thông tin người dùng lap */}
             <TabPane tab="Chỉnh Sửa Thông Tin" key="3">
@@ -162,7 +167,7 @@ export default function User(props) {
         <div className="thongTin">
           <Tabs defaultActiveKey="1" animated centered>
             <TabPane tab="Thông Tin Cá Nhân" key="1">
-              <Row gutter={16}>
+              <Row className="infoTable">
                 <Col xs={24} sm={4}>
                   <div className="sider">
                     <img
@@ -248,7 +253,6 @@ export default function User(props) {
                     </Col>
                     <Col sm={20}>
                       <p className="thongTin_dangNhap">
-                        {" "}
                         <span style={{ color: "#f55960" }}>
                           {thongTinNguoiDung.matKhau}
                         </span>
@@ -264,7 +268,7 @@ export default function User(props) {
               </Row>
             </TabPane>
             <TabPane tab="Lịch Sử Đặt Vé" key="2">
-              <div style={{ overflow: "auto" }}>
+              <div  className="thongTinDatVe">
                 <ThongTinDatVe />
               </div>
             </TabPane>
