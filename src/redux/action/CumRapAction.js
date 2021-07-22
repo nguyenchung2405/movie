@@ -19,7 +19,7 @@ export const layThongTinCumRap = () => {
         }
     }
 }
-export const layThongTinLichChieu = (maNhom='GP01')=>{
+export const layThongTinLichChieu = (maNhom='GP03')=>{
     return async dispatch=>{
         try{
             const result = await axios({
