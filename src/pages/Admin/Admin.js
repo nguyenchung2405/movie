@@ -3,7 +3,6 @@ import { Button, Modal, Tabs } from "antd";
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/img/web-logo.png";
-import ThemNguoiDung from "./AddUserAdmin/ThemNguoiDung";
 import TablePhanTrangPhim from "./TableFilmAdmin/TablePhanTrangPhim";
 import TableNguoiDungAdmin from "./TableUserAdmin/TableNguoiDungAdmin";
 import ThemPhim from "./AddFilmAdmin/ThemPhim";

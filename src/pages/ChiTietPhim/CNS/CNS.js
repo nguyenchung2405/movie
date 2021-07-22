@@ -1,13 +1,14 @@
 import React from 'react';
 import './cns.scss';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import Button from '@material-ui/core/Button';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { withStyles } from '@material-ui/core/styles';
 import MuiAccordion from '@material-ui/core/Accordion';
 import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
 import MuiAccordionDetails from '@material-ui/core/AccordionDetails';
-import { NavLink } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import { USER_LOGIN } from '../../../redux/constants/NguoiDungConst';
+import Swal from 'sweetalert2';
 
 const Accordion = withStyles({
     root: {
@@ -51,20 +52,27 @@ const AccordionDetails = withStyles((theme) => ({
 
 export default function CNS(props) {
     const { heThongRapChieu } = props;
-    console.log("heThongRapChieu", heThongRapChieu);
-
+    const history = useHistory();
     const [expanded, setExpanded] = React.useState('panel1');
     const handleChange = (panel) => (event, newExpanded) => {
         setExpanded(newExpanded ? panel : false);
     };
+    const handleRoute = (url) => {
+        if (localStorage.getItem(USER_LOGIN)) {
+            const win = window.open(url, "_blank");
+            win.focus();
+        } else {
+            history.push(url);
+        }
+    }
     const renderRap = () => {
         if (!!heThongRapChieu) {
             return heThongRapChieu.map((item, index) => {
                 return (
                     <Tab key={index} className="rapInfo">
                         <div className="info__Item">
-                            <img src={item.logo} alt={item.logo} className="img" />
-                            <h4 style={{marginLeft:10}}>{item.tenHeThongRap}</h4>
+                            <img src={item.logo} alt={item.logo} className="imgDetail" />
+                            <h4 className="infoH" >{item.tenHeThongRap}</h4>
                         </div>
                     </Tab>
                 )
@@ -80,8 +88,8 @@ export default function CNS(props) {
                         {
                             cumRapChieu.map((rapItem, index) => {
                                 return (
-                                    <div className="wrapListMovieCNS">
-                                        <Accordion key={index} expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+                                    <div className="wrapListMovieCNS" key={index}>
+                                        <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
                                             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                                                 <div className="titleMovie ">
                                                     <img src={item.logo} alt={item.logo} className="img" />
@@ -93,17 +101,36 @@ export default function CNS(props) {
                                             </AccordionSummary>
                                             <AccordionDetails>
                                                 <div className="flex-start">
-                                                    <h4 className="">2D Digital</h4>
-                                                    <div className="lichCHieu">
+                                                    <h4 className="viewD_detail">2D Digital</h4>
+                                                    <div className="lichCHieuDetail">
                                                         {
                                                             rapItem.lichChieuPhim.map((lichChieu, index) => {
                                                                 return (
-                                                                    <div style={{ padding: 5 }}>
-                                                                        <NavLink key={index} to={`/phongve/${lichChieu.maLichChieu}`}
-                                                                            className="btnMovie" variant="contained" target="_blank">
-                                                                            <span className="btnColorBHD ">{(lichChieu.ngayChieuGioChieu).substr(0,10)}</span>
-                                                                        </NavLink>
-                                                                    </div>
+                                                                    <button className="btnMovieDetail" type="button" key={index}
+                                                                        onClick={() => {
+                                                                            if (localStorage.getItem(USER_LOGIN)) {
+                                                                                return handleRoute(`/phongve/${lichChieu.maLichChieu}`);
+                                                                            } else {
+                                                                                Swal.fire({
+                                                                                    title: 'Opps...',
+                                                                                    text: "Bạn chưa đăng nhập để thực hiện tác vụ này",
+                                                                                    icon: 'error',
+                                                                                    showCancelButton: true,
+                                                                                    confirmButtonColor: 'rgb(251, 66, 38)',
+                                                                                    cancelButtonColor: '#757575',
+                                                                                    confirmButtonText: 'Đăng nhập',
+                                                                                    cancelButtonText: 'Để sau',
+                                                                                }).then((result) => {
+                                                                                    if (result.isConfirmed) {
+                                                                                        return handleRoute("/dangNhap");
+                                                                                    }
+                                                                                })
+                                                                            }
+                                                                        }}
+                                                                    >
+                                                                        <p className="btnColorBHD_detail ">{(lichChieu.ngayChieuGioChieu).substr(0,10)}</p>
+                                                                        <p className="btnColorBHD_detail ">{(lichChieu.ngayChieuGioChieu).substr(11,5)}</p>
+                                                                    </button>
                                                                 )
                                                             })
                                                         }
@@ -124,7 +151,7 @@ export default function CNS(props) {
 
 
     return (
-        <Tabs className="tab" style={{ width: "100%" }}>
+        <Tabs className="tabDetail" style={{ width: "100%" }}>
             <TabList style={{ width: "37%" }} className="diadiem__RapCNS">
                 {renderRap()}
             </TabList>

@@ -20,13 +20,20 @@ const useStyles = makeStyles((theme) => ({
   img: {
     width: "100%",
     height: 310,
-    borderRadius: 4
+    borderRadius: 4,
+    [theme.breakpoints.down('md')]: {
+      height:250,
+    },
+    [theme.breakpoints.down('sm')]: {
+      height:200,
+    },
   },
   sectionMobile: {
     display: 'flex',
     [theme.breakpoints.up('sm')]: {
       display: 'none',
     },
+    
   },
 
     rating: {

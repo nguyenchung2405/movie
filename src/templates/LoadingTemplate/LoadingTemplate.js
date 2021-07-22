@@ -12,7 +12,9 @@ export default function LoadingTemplate(props) {
         setTimeout(() => {
             dispatch({ type: HIDE_LOADING })
         }, 3000);
-        
+        return ()=>{
+            dispatch({type: DISPLAY_LOADING})
+        }
     },[])
     
     const renderLoading = () => {

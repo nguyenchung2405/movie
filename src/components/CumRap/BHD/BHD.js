@@ -7,7 +7,9 @@ import { withStyles } from '@material-ui/core/styles';
 import MuiAccordion from '@material-ui/core/Accordion';
 import MuiAccordionSummary from '@material-ui/core/AccordionSummary';
 import MuiAccordionDetails from '@material-ui/core/AccordionDetails';
-import { NavLink } from 'react-router-dom';
+import { USER_LOGIN } from '../../../redux/constants/NguoiDungConst';
+import { useHistory } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const Accordion = withStyles({
     root: {
@@ -24,7 +26,7 @@ const Accordion = withStyles({
             margin: 'auto',
         },
     },
-    expanded: {},
+    // expanded: {},
 })(MuiAccordion);
 
 const AccordionSummary = withStyles({
@@ -42,7 +44,7 @@ const AccordionSummary = withStyles({
             margin: '12px 0',
         },
     },
-    expanded: {},
+    // expanded: {},
 })(MuiAccordionSummary);
 const AccordionDetails = withStyles((theme) => ({
     root: {
@@ -52,12 +54,19 @@ const AccordionDetails = withStyles((theme) => ({
 
 export default function BHD(props) {
     const { logo, lstCumRap } = props.cumRap;
-
+    const history = useHistory();
     const [expanded, setExpanded] = React.useState('panel1');
-    const handleChange = (panel) => (event, newExpanded) => {
-        setExpanded(newExpanded ? panel : false);
-    };
-
+    // const handleChange = (panel) => (event, newExpanded) => {
+    //     setExpanded(newExpanded ? panel : false);
+    // };
+    const handleRoute = (url) => {
+        if (localStorage.getItem(USER_LOGIN)) {
+            const win = window.open(url, "_blank");
+            win.focus();
+        } else {
+            history.push(url);
+        }
+    }
     const renderHeThongCumRap = () => {
         return (
             <Tabs className="tab" style={{ width: "100%" }}>
@@ -89,10 +98,10 @@ export default function BHD(props) {
                                         danhSachPhim.map((phim, index) => {
                                             return (
                                                 <div key={index} className=" wrapListMovie">
-                                                    <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+                                                    <Accordion >
                                                         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                                                             <div className="titleMovie ">
-                                                                <img src={phim.hinhAnh} alt={phim.hinhAnh} className="img" />
+                                                                <img src={phim.hinhAnh} alt={phim.hinhAnh} className="imgRap" />
                                                                 <div style={{ paddingLeft: 15 }}>
                                                                     <h4> <span className="ageType">P</span>  {phim.tenPhim}</h4>
                                                                     <p className="">100 phút - TIX 7.7 - IMDb 0</p>
@@ -101,15 +110,37 @@ export default function BHD(props) {
                                                         </AccordionSummary>
                                                         <AccordionDetails>
                                                             <div className="flex-start">
-                                                                <h4 className="">2D Digital</h4>
+                                                                <h4 className="viewD">2D  Digital</h4>
                                                                 <div className="lichCHieu">
                                                                     {
                                                                         phim.lstLichChieuTheoPhim.map((lichChieu, index) => {
                                                                             return (
-                                                                                <NavLink key={index} to={`/phongve/${lichChieu.maLichChieu}`} 
-                                                                                className="btnMovie" variant="contained" target="_blank">
-                                                                                    <span className="btnColorBHD ">{(lichChieu.ngayChieuGioChieu).substr(0,10)}</span>
-                                                                                </NavLink>
+                                                                                <button className="btnMovie" type="button" key={index}
+                                                                                    onClick={() => {
+                                                                                        if (localStorage.getItem(USER_LOGIN)) {
+                                                                                            return handleRoute(`/phongve/${lichChieu.maLichChieu}`);
+                                                                                        } else {
+                                                                                            Swal.fire({
+                                                                                                title: 'Opps...',
+                                                                                                text: "Bạn chưa đăng nhập để thực hiện tác vụ này",
+                                                                                                icon: 'error',
+                                                                                                showCancelButton: true,
+                                                                                                confirmButtonColor: 'rgb(251, 66, 38)',
+                                                                                                cancelButtonColor: '#757575',
+                                                                                                confirmButtonText: 'Đăng nhập',
+                                                                                                cancelButtonText: 'Để sau',
+                                                                                            }).then((result) => {
+                                                                                                if (result.isConfirmed) {
+                                                                                                    return handleRoute("/dangNhap");
+                                                                                                }
+                                                                                            })
+                                                                                        }
+                                                                                    }}
+                                                                                >
+                                                                                     <p className="btnColorBHD">{(lichChieu.ngayChieuGioChieu).substr(0,10)}</p>
+                                                                                    <p className="btnColorBHD lichDate">{(lichChieu.ngayChieuGioChieu).substr(11,5)}</p>
+                                                                                   
+                                                                                </button>
                                                                             )
                                                                         })
                                                                     }

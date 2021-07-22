@@ -1,6 +1,8 @@
 import React from "react";
 import Swal from 'sweetalert2';
 import { Redirect, Route } from "react-router-dom";
+
+
 const LoginTemplate = ({ path, Component }) => {
   return (
     <Route
