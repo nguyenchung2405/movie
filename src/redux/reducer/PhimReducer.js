@@ -6,7 +6,7 @@ import {
 
 const initialState = {
   mangPhim: [],
-  chiTietPhim: {},
+  chiTietPhim: [],
   danhSachPhimPhanTrang: {
     currentPage: "",
     count: "",

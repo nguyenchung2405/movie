@@ -1,7 +1,6 @@
 import React from 'react';
 import './cns.scss';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import Button from '@material-ui/core/Button';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { withStyles } from '@material-ui/core/styles';
 import MuiAccordion from '@material-ui/core/Accordion';

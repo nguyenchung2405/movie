@@ -33,6 +33,7 @@ const useStyles = makeStyles((theme) => ({
         backgroundColor: "#4a4a4a",
         color:"#fff",
         verticalAlign: "middle",
+        cursor: "revert",
     }
 
 }));

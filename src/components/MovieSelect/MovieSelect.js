@@ -9,6 +9,7 @@ import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Hidden from '@material-ui/core/Hidden';
+import { useSelector } from 'react-redux';
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -45,14 +46,17 @@ const names = [
     `Trùm Cuối Siêu Đẳng - Boss Level - C18`
 ];
 export default function MultipleSelect() {
+    const {mangPhim} = useSelector((state) => state.PhimReducer);
+    console.log("mangPhim", mangPhim);
+    
+    
     const classes = useStyles();
     const [phim, setPhim] = React.useState([]);
     const [rap, setRap] = React.useState([]);
     const [ngayXem, setNgayXem] = React.useState([]);
-    const [suatChieu, setSuatChieu] = React.useState([]);
 
     const [open, setOpen] = React.useState(
-        [{ phim: false, rap: false, ngayXem: false, suatChieu: false }],
+        [{ phim: false, rap: false, ngayXem: false }],
     );
 
     const handleChangePhim = (event) => {
@@ -63,9 +67,6 @@ export default function MultipleSelect() {
     };
     const handleChangeNgayXem = (event) => {
         setNgayXem(event.target.value);
-    };
-    const handleChangeSuatChieu = (event) => {
-        setSuatChieu(event.target.value);
     };
     const handleClose = () => {
         setOpen(false);
@@ -92,15 +93,15 @@ export default function MultipleSelect() {
                                 input={<Input />}
                                 MenuProps={MenuPropsPhim}
                             >
-                                {names.map((name) => (
-                                    <MenuItem key={name} value={name} >
-                                        {name}
+                                {mangPhim.map((phim,index) => (
+                                    <MenuItem key={index} value={phim.tenPhim} >
+                                        {phim.tenPhim}
                                     </MenuItem>
                                 ))}
                             </Select>
                         </FormControl>
                     </Grid>
-                    <Grid item xs={2}>
+                    <Grid item xs={3}>
                         <FormControl className={classes.formControl}>
                             <InputLabel id="rap">Rạp</InputLabel>
                             <Select className={classes.select}
@@ -114,17 +115,17 @@ export default function MultipleSelect() {
                                 input={<Input />}
                                 MenuProps={MenuProps}
                             >
-                                {names.map((name) => (
-                                    <MenuItem key={name} value={name} >
-                                        {name}
+                                {names.map((phim, index) => (
+                                    <MenuItem key={index} value={phim.tenPhim} >
+                                        {phim.tenPhim}
                                     </MenuItem>
                                 ))}
                             </Select>
                         </FormControl>
                     </Grid>
-                    <Grid item xs={2}>
+                    <Grid item xs={3}>
                         <FormControl className={classes.formControl}>
-                            <InputLabel id="ngayxem">Ngày xem</InputLabel>
+                            <InputLabel id="ngayxem">Ngày giờ suất chiếu</InputLabel>
                             <Select className={classes.select}
                                 open={open.ngayXem}
                                 onClose={handleClose}
@@ -133,28 +134,6 @@ export default function MultipleSelect() {
                                 labelId="ngayxem"
                                 id="ngayxem"
                                 value={ngayXem}
-                                input={<Input />}
-                                MenuProps={MenuProps}
-                            >
-                                {names.map((name) => (
-                                    <MenuItem key={name} value={name} >
-                                        {name}
-                                    </MenuItem>
-                                ))}
-                            </Select>
-                        </FormControl>
-                    </Grid>
-                    <Grid item xs={2}>
-                        <FormControl className={classes.formControl}>
-                            <InputLabel id="suatchieu">Suất chiếu</InputLabel>
-                            <Select className={classes.select}
-                                open={open.suatChieu}
-                                onClose={handleClose}
-                                onOpen={handleOpen}
-                                onChange={handleChangeSuatChieu}
-                                labelId="suatchieu"
-                                id="suatchieu"
-                                value={suatChieu}
                                 input={<Input />}
                                 MenuProps={MenuProps}
                             >
