@@ -7,6 +7,7 @@ import Box from "@material-ui/core/Box";
 import { makeStyles } from "@material-ui/core/styles";
 import PhimDangChieu from "../Phim/PhimDangChieu";
 import PhimSapChieu from "../Phim/PhimSapChieu";
+import Loading from "../../ultil/Loading/Loading";
 
 const useStyles = makeStyles({
   root: {
@@ -73,6 +74,7 @@ export default function MovieType() {
       <TabPanel value={value} index={1} dir={theme.direction}>
         <PhimSapChieu />
       </TabPanel>
+      <Loading/>
     </div>
   );
 }

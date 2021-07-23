@@ -1,7 +1,7 @@
 import axios from "axios";
-import { ACCESSTOKEN } from "../constants/NguoiDungConst";
+import { ACCESSTOKEN} from "../constants/NguoiDungConst";
 import { DANH_SACH_PHIM_PHAN_TRANG } from "../constants/PhimConst";
-
+import Swal from "sweetalert2";
 export const danhSachPhimPhanTrang = (paramString) => {
     return async (dispatch) => {
       try {
@@ -29,10 +29,19 @@ export const themPhimAction = (form_data) => {
           data: form_data,
         });
   
-        alert("Thêm phim thành công");
+        Swal.fire({
+          position: 'top-center',
+          icon: 'success',
+          title: "Thêm Phim Thành công",
+          showConfirmButton: false,
+          timer: 2000
+        });
       } catch (err) {
-        alert(err.response?.data);
-        console.log(err);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `${err.response?.data}`,
+        });
       }
     };
   };
@@ -49,11 +58,20 @@ export const themPhimAction = (form_data) => {
               "Bearer " + JSON.parse(localStorage.getItem(ACCESSTOKEN)),
           },
         });
-        alert(result.data);
+        Swal.fire({
+          position: 'top-center',
+          icon: 'success',
+          title: `${result.data}`,
+          showConfirmButton: false,
+          timer: 2000
+        })
         dispatch(danhSachPhimPhanTrang());
       } catch (err) {
-        alert(err.response?.data);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `${err.response?.data}`,
+        });
       }
     };
   };
-  

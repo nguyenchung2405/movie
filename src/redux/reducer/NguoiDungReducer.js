@@ -1,6 +1,8 @@
 import {
   DANH_SACH_LOAI_NGUOI_DUNG,
   DANH_SACH_NGUOI_DUNG,
+  HIDE_LOADING,
+  SHOW_LOADING,
   THONG_TIN_NGUOI_DUNG,
   XU_LY_DANG_NHAP_THANH_CONG,
 } from "../../redux/constants/NguoiDungConst";
@@ -12,6 +14,7 @@ let initialState = {
   },
   danhSachLoaiNguoiDung: [],
   danhSachNguoiDung: [],
+  loadingNguoiDung:false,
 };
 export const NguoiDungReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -35,7 +38,10 @@ export const NguoiDungReducer = (state = initialState, action) => {
 
       return { ...state };
     }
-
+    case SHOW_LOADING:
+      return { ...state, loadingNguoiDung:true};
+    case HIDE_LOADING:
+          return { ...state, loadingNguoiDung:false};
     default:
       return { ...state };
   }

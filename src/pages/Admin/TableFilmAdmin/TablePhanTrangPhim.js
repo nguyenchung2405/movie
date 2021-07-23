@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { danhSachPhimPhanTrang, xoaPhimAdminAction} from "../../../redux/action/FilmAdminAction";
 import PaginationPhim from "../TablePaginationPhimAdmin/PaginationPhim";
+import Loading from "../../../ultil/Loading/Loading";
 
 export default function TablePhanTrangPhim(props) {
   const dispatch = useDispatch();

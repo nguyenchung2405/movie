@@ -54,7 +54,7 @@ export default function New() {
                   <EllipsisOutlined key="ellipsis" />,
                 ]}
               >
-              <div className="titleNew"><a target="_blank"  className="newA" href="https://ghienreview.com/review-va-giai-thich-phim-relic-tan-tich-quy-am-lieu-co-dang-xem/">Review: Tàn Tích Quỷ Ám (Relic) - Ba thế hệ và mối liên kết</a></div>
+              <div className="titleNew"><a target="_blank"  rel="noreferrer" className="newA" href="https://ghienreview.com/review-va-giai-thich-phim-relic-tan-tich-quy-am-lieu-co-dang-xem/">Review: Tàn Tích Quỷ Ám (Relic) - Ba thế hệ và mối liên kết</a></div>
                <Meta description="Review: Tàn Tích Quỷ Ám (Relic) - Ba thế hệ và mối liên kết"/> 
               </Card>
             </Col>

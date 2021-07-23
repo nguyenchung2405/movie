@@ -25,7 +25,7 @@ export default function ItemPhimSapChieu(props) {
         <div className={classes.root}>
             <div className="card">
                 <CardActionArea style={{ marginBottom: 10 }} >
-                    <NavLink to={`/phim/${phim.maPhim}`}>
+                    <NavLink to={`/phimSapChieu/${phim.maPhim}`}>
                         <div className="hoverInfor"></div>
                         <Box className={classes.rating}>
                             <Typography>{phim.danhGia}</Typography>
@@ -59,7 +59,7 @@ export default function ItemPhimSapChieu(props) {
                         </Typography>
                     </div>
                     <div className="showHover">
-                        <NavLink className="buyNow" to={`/phim/${phim.maPhim}`}> MUA VÉ </NavLink>
+                        <NavLink className="buyNow" to={`/phimSapChieu/${phim.maPhim}`}> MUA VÉ </NavLink>
                     </div>
                 </div>
             </div>

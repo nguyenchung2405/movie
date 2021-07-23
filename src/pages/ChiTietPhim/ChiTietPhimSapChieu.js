@@ -2,27 +2,16 @@ import React, { Fragment, useEffect, useState } from "react";
 import ModalVideo from "react-modal-video";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import IconButton from "@material-ui/core/IconButton";
-import { Row, Col, Rate, Progress, Tabs, Card, Avatar } from "antd";
-import {
-  LikeOutlined,
-  EllipsisOutlined,
-  EditOutlined,
-} from "@ant-design/icons";
-import SnackbarContent from "@material-ui/core/SnackbarContent";
+import { Row, Col, Rate, Tabs} from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { layThongTinPhimAction } from "../../redux/action/PhimAction";
 import HeaderComponent from "../../components/Header/HeaderComponent";
 import Footer from "../../components/Footer";
-import CNS from "./CNS/CNS";
-import Loading from "../../ultil/Loading/Loading";
 
-const { Meta } = Card;
 const { TabPane } = Tabs;
 const action = <Rate disabled value={5} />;
 
-
-
-export default function ChiTietPhim(props) {
+export default function ChiTietPhimSapChieu(props) {
   const { chiTietPhim } = useSelector((state) => state.PhimReducer);
   const [isOpen, setOpen] = useState(false);
   const dispatch = useDispatch();
@@ -105,19 +94,7 @@ export default function ChiTietPhim(props) {
                   </div>
                 </Col>
                 <Col sm={4}></Col>
-                <Col sm={4} className="chiTiet__vongTron">
-                  <Progress
-                    type="circle"
-                    percent={75}
-                    strokeColor="#7ed321"
-                    strokeWidth={7}
-                  format={(percent) => `${chiTietPhim.danhGia} `}
-                  />
-                  <Rate disabled defaultValue={3} count={3} />
-                  <p style={{ color: "white", marginTop: "10px" }}>
-                    320 người đánh giá
-                  </p>
-                </Col>
+               
               </Row>
             </div>
           </div>
@@ -135,9 +112,7 @@ export default function ChiTietPhim(props) {
             </div>
             <div>
               <Tabs type="card" defaultActiveKey="1" centered animated={true}>
-                <TabPane tab="Lịch Chiếu" key="1">
-                  <CNS heThongRapChieu={chiTietPhim.heThongRapChieu}/>
-                </TabPane>
+           
                 <TabPane tab="Thông Tin" key="2">
                   <Row>
                     <Col xs={24} sm={12} className="noiDung__Phim">
@@ -187,65 +162,7 @@ export default function ChiTietPhim(props) {
                     </Col>
                   </Row>
                 </TabPane>
-                <TabPane tab="Đánh Giá" key="3">
-                  <div className="comment">
-                    <SnackbarContent
-                      message="Bạn nghĩ gì về phim này ?"
-                      action={action}
-                    />
-                  </div>
-                  <div className="comment">
-                    <Card
-                      actions={[
-                        <LikeOutlined key="setting" />,
-                        <EditOutlined key="edit" />,
-                        <EllipsisOutlined key="ellipsis" />,
-                      ]}
-                    >
-                      <Meta
-                        avatar={
-                          <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-                        }
-                        title="Nam"
-                        description="Phải nói là phim quá hay"
-                      />
-                    </Card>
-                  </div>
-                  <div className="comment">
-                    <Card
-                      actions={[
-                        <LikeOutlined key="setting" />,
-                        <EditOutlined key="edit" />,
-                        <EllipsisOutlined key="ellipsis" />,
-                      ]}
-                    >
-                      <Meta
-                        avatar={
-                          <Avatar src="https://chiase24.com/wp-content/uploads/2019/07/T%E1%BB%95ng-h%E1%BB%A3p-h%C3%ACnh-%E1%BA%A3nh-g%C3%A1i-xinh-d%E1%BB%85-th%C6%B0%C6%A1ng-cute-nh%E1%BA%A5t-1.jpg" />
-                        }
-                        title="Phương Anh"
-                        description="Không hay bằng các phần trước. Ai thích xem hành động thì coi, vì phim chỉ chạy và chạy liên tục xong hết phim, không được logic lắm! Cảnh cảm động cũng làm không tới :(((!"
-                      />
-                    </Card>
-                  </div>
-                  <div className="comment">
-                    <Card
-                      actions={[
-                        <LikeOutlined key="setting" />,
-                        <EditOutlined key="edit" />,
-                        <EllipsisOutlined key="ellipsis" />,
-                      ]}
-                    >
-                      <Meta
-                        avatar={
-                          <Avatar src="https://phunugioi.com/wp-content/uploads/2020/10/hinh-anh-avatar-de-thuong-cute.jpg" />
-                        }
-                        title="Thư"
-                        description="Phim xuất sắc nha <3"
-                      />
-                    </Card>
-                  </div>
-                </TabPane>
+               
               </Tabs>
             </div>
           </div>
@@ -253,7 +170,6 @@ export default function ChiTietPhim(props) {
       </Row>
 
       <Footer />
-      <Loading/>
     </div>
   );
 }

@@ -537,6 +537,15 @@
   font-size: 30px;
 }
 
+.infoTable {
+  border: 1px solid gray;
+  padding: 20px;
+  width: 85%;
+  margin: 0 auto;
+  box-shadow: 0px 10px 10px 1px;
+  margin-left: 30px;
+}
+
 .thongTin {
   position: relative;
   top: 150px;
@@ -556,6 +565,10 @@
 
 .user_content {
   margin-bottom: 20px;
+}
+
+.user_Icon {
+  padding-left: 5px;
 }
 
 .user_Icon i {
@@ -611,29 +624,41 @@ p:nth-child(2) {
   color: white;
 }
 
+.thongTinDatVe {
+  height: 512px;
+  overflow: auto;
+}
+
 .datVe {
-  width: 100%;
   border: 1px solid #8080803b;
   font-size: 14px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   white-space: nowrap;
   border-collapse: collapse;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .datVe th {
   background: #f55960;
-  padding: 20px 10px;
+  padding: 25px 10px;
   color: #fff;
   text-align: left;
 }
 
 .datVe tr {
   border-bottom: 1px solid #a9a9a9c7;
+  transition: all 0.2s;
+}
+
+.datVe tr:hover {
+  background-color: #dddddd;
+  cursor: pointer;
 }
 
 .datVe tr td {
   text-align: left;
-  padding: 10px 10px;
+  padding: 20px 10px;
 }
 
 .ant-row .ant-col {
@@ -681,7 +706,15 @@ p:nth-child(2) {
   color: #fb4226 !important;
 }
 
+.ant-tabs-left > .ant-tabs-content-holder > .ant-tabs-content > .ant-tabs-tabpane, .ant-tabs-left > div > .ant-tabs-content-holder > .ant-tabs-content > .ant-tabs-tabpane {
+  padding: 0 !important;
+}
+
 @media only screen and (width: 768px) {
+  .thongTinDatVe {
+    width: 96%;
+    margin: 0 auto;
+  }
   .user_Icon i {
     width: 40px;
     height: 40px;
@@ -1124,7 +1157,7 @@ p:nth-child(2) {
 
 .card-container {
   max-width: 960px;
-  padding: 0 10px;
+  padding: 0 16px;
   margin: auto;
 }
 
@@ -1283,7 +1316,7 @@ p:nth-child(2) {
 
 .ant-row .homeApp .maxWidth940 {
   max-width: 960px;
-  padding: 0 10px;
+  padding: 0 16px;
   margin: 0 auto;
 }
 
@@ -1363,6 +1396,10 @@ p:nth-child(2) {
   }
 }
 
+.MuiBox-root-21 {
+  padding: 0 !important;
+}
+
 #footer {
   background-color: #222;
   padding-top: 10px;
@@ -1372,7 +1409,7 @@ p:nth-child(2) {
 
 #footer .maxWidth940 {
   max-width: 960px;
-  padding: 0 10px;
+  padding: 0 16px;
   float: none;
   margin: auto;
   clear: both;
@@ -1491,5 +1528,56 @@ p:nth-child(2) {
   #footer .zion_icon {
     margin-bottom: 15px;
   }
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 12px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background: #8b0000;
+  border-radius: 50%;
+  color: #FFF;
+  z-index: 10;
+}
+
+.scroll-to-top .icon {
+  margin-top: 10px;
+  animation: scrollTop 0.5s alternate ease infinite;
+}
+
+@keyframes scrollTop {
+  from {
+    transform: translatey(2px);
+  }
+  to {
+    transform: translateY(-1px);
+  }
+}
+
+.container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: #fffffff0;
+  z-index: 100;
+}
+
+.container .imgLoading {
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%);
+  position: absolute;
 }
 /*# sourceMappingURL=main.css.map */

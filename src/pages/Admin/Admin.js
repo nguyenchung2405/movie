@@ -69,7 +69,6 @@ export default function Admin(props) {
               width={1000}
             >
               <AddUser closerModal={setVisibleUser}/>  
-                {/* <ThemNguoiDung closeModal={setVisibleUser}/>  */}
             </Modal>
             <TableNguoiDungAdmin />
           </TabPane>

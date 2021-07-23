@@ -1,0 +1,29 @@
+.cursor-pointer{
+    cursor: pointer;
+}
+.text-center{
+    text-align: center;
+}
+.scroll-to-top{
+    position: fixed;
+    bottom:12px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: #8b0000;
+    border-radius: 50%;
+    color: #FFF;
+    z-index: 10;
+    .icon{
+        margin-top: 10px;
+        animation: scrollTop 0.5s alternate ease infinite;
+    }
+}
+@keyframes scrollTop{
+    from{
+        transform: translatey(2px);
+    }
+    to{
+        transform: translateY(-1px);
+    }
+}

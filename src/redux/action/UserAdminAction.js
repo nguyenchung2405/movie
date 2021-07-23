@@ -1,6 +1,6 @@
-import { ACCESSTOKEN, DANH_SACH_NGUOI_DUNG_PHAN_TRANG } from "../constants/NguoiDungConst";
+import { ACCESSTOKEN, DANH_SACH_NGUOI_DUNG_PHAN_TRANG} from "../constants/NguoiDungConst";
 import axios from "axios";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 export const layDanhSachNguoiDungPhanTrang = (paramString) => {
     return async (dispatch) => {
       try {
@@ -30,12 +30,12 @@ export const layDanhSachNguoiDungPhanTrang = (paramString) => {
           },
         });
         Swal.fire({
-          position: 'top-center',
+          position: 'top-end',
           icon: 'success',
           title: `${result.data}`,
           showConfirmButton: false,
           timer: 2000
-        })
+        });
       } catch (err) {
         Swal.fire({
           icon: 'error',
@@ -104,3 +104,4 @@ export const layDanhSachNguoiDungPhanTrang = (paramString) => {
       }
     };
   };
+ 

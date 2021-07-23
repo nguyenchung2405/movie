@@ -67,7 +67,7 @@ export default function UpdateUser(props) {
             onBlur={formik.handleBlur}
           />
 
-          <p className="canhBaoTai">Tài khoản không thể cập nhật lại!</p>
+          <p className="canhBaoTai">Tài khoản không thể cập nhật !</p>
         </div>
         <div className="hoTen">
           <p className="lable">Họ Tên</p>

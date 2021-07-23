@@ -14,11 +14,12 @@ const useStyles = makeStyles((theme) => ({
   width: "100%",
   height: 310,
   borderRadius: 4,
+  boxShadow: "1px 10px 10px 1px" ,
   [theme.breakpoints.down('md')]: {
     height: 250,
   },
   [theme.breakpoints.down('sm')]: {
-    height: 200,
+    height: 220,
   },
 },
   rating: {

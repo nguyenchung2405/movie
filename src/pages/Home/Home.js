@@ -7,6 +7,7 @@ import New from "../../components/New";
 import Apply from "../../components/Apply";
 import Footer from "../../components/Footer";
 import CumRap from "../../components/CumRap/CumRap";
+import ScrollToTop from "../../ultil/ScrollTop/ScrollToTop";
 export default function Home() {
   return (
     <div>
@@ -30,6 +31,7 @@ export default function Home() {
       <div style={{ marginTop: 60 }}>
         <MovieType />
       </div>
+      <ScrollToTop/>
 
       <div style={{ paddingTop: 30, paddingBottom: 30 }}>
         <CumRap />

@@ -1,7 +1,8 @@
-import { Switch, Router, Route } from "react-router-dom";
+import { Switch, Router } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/Home/Home";
 import ChiTietPhim from "./pages/ChiTietPhim/ChiTietPhim";
+import ChiTietPhimSapChieu from "./pages/ChiTietPhim/ChiTietPhimSapChieu";
 import DangKy from "./pages/SignUp";
 import DangNhap from "./pages/SignIn";
 import User from "../src/pages/User/User";
@@ -37,13 +38,12 @@ function App() {
       <Switch>
         <LoadingTemplate exact path="/home" component={Home} />
         <LoadingTemplate exact path="/phim/:id" component={ChiTietPhim} />
+        <LoadingTemplate exact path="/phimSapChieu/:id" component={ChiTietPhimSapChieu} /> 
         <LoadingTemplate exact path="/phongve/:id" component={PhongVe} />
         <LoadingTemplate exact path="/dangNhap" component={DangNhap} />
         <LoadingTemplate exact path="/dangKy" component={DangKy} />
-
         <LoginTemplate exact path="/nguoiDung" Component={User} />
         <AdminTemplate exact path="/admin" Component={Admin} />
-        
         <LoadingTemplate path="*" component={Home} />
         <LoadingTemplate exact path="/" component={Home} />
       </Switch>

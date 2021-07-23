@@ -33,6 +33,14 @@
     }
   }
 }
+.infoTable{
+  border: 1px solid gray;
+  padding: 20px;
+  width: 85%;
+  margin: 0 auto;
+  box-shadow: 0px 10px 10px 1px;
+  margin-left: 30px;
+}
 .thongTin {
   position: relative;
   top: 150px;
@@ -51,6 +59,7 @@
   margin-bottom: 20px;
 }
 .user_Icon {
+ padding-left: 5px;
   i {
     width: 60px;
     height: 60px;
@@ -98,26 +107,34 @@ p:nth-child(2) {
     }
   }
 }
-
+.thongTinDatVe{
+  height: 512px;
+  overflow: auto;
+}
 .datVe {
-  width: 100%;
   border: 1px solid #8080803b;
   font-size: 14px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   white-space: nowrap;
   border-collapse: collapse;
-
+  width: 80%;
+  margin:0 auto;
   th {
     background: #f55960;
-    padding: 20px 10px;
+    padding: 25px 10px;
     color: #fff;
     text-align: left;
   }
   tr {
     border-bottom: 1px solid #a9a9a9c7;
+    transition: all 0.2s;
+    &:hover{
+      background-color: rgb(221, 221, 221);
+      cursor: pointer;
+    }
     td {
       text-align: left;
-      padding: 10px 10px;
+      padding: 20px 10px;
     }
   }
 }
@@ -160,8 +177,15 @@ p:nth-child(2) {
   font-weight: 500;
   color: #fb4226 !important;
 }
+.ant-tabs-left > .ant-tabs-content-holder > .ant-tabs-content > .ant-tabs-tabpane, .ant-tabs-left > div > .ant-tabs-content-holder > .ant-tabs-content > .ant-tabs-tabpane{
+  padding: 0 !important;
+}
 
 @media only screen and (width: 768px) {
+  .thongTinDatVe{
+    width: 96%;
+    margin: 0 auto;
+  }
   .user_Icon {
     i {
       width: 40px;
@@ -293,6 +317,7 @@ p:nth-child(2) {
   }
 }
 @include respon-to("small") {
+  
   .userUpdate {
     width: 70%;
   }
