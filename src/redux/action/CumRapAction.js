@@ -13,7 +13,6 @@ export const layThongTinCumRap = () => {
                 type: LAY_THONG_TIN_HE_THONG_RAP,
                 mangRap: result.data
             })
-            console.log(result.data)
         }catch(err){
             console.log(err.reponse.data);
         }
@@ -30,7 +29,6 @@ export const layThongTinLichChieu = (maNhom='GP03')=>{
                 type: LAY_THONG_TIN_LICH_CHIEU,
                 thongTinLichCHieu: result.data
             })
-            console.log(result.data)
         }catch(err){
             console.log(err);
         }

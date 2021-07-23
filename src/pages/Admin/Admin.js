@@ -7,7 +7,6 @@ import TablePhanTrangPhim from "./TableFilmAdmin/TablePhanTrangPhim";
 import TableNguoiDungAdmin from "./TableUserAdmin/TableNguoiDungAdmin";
 import ThemPhim from "./AddFilmAdmin/ThemPhim";
 import AddUser from "./AddUserAdmin/AddUser";
-import Loading from "../../ultil/Loading/Loading";
 export default function Admin(props) {
   const { TabPane } = Tabs;
   const [visible, setVisible] = useState(false);
@@ -70,13 +69,11 @@ export default function Admin(props) {
               width={1000}
             >
               <AddUser closerModal={setVisibleUser}/>  
-                {/* <ThemNguoiDung closeModal={setVisibleUser}/>  */}
             </Modal>
             <TableNguoiDungAdmin />
           </TabPane>
         </Tabs>
       </div>
-      <Loading/>
     </div>
   );
 }

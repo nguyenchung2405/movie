@@ -1,10 +1,9 @@
 import axios from "axios";
-import { ACCESSTOKEN, HIDE_LOADING, SHOW_LOADING } from "../constants/NguoiDungConst";
+import { ACCESSTOKEN} from "../constants/NguoiDungConst";
 import { DANH_SACH_PHIM_PHAN_TRANG } from "../constants/PhimConst";
 import Swal from "sweetalert2";
 export const danhSachPhimPhanTrang = (paramString) => {
     return async (dispatch) => {
-      dispatch(showLoading());
       try {
         const result = await axios({
           url: `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhimPhanTrang?${paramString}`,
@@ -14,18 +13,15 @@ export const danhSachPhimPhanTrang = (paramString) => {
           type: DANH_SACH_PHIM_PHAN_TRANG,
           danhSachPhimPhanTrang: result.data,
         });
-        dispatch(hideLoading());
       } catch (error) {
         console.log(error.response?.data);
-      };
-      dispatch(hideLoading());
+      }
     };
   };
 
   
 export const themPhimAction = (form_data) => {
     return async (dispatch) => {
-      dispatch(showLoading());
       try {
         const result = await axios({
           url: "https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/ThemPhimUploadHinh",
@@ -40,14 +36,12 @@ export const themPhimAction = (form_data) => {
           showConfirmButton: false,
           timer: 2000
         });
-        dispatch(hideLoading());
       } catch (err) {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
           text: `${err.response?.data}`,
         });
-        dispatch(hideLoading());
       }
     };
   };
@@ -55,7 +49,6 @@ export const themPhimAction = (form_data) => {
   
   export const xoaPhimAdminAction = (maPhim) => {
     return async (dispatch) => {
-      dispatch(showLoading());
       try {
         const result = await axios({
           url: `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`,
@@ -73,24 +66,12 @@ export const themPhimAction = (form_data) => {
           timer: 2000
         })
         dispatch(danhSachPhimPhanTrang());
-        dispatch(hideLoading());
       } catch (err) {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
           text: `${err.response?.data}`,
         });
-        dispatch(hideLoading());
       }
     };
   };
-  export const showLoading =()=>dispatch=>{
-    dispatch({
-        type:SHOW_LOADING
-    });
-  }
-  export const hideLoading =()=>dispatch=>{
-    dispatch({
-        type:HIDE_LOADING
-    });
-  }

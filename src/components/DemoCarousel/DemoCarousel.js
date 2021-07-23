@@ -76,10 +76,10 @@ export default function DemoCarousel(props) {
                     imgList.map((item, i) => (
                         <Paper key={i} className="paper">
                             {item.modalVideo}
-                            <a href="#">
+                            <a href="#aa">
                                 <img src={item.imgPath}
                                     style={{ width: "100%", height: 580, verticalAlign: "middle" }}
-                                    className="reponsiveImg" />
+                                    className="reponsiveImg"  alt={item.imgPath}/>
                             </a>
                         </Paper>
                     ))

@@ -2,24 +2,14 @@ import React, { Fragment, useEffect, useState } from "react";
 import ModalVideo from "react-modal-video";
 import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import IconButton from "@material-ui/core/IconButton";
-import { Row, Col, Rate, Progress, Tabs, Card, Avatar } from "antd";
-import {
-  LikeOutlined,
-  EllipsisOutlined,
-  EditOutlined,
-} from "@ant-design/icons";
-import SnackbarContent from "@material-ui/core/SnackbarContent";
+import { Row, Col, Rate, Tabs} from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import { layThongTinPhimAction } from "../../redux/action/PhimAction";
 import HeaderComponent from "../../components/Header/HeaderComponent";
 import Footer from "../../components/Footer";
-import CNS from "./CNS/CNS";
 
-const { Meta } = Card;
 const { TabPane } = Tabs;
 const action = <Rate disabled value={5} />;
-
-
 
 export default function ChiTietPhimSapChieu(props) {
   const { chiTietPhim } = useSelector((state) => state.PhimReducer);
