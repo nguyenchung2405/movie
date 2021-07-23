@@ -40,9 +40,9 @@ export default function ItemPhimDangChieu(props) {
                             // videoId="DUzEYcR2VtM"
                             onClose={() => setOpen(false)} />
                         <div className="btnPlay" style={{ width: "100%", textAlign: "center", position: "absolute", top: "40%" }}>
-                            <IconButton onClick={() => setOpen(true)}>
+                             <IconButton onClick={() => setOpen(true)}>
                                 <PlayArrowIcon className="iconPlay" />
-                            </IconButton>
+                            </IconButton> 
                         </div>
                     </Fragment >
 

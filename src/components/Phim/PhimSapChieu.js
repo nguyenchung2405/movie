@@ -1,8 +1,8 @@
-import React, { Fragment, useState  } from 'react';
+import React, { Fragment, useState,useEffect } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Hidden from '@material-ui/core/Hidden';
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
 import Carousel from 'react-material-ui-carousel';
 import useStyles from './PhimStyle';
 import ItemPhimSapChieu from '../MovieItem/ItemPhimSapChieu';
@@ -16,12 +16,19 @@ import IconButton from '@material-ui/core/IconButton';
 import '../MovieItem/movieItem.scss';
 import { NavLink } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
+import { layDanhSachPhimSapChieu } from '../../redux/action/PhimAction';
 
 
 export default function PhimSapChieu() {
     const classes = useStyles();
-    const { mangPhim } = useSelector(state => state.PhimReducer);
-    const phimSapChieu = [...mangPhim];
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(layDanhSachPhimSapChieu());
+    }, []);
+
+    const { mangPhimSapChieu } = useSelector(state => state.PhimReducer);
+    console.log(mangPhimSapChieu)
+    const phimSapChieu = [...mangPhimSapChieu];
     const theme = useTheme();
     const [isOpen, setOpen] = useState(false);
 
@@ -68,7 +75,7 @@ export default function PhimSapChieu() {
         })
     }
     const renderPhimReponsive = () => {
-        return mangPhim.map((phim, index) => {
+        return mangPhimSapChieu.map((phim, index) => {
             return (
                 <Grid key={index} item xs={6} className={classes.reponsive}>
                     <div className="card">

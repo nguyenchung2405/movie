@@ -1,6 +1,8 @@
-.img {
-  width: 50px;
-  height: 50px;
+.imgRap {
+  width: 60px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 5px;
 }
 
 .w-100 {
@@ -13,6 +15,9 @@
 
 .btnColorBHD {
   color: #00ac4d;
+  padding: 5px 10px !important;
+  transition: all 0.5s;
+  font-size: 16px;
 }
 
 .colorCinema {
@@ -48,6 +53,16 @@
 .pm-0 {
   margin: 0;
   padding: 0;
+}
+
+.viewD {
+  font-size: 30px;
+  box-shadow: 6px 1px 10px 1px;
+  color: gray;
+  font-family: fantasy;
+  padding: 5px !important;
+  border-radius: 5px;
+  margin-bottom: 20px !important;
 }
 
 .ageType {
@@ -125,6 +140,7 @@
 
 .tab .diadiem__Rap .rapInfo:hover {
   opacity: 1;
+  background-color: #ece8e8;
 }
 
 .tab .diadiem__Rap .rapInfo .d-flex {
@@ -170,12 +186,10 @@
 .tab .listMovie .wrapListMovie .titleMovie {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
 }
 
 .tab .listMovie .wrapListMovie .lichCHieu {
   display: flex;
-  height: 300px;
   overflow-x: hidden;
   overflow-y: auto;
   max-width: 100%;
@@ -199,5 +213,11 @@
   justify-content: center;
   text-decoration: none;
   margin: 3px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tab .listMovie .wrapListMovie .btnMovie:hover {
+  background-color: #ddd9d9;
 }
 /*# sourceMappingURL=cumrapstyle.css.map */

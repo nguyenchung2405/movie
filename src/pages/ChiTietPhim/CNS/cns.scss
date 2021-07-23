@@ -1,4 +1,4 @@
-.img {
+.imgDetail {
   width: 50px;
   height: 50px;
 }
@@ -12,11 +12,13 @@
   border-top: 1px solid #ebebec;
   border-left: 1px solid #ebebec;
   border-bottom: 1px solid #ebebec;
+  border-right: 1px solid #ebebec;
   overflow-y: auto;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
   padding: 0 10px;
+  margin-bottom: 0 !important;
   .rapInfo {
     cursor: pointer;
     max-width: 100%;
@@ -30,20 +32,22 @@
       display: flex;
       align-items: center;
       background-color: #fff;
-      padding: 8px 5px;
+      padding: 8px 10px;
       border-radius: 4px;
+      justify-content: space-around;
     }
   }
 }
 
 .listMovieCNS {
-  border: 1px solid #ebebec;
+  border-right: 1px solid #ebebec;
+  border-top: 1px solid #ebebec;
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px;
   overflow-x: hidden;
   overflow-y: auto;
   max-width: 100%;
-  height: 700px;
+  height: 516px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -59,16 +63,15 @@
       margin-bottom: 20px;
       cursor: pointer;
     }
-    .lichCHieu {
+    .lichCHieuDetail {
       display: flex;
-      height: 300px;
       overflow-x: hidden;
       overflow-y: auto;
       max-width: 100%;
       flex-wrap: wrap;
       align-items: flex-start;
     }
-    .btnMovie {
+    .btnMovieDetail {
       color: #000;
       border: 1px solid #e4e4e4;
       display: flex;
@@ -85,6 +88,10 @@
       text-decoration: none;
       margin: 3px;
       cursor: pointer;
+      transition: all.2s;
+      &:hover{
+        background-color: rgb(221, 217, 217);
+      }
     }
   }
 }
@@ -98,4 +105,73 @@
   margin-right: 8px;
   border-radius: 4px;
   background-color: #00ac4d;
+};
+.infoH{
+  width: 150px;;
+};
+.btnColorBHD_detail {
+  color: #00ac4d;
+  padding: 5px  10px!important;
+  transition: all 0.5s;
+  font-size: 18px;
+};
+.viewD_detail{
+  font-size: 30px;
+  box-shadow: 6px 1px 10px 1px;
+  color: gray;
+  font-family: fantasy;
+  padding: 5px !important;
+  border-radius: 5px ;
+  margin-bottom: 10px !important;
+  
+}
+.tabDetail{
+  display: flex;
+  justify-content: flex-start;
+  border: 1px solid white;
+}
+@media only screen and (max-width: 480px){
+  .imgDetail{
+    width: 30px;
+    height: 30px;
+  };
+  .diadiem__RapCNS .rapInfo .info__Item {
+    display: flex;
+    flex-direction: column;
+   
+  };
+  .infoH{
+    text-align: center;
+  };
+  .titleMovie{
+    display: flex;
+    flex-direction: column;
+  };
+  .btnColorBHD_detail{
+    padding: 0 !important;
+    padding-right: 2px !important;
+    font-size: 14px;
+  };
+  .listMovieCNS{
+    padding: 0;
+    height: 460px;
+   
+    .wrapListMovieCNS{
+      padding: 0 3px;
+      padding-top: 20px;
+      border-bottom: none;
+      
+    }
+  };
+  .viewD_detail{
+    font-size: 18px;
+    margin-bottom: 2px !important;
+  }
+  .diadiem__RapCNS{
+    padding: 0;
+    .rapInfo{
+      padding: 20px 5px;
+     
+    }
+  }
 }

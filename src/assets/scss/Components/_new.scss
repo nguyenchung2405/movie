@@ -30,6 +30,21 @@
       background: $color-red;
     }
   }
+  .titleNew{
+   height: 50px;
+    font-weight:$fw-0 + 100;
+    font-size: $fs-2;
+    margin-bottom: 5px;
+    overflow: hidden ;
+  
+    .newA{
+      color: $color-black;
+      transition: all 0.2s;
+      &:hover{
+        color: $color-red;
+      }
+    }
+  }
   .ant-tabs-tab {
     font-size: $fs-3;
 

@@ -71,8 +71,8 @@ export default function CNS(props) {
                 return (
                     <Tab key={index} className="rapInfo">
                         <div className="info__Item">
-                            <img src={item.logo} alt={item.logo} className="img" />
-                            <h4 style={{ marginLeft: 10 }}>{item.tenHeThongRap}</h4>
+                            <img src={item.logo} alt={item.logo} className="imgDetail" />
+                            <h4 className="infoH" >{item.tenHeThongRap}</h4>
                         </div>
                     </Tab>
                 )
@@ -88,8 +88,8 @@ export default function CNS(props) {
                         {
                             cumRapChieu.map((rapItem, index) => {
                                 return (
-                                    <div className="wrapListMovieCNS">
-                                        <Accordion key={index} expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+                                    <div className="wrapListMovieCNS" key={index}>
+                                        <Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
                                             <AccordionSummary expandIcon={<ExpandMoreIcon />}>
                                                 <div className="titleMovie ">
                                                     <img src={item.logo} alt={item.logo} className="img" />
@@ -101,12 +101,12 @@ export default function CNS(props) {
                                             </AccordionSummary>
                                             <AccordionDetails>
                                                 <div className="flex-start">
-                                                    <h4 className="">2D Digital</h4>
-                                                    <div className="lichCHieu">
+                                                    <h4 className="viewD_detail">2D Digital</h4>
+                                                    <div className="lichCHieuDetail">
                                                         {
                                                             rapItem.lichChieuPhim.map((lichChieu, index) => {
                                                                 return (
-                                                                    <button className="btnMovie" type="button" key={index}
+                                                                    <button className="btnMovieDetail" type="button" key={index}
                                                                         onClick={() => {
                                                                             if (localStorage.getItem(USER_LOGIN)) {
                                                                                 return handleRoute(`/phongve/${lichChieu.maLichChieu}`);
@@ -128,7 +128,8 @@ export default function CNS(props) {
                                                                             }
                                                                         }}
                                                                     >
-                                                                        <span className="btnColorBHD ">{lichChieu.ngayChieuGioChieu}</span>
+                                                                        <p className="btnColorBHD_detail ">{(lichChieu.ngayChieuGioChieu).substr(0,10)}</p>
+                                                                        <p className="btnColorBHD_detail ">{(lichChieu.ngayChieuGioChieu).substr(11,5)}</p>
                                                                     </button>
                                                                 )
                                                             })
@@ -150,7 +151,7 @@ export default function CNS(props) {
 
 
     return (
-        <Tabs className="tab" style={{ width: "100%" }}>
+        <Tabs className="tabDetail" style={{ width: "100%" }}>
             <TabList style={{ width: "37%" }} className="diadiem__RapCNS">
                 {renderRap()}
             </TabList>

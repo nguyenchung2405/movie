@@ -24,7 +24,7 @@ import { useDispatch } from "react-redux";
 import { XU_LY_DANG_NHAP_THANH_CONG } from "../../redux/constants/NguoiDungConst";
 import { NavLink } from "react-router-dom";
 import "./header.scss";
-import weblogo from '../../assets/img/web-logo.png';
+import weblogo from "../../assets/img/web-logo.png";
 
 export default function HeaderComponent(props) {
   let { tenDangNhap } = useSelector((state) => state.NguoiDungReducer);
@@ -72,11 +72,7 @@ export default function HeaderComponent(props) {
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
           <NavLink to="/">
-            <img
-              src={weblogo}
-              alt={weblogo}
-              className={classes.logo}
-            />
+            <img src={weblogo} alt={weblogo} className={classes.logo} />
           </NavLink>
           <div className={classes.grow} />
           <Hidden smDown>
@@ -184,7 +180,7 @@ export default function HeaderComponent(props) {
                         {tenDangNhap.taiKhoan}
                       </Button>
                       <Menu
-                        style={{ top: 22, left: 12 }}
+                        style={{ top: 22, left:-172 }}
                         id="simple-menu"
                         anchorEl={anchorEl}
                         keepMounted
@@ -222,24 +218,25 @@ export default function HeaderComponent(props) {
                 </ListItem>
 
                 <ListItem button>
-                  <a className="aMobile" href="#">
-                    Lịch chiếu
-                  </a>
+                  <Link className="aMobile"smooth={true} duration={500} offset={-60} to="lichChieu">
+                  Lịch chiếu
+                  </Link>
+                </ListItem>
+                
+                <ListItem button>
+                  <Link className="aMobile"smooth={true} duration={500} offset={-60} to="cumRap">
+                  Cụm Rạp
+                  </Link>
                 </ListItem>
                 <ListItem button>
-                  <a className="aMobile" href="#">
-                    Cụm rạp
-                  </a>
+                <Link className="aMobile"smooth={true} duration={500} offset={-60} to="new">
+                Tin Tức
+              </Link>
                 </ListItem>
                 <ListItem button>
-                  <a className="aMobile" href="#">
-                    Tin tức
-                  </a>
-                </ListItem>
-                <ListItem button>
-                  <a className="aMobile" href="#">
-                    Ứng dụng
-                  </a>
+                  <Link className="aMobile"smooth={true} duration={500} offset={-60} to="ungDung">
+                  Ứng Dụng
+                  </Link>
                 </ListItem>
 
                 <ListItem button>

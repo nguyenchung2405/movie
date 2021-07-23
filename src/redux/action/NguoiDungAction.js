@@ -1,5 +1,6 @@
 import axios from "axios";
 import { history } from "../../App";
+import Swal from 'sweetalert2';
 import {
   USER_LOGIN,
   ACCESSTOKEN,
@@ -8,8 +9,8 @@ import {
   CAP_NHAT_THONG_TIN_NGUOI_DUNG,
   DANH_SACH_LOAI_NGUOI_DUNG,
   DANH_SACH_NGUOI_DUNG,
-  DANH_SACH_NGUOI_DUNG_PHAN_TRANG,
 } from "../../redux/constants/NguoiDungConst";
+
 export const dangKy = (data) => {
   return axios({
     url: "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangKy",
@@ -17,11 +18,21 @@ export const dangKy = (data) => {
     data,
   })
     .then((res) => {
-      alert("Đăng ký thành công");
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: "Đăng ký thành công",
+        showConfirmButton: false,
+        timer: 2000
+      })
       history.goBack();
     })
     .catch((err) => {
-      alert(err.response?.data);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: `${err.response?.data}`,
+      });
     });
 };
 
@@ -43,11 +54,14 @@ export const dangNhap = (userLogin) => {
         ACCESSTOKEN,
         JSON.stringify(result.data.accessToken)
       );
-
       history.push("/");
     } catch (err) {
-      alert(err.response?.data);
-      console.log(err.response?.data);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: `${err.response?.data}`,
+      });
+      
     }
   };
 };
@@ -129,37 +143,3 @@ export const layDanhSachNguoiDung = () => {
   };
 };
 
-export const layDanhSachNguoiDungPhanTrang = (paramString) => {
-  return async (dispatch) => {
-    try {
-      const result = await axios({
-        url: `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachNguoiDungPhanTrang?${paramString}`,
-        method: "GET",
-      });
-      dispatch({
-        type: DANH_SACH_NGUOI_DUNG_PHAN_TRANG,
-        danhSachNguoiDungPhanTrang: result.data,
-      });
-    } catch (err) {
-      console.log(err);
-    }
-  };
-};
-
-export const xoaNguoiDungAdminAction = (taiKhoan) => {
-  return async (dispatch) => {
-    try {
-      const result = await axios({
-        url: `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`,
-        method: "DELETE",
-        headers: {
-          Authorization:
-            "Bearer " + JSON.parse(localStorage.getItem(ACCESSTOKEN)),
-        },
-      });
-      alert(result.data);
-    } catch (err) {
-      alert(err.response?.data);
-    }
-  };
-};

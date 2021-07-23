@@ -14,14 +14,14 @@ export default function ThongTinDatVe(props) {
               ? Ve.tenPhim.substr(0, 40) + "..."
               : Ve.tenPhim}
           </td>
-          <td>{Ve.ngayDat}</td>
+          <td>{(Ve.ngayDat).substr(0,10)}</td>
           <td>{Ve.thoiLuongPhim} phút</td>
           <td>{Ve.danhSachGhe[0].tenHeThongRap}</td>
           <td>{Ve.danhSachGhe[0].tenGhe}</td>
 
           <td>{Ve.maVe}</td>
-          <td>{Ve.giaVe}</td>
-        </tr>
+          <td>{(Ve.giaVe.toLocaleString())}</td>
+        </tr> 
       );
     });
   };
