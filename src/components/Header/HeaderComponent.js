@@ -1,30 +1,17 @@
 import React from "react";
 import { useSelector } from "react-redux";
-
 import { Link } from "react-scroll";
 import useStyles from "./HeaderStyle";
 import MenuIcon from "@material-ui/icons/Menu";
 import Location from "../Location/Location";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import {
-  List,
-  ListItem,
-  Button,
-  Menu,
-  MenuItem,
-  AppBar,
-  Toolbar,
-  IconButton,
-  Avatar,
-  Drawer,
-  Hidden,
-} from "@material-ui/core";
-
+import {List,ListItem, Button, Menu, MenuItem,AppBar, Toolbar, IconButton, Avatar, Drawer, Hidden,} from "@material-ui/core";
 import { useDispatch } from "react-redux";
-import { XU_LY_DANG_NHAP_THANH_CONG } from "../../redux/constants/NguoiDungConst";
+import { SHOW_LOADING, XU_LY_DANG_NHAP_THANH_CONG } from "../../redux/constants/NguoiDungConst";
 import { NavLink } from "react-router-dom";
 import "./header.scss";
 import weblogo from "../../assets/img/web-logo.png";
+import { HIDE_LOADING } from "../../redux/constants/LoadingConst";
 
 export default function HeaderComponent(props) {
   let { tenDangNhap } = useSelector((state) => state.NguoiDungReducer);
@@ -65,6 +52,15 @@ export default function HeaderComponent(props) {
       type: XU_LY_DANG_NHAP_THANH_CONG,
       tenDangNhap: null,
     });
+    dispatch({
+      type:SHOW_LOADING
+    });
+    setTimeout(()=>{
+      dispatch({
+        type:HIDE_LOADING
+      });
+    },2000)
+   
   };
 
   return (

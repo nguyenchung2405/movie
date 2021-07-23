@@ -14,6 +14,7 @@ import { layThongTinPhimAction } from "../../redux/action/PhimAction";
 import HeaderComponent from "../../components/Header/HeaderComponent";
 import Footer from "../../components/Footer";
 import CNS from "./CNS/CNS";
+import Loading from "../../ultil/Loading/Loading";
 
 const { Meta } = Card;
 const { TabPane } = Tabs;
@@ -252,6 +253,7 @@ export default function ChiTietPhim(props) {
       </Row>
 
       <Footer />
+      <Loading/>
     </div>
   );
 }

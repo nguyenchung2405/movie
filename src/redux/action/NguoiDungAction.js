@@ -9,6 +9,8 @@ import {
   CAP_NHAT_THONG_TIN_NGUOI_DUNG,
   DANH_SACH_LOAI_NGUOI_DUNG,
   DANH_SACH_NGUOI_DUNG,
+  SHOW_LOADING,
+  HIDE_LOADING,
 } from "../../redux/constants/NguoiDungConst";
 
 export const dangKy = (data) => {
@@ -68,6 +70,7 @@ export const dangNhap = (userLogin) => {
 
 export const layThongTinNguoiDung = (taiKhoan) => {
   return async (dispatch) => {
+    dispatch(showLoading());
     try {
       const result = await axios({
         url: "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/ThongTinTaiKhoan",
@@ -78,6 +81,7 @@ export const layThongTinNguoiDung = (taiKhoan) => {
         type: THONG_TIN_NGUOI_DUNG,
         thongTinNguoiDung: result.data,
       });
+      dispatch(hideLoading());
     } catch (err) {
       console.log(err);
     }
@@ -86,6 +90,7 @@ export const layThongTinNguoiDung = (taiKhoan) => {
 
 export const capNhatThongTinNguoiDung = (taiKhoan) => {
   return async (dispatch) => {
+    dispatch(showLoading());
     try {
       const result = await axios({
         url: "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung",
@@ -102,6 +107,7 @@ export const capNhatThongTinNguoiDung = (taiKhoan) => {
         type: CAP_NHAT_THONG_TIN_NGUOI_DUNG,
         capNhatThongTinNguoiDung: result.data,
       });
+      dispatch(hideLoading());
     } catch (err) {
       alert(err.response?.data);
       console.log(err);
@@ -111,6 +117,7 @@ export const capNhatThongTinNguoiDung = (taiKhoan) => {
 
 export const layDanhSachLoaiNguoiDung = () => {
   return async (dispatch) => {
+    dispatch(showLoading());
     try {
       const result = await axios({
         url: "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachLoaiNguoiDung",
@@ -120,6 +127,7 @@ export const layDanhSachLoaiNguoiDung = () => {
         type: DANH_SACH_LOAI_NGUOI_DUNG,
         danhSachLoaiNguoiDung: result.data,
       });
+      dispatch(hideLoading());
     } catch (err) {
       console.log(err);
     }
@@ -128,6 +136,7 @@ export const layDanhSachLoaiNguoiDung = () => {
 
 export const layDanhSachNguoiDung = () => {
   return async (dispatch) => {
+    dispatch(showLoading());
     try {
       const result = await axios({
         url: "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP01",
@@ -143,3 +152,13 @@ export const layDanhSachNguoiDung = () => {
   };
 };
 
+export const showLoading =()=>dispatch=>{
+  dispatch({
+      type:SHOW_LOADING
+  });
+}
+export const hideLoading =()=>dispatch=>{
+  dispatch({
+      type:HIDE_LOADING
+  });
+}

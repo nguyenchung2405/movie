@@ -1,0 +1,15 @@
+.container{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #fffffff0;;
+    z-index: 100;
+    .imgLoading{
+       top: 30%;
+       left: 50%;
+       transform: translate(-50%);
+       position: absolute;
+    }
+}

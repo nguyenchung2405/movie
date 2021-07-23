@@ -42,10 +42,8 @@ function App() {
         <LoadingTemplate exact path="/phongve/:id" component={PhongVe} />
         <LoadingTemplate exact path="/dangNhap" component={DangNhap} />
         <LoadingTemplate exact path="/dangKy" component={DangKy} />
-
         <LoginTemplate exact path="/nguoiDung" Component={User} />
         <AdminTemplate exact path="/admin" Component={Admin} />
-        
         <LoadingTemplate path="*" component={Home} />
         <LoadingTemplate exact path="/" component={Home} />
       </Switch>

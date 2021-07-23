@@ -56,7 +56,7 @@ export default function FormUpdateUserAdmin(props) {
               <Field
                   className="inputPhim"
                   type="text"
-                  placeholder="Tài Khoản"
+                  placeholder={ndEdit.taiKhoan}
                   value={formikProps.values.taiKhoan}
                   name="taiKhoan"
                   onChange={formikProps.handleChange}
@@ -70,7 +70,7 @@ export default function FormUpdateUserAdmin(props) {
               <Field
                   className="inputPhim"
                   type="text"
-                  placeholder="Email"
+                  placeholder={ndEdit.email}
                   value={formikProps.values.email}
                   name="email"
                   onChange={formikProps.handleChange}
@@ -86,7 +86,7 @@ export default function FormUpdateUserAdmin(props) {
               <Field
                   className="inputPhim"
                   type="password"
-                  placeholder="Mật Khẩu"
+                  placeholder={ndEdit.matKhau}
                   value={formikProps.values.matKhau}
                   name="matKhau"
                   onChange={formikProps.handleChange}
@@ -100,7 +100,7 @@ export default function FormUpdateUserAdmin(props) {
               <Field
                   className="inputPhim"
                   type="text"
-                  placeholder="Số điện thoại"
+                  placeholder={ndEdit.soDt}
                   value={formikProps.values.soDt}
                   name="soDt"
                   onChange={formikProps.handleChange}
@@ -116,7 +116,7 @@ export default function FormUpdateUserAdmin(props) {
               <Field
                   className="inputPhim"
                   type="text"
-                  placeholder="Họ Tên"
+                  placeholder={ndEdit.hoTen}
                   value={formikProps.values.hoTen}
                   name="hoTen"
                   onChange={formikProps.handleChange}

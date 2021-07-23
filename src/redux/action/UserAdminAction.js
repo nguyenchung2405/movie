@@ -1,8 +1,9 @@
-import { ACCESSTOKEN, DANH_SACH_NGUOI_DUNG_PHAN_TRANG } from "../constants/NguoiDungConst";
+import { ACCESSTOKEN, DANH_SACH_NGUOI_DUNG_PHAN_TRANG, HIDE_LOADING, SHOW_LOADING } from "../constants/NguoiDungConst";
 import axios from "axios";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 export const layDanhSachNguoiDungPhanTrang = (paramString) => {
     return async (dispatch) => {
+      dispatch(showLoading());
       try {
         const result = await axios({
           url: `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachNguoiDungPhanTrang?${paramString}`,
@@ -12,6 +13,7 @@ export const layDanhSachNguoiDungPhanTrang = (paramString) => {
           type: DANH_SACH_NGUOI_DUNG_PHAN_TRANG,
           danhSachNguoiDungPhanTrang: result.data,
         });
+        dispatch(hideLoading());
       } catch (err) {
         console.log(err);
       }
@@ -20,6 +22,7 @@ export const layDanhSachNguoiDungPhanTrang = (paramString) => {
   
   export const xoaNguoiDungAdminAction = (taiKhoan) => {
     return async (dispatch) => {
+      dispatch(showLoading());
       try {
         const result = await axios({
           url: `https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`,
@@ -30,12 +33,13 @@ export const layDanhSachNguoiDungPhanTrang = (paramString) => {
           },
         });
         Swal.fire({
-          position: 'top-center',
+          position: 'top-end',
           icon: 'success',
           title: `${result.data}`,
           showConfirmButton: false,
           timer: 2000
-        })
+        });
+        dispatch(hideLoading());
       } catch (err) {
         Swal.fire({
           icon: 'error',
@@ -48,6 +52,7 @@ export const layDanhSachNguoiDungPhanTrang = (paramString) => {
   
   export const themNguoiDungAction = (nguoiDung) => {
     return async (dispatch) => {
+      dispatch(showLoading());
       try {
         const result = await axios({
           url: "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/ThemNguoiDung",
@@ -65,6 +70,7 @@ export const layDanhSachNguoiDungPhanTrang = (paramString) => {
           showConfirmButton: false,
           timer: 2000
         })
+        dispatch(hideLoading());
       } catch (error) {
         Swal.fire({
           icon: 'error',
@@ -104,3 +110,13 @@ export const layDanhSachNguoiDungPhanTrang = (paramString) => {
       }
     };
   };
+  export const showLoading =()=>dispatch=>{
+    dispatch({
+        type:SHOW_LOADING
+    });
+  }
+  export const hideLoading =()=>dispatch=>{
+    dispatch({
+        type:HIDE_LOADING
+    });
+  }

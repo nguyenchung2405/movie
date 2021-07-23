@@ -10,6 +10,7 @@ import { USER_LOGIN } from "../../redux/constants/NguoiDungConst";
 import { layThongTinNguoiDung } from "../../redux/action/NguoiDungAction";
 import UpdateUser from "./UserUpdate/UpdateUser";
 import ThongTinDatVe from "./ThongTinDatVe/ThongTinDatVe";
+import Loading from "../../ultil/Loading/Loading";
 const { TabPane } = Tabs;
 
 export default function User(props) {
@@ -278,6 +279,7 @@ export default function User(props) {
           </Tabs>
         </div>
       </div>
+      <Loading/>
     </div>
   );
 }

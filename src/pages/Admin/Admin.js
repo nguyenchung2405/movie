@@ -7,6 +7,7 @@ import TablePhanTrangPhim from "./TableFilmAdmin/TablePhanTrangPhim";
 import TableNguoiDungAdmin from "./TableUserAdmin/TableNguoiDungAdmin";
 import ThemPhim from "./AddFilmAdmin/ThemPhim";
 import AddUser from "./AddUserAdmin/AddUser";
+import Loading from "../../ultil/Loading/Loading";
 export default function Admin(props) {
   const { TabPane } = Tabs;
   const [visible, setVisible] = useState(false);
@@ -75,6 +76,7 @@ export default function Admin(props) {
           </TabPane>
         </Tabs>
       </div>
+      <Loading/>
     </div>
   );
 }
