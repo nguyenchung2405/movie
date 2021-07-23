@@ -59,10 +59,23 @@ export default function CNS(props) {
     };
     const handleRoute = (url) => {
         if (localStorage.getItem(USER_LOGIN)) {
-            const win = window.open(url, "_blank");
+            const win = window.open(url, '_black');
             win.focus();
         } else {
-            history.push(url);
+            Swal.fire({
+                title: 'Opps...',
+                text: "Bạn chưa đăng nhập để thực hiện tác vụ này",
+                icon: 'error',
+                showCancelButton: true,
+                confirmButtonColor: 'rgb(251, 66, 38)',
+                cancelButtonColor: '#757575',
+                confirmButtonText: 'Đăng nhập',
+                cancelButtonText: 'Để sau',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    return history.push("/dangNhap");
+                }
+            })
         }
     }
     const renderRap = () => {
@@ -108,28 +121,11 @@ export default function CNS(props) {
                                                                 return (
                                                                     <button className="btnMovieDetail" type="button" key={index}
                                                                         onClick={() => {
-                                                                            if (localStorage.getItem(USER_LOGIN)) {
-                                                                                return handleRoute(`/phongve/${lichChieu.maLichChieu}`);
-                                                                            } else {
-                                                                                Swal.fire({
-                                                                                    title: 'Opps...',
-                                                                                    text: "Bạn chưa đăng nhập để thực hiện tác vụ này",
-                                                                                    icon: 'error',
-                                                                                    showCancelButton: true,
-                                                                                    confirmButtonColor: 'rgb(251, 66, 38)',
-                                                                                    cancelButtonColor: '#757575',
-                                                                                    confirmButtonText: 'Đăng nhập',
-                                                                                    cancelButtonText: 'Để sau',
-                                                                                }).then((result) => {
-                                                                                    if (result.isConfirmed) {
-                                                                                        return handleRoute("/dangNhap");
-                                                                                    }
-                                                                                })
-                                                                            }
+                                                                            handleRoute(`/phongve/${lichChieu.maLichChieu}`)
                                                                         }}
                                                                     >
-                                                                        <p className="btnColorBHD_detail ">{(lichChieu.ngayChieuGioChieu).substr(0,10)}</p>
-                                                                        <p className="btnColorBHD_detail ">{(lichChieu.ngayChieuGioChieu).substr(11,5)}</p>
+                                                                        <p className="btnColorBHD_detail ">{(lichChieu.ngayChieuGioChieu).substr(0, 10)}</p>
+                                                                        <p className="btnColorBHD_detail ">{(lichChieu.ngayChieuGioChieu).substr(11, 5)}</p>
                                                                     </button>
                                                                 )
                                                             })
