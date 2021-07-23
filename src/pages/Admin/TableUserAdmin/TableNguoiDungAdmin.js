@@ -9,6 +9,7 @@ import {
 import FormUpdateUserAdmin from "../FormUpdateUserAdmin/FormUpdateUserAdmin";
 import Pagination from "../TablePaginationUserAdmin/Pagination";
 import SearchAdmin from "../SeachAdmin/SearchAdmin";
+import UppdateUserAdmin from "../FormUpdateUserAdmin/UppdateUserAdmin";
 
 export default function TableNguoiDungAdmin(props) {
   const dispatch = useDispatch();
@@ -120,7 +121,8 @@ export default function TableNguoiDungAdmin(props) {
         onCancel={() => setVisible(false)}
         width={1000}
       >
-      <FormUpdateUserAdmin ndEdit={ndEdit} closeModal={setVisible}/>
+        {/* <UppdateUserAdmin  ndEdit={ndEdit} closeModal={setVisible}/> */}
+       <FormUpdateUserAdmin ndEdit={ndEdit} closeModal={setVisible}/> 
       </Modal>
       <Pagination onePageChange={handlePageChange} />
     </>
