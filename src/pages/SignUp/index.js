@@ -117,8 +117,8 @@ export default function DangKy(props) {
           </div>
           <button className="btn__dangKy">Đăng Ký</button>
           <div className="taiKhoan_Link">
-            <span style={{ paddingRight: "5px" }}>Bạn đã có tài khoản!</span>
-            <NavLink to="/dangNhap">Đăng Nhập</NavLink>
+            <span className="spanTaiKhoan">Bạn đã có tài khoản!</span>
+            <NavLink to="/dangNhap" className="dangNhap">Đăng Nhập</NavLink>
           </div>
           <div className="dangKy__Dong">
             <button type="button" className="btn__Dong" onClick={handleClose}>

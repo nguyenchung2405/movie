@@ -68,8 +68,8 @@ export default function DangNhap(props) {
           </div>
           <button className="btn__DangNhap">Đăng Nhập</button>
           <div>
-            <span style={{ paddingRight: "5px" }}>Bạn chưa có tài khoản ?</span>
-            <NavLink to="dangKy">Đăng Ký</NavLink>
+            <span className="spanTaiKhoan">Bạn chưa có tài khoản ?</span>
+            <NavLink to="dangKy" className="dangKy">Đăng Ký</NavLink>
           </div>
           <div className="dangNhap__Dong">
             <button type="button" className="btn__Dong" onClick={handleClose}>
