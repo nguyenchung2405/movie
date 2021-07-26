@@ -27,3 +27,13 @@
     height: 350px !important;
   }
 }
+@media screen and (max-width: 600px) {
+  .reponsiveImg {
+    max-width: 100%;
+    height: 250px !important;
+  }
+  .Carousel-indicators-12{
+    display: none;
+  }
+  
+}
