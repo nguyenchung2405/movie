@@ -61,8 +61,9 @@ export default function BHD(props) {
     // };
     const handleRoute = (url) => {
         if (localStorage.getItem(USER_LOGIN)) {
-            const win = window.open(url, '_black');
-            win.focus();
+            // const win = window.open(url, '_black');
+            // win.focus();
+            return history.push(url);
         } else {
             Swal.fire({
                 title: 'Opps...',
