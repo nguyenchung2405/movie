@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment, useState  } from 'react';
+import React, { useEffect, Fragment, useState } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import Hidden from '@material-ui/core/Hidden';
@@ -17,11 +17,13 @@ import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import IconButton from '@material-ui/core/IconButton';
 import '../MovieItem/movieItem.scss';
 import { NavLink } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 
 export default function PhimDangChieu(props) {
     const classes = useStyles();
     const theme = useTheme();
     const [isOpen, setOpen] = useState(false);
+
 
     const getVideoId = (url) => {
         var arrItem = url.split('/')
@@ -33,7 +35,7 @@ export default function PhimDangChieu(props) {
     }, []);
 
     const { mangPhim } = useSelector(state => state.PhimReducer);
-    const phimDangChieu = [...mangPhim ] ;
+    const phimDangChieu = [...mangPhim];
     const filmChunks = [];
     const chunk_size = 8;
 
@@ -48,7 +50,7 @@ export default function PhimDangChieu(props) {
                 <Container maxWidth="md" className={classes.root} key={index}>
                     {item.map(phim => {
                         return (
-                            <div  key={phim.maPhim}>
+                            <div key={phim.maPhim}>
                                 <Grid container  >
                                     <Grid item >
                                         <ItemPhimDangChieu phim={phim} />
@@ -63,6 +65,7 @@ export default function PhimDangChieu(props) {
         })
     }
     const renderPhimReponsive = () => {
+
         return mangPhim.map((phim, index) => {
             return (
                 <Grid key={index} item xs={6} className={classes.reponsive}>
@@ -107,6 +110,23 @@ export default function PhimDangChieu(props) {
             )
         });
     }
+    // const showMore = () => {
+    //     let boxs = document.getElementsByClassName("sectionMobile");
+    //     let btn = document.getElementById("showmore-btn");
+    //     for (let i = 0; i < boxs.length; i++) {
+    //         let box = boxs[i];
+    //         box.classList.toggle("d-none");
+    //     }
+    //     if (!btn.classList.contains("sectionMobile")) {
+    //         btn.innerHTML = "Show less";
+    //         btn.classList.toggle("sectionMobile");
+    //     } else {
+    //         btn.innerHTML = "Show more";
+    //         btn.classList.toggle("sectionMobile");
+    //         document.getElementById("list-movie__wrap").scrollIntoView();
+    //         window.scrollBy(0, -60);
+    //     }
+    // }
 
     const settings = {
         animation: "slide",
@@ -131,7 +151,7 @@ export default function PhimDangChieu(props) {
             </Hidden>
 
 
-            <Grid container className={classes.sectionMobile}>
+            <Grid container id="list-movie__wrap" className={classes.sectionMobile}>
                 {/* <Grid item xs={12} className={classes.reponsive}>
                     <a>
                         <Box className={classes.rating}>
@@ -143,6 +163,12 @@ export default function PhimDangChieu(props) {
                     </a>
                 </Grid> */}
                 {renderPhimReponsive()}
+                <div className={classes.moreMovie}>
+                    <Button variant="outlined"
+                        id="showmore-btn"
+                        className={classes.moreMovieButton}
+                         >XEM THÊM</Button>
+                </div>
             </Grid>
         </Container >
     )

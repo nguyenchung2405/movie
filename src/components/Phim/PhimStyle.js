@@ -67,8 +67,23 @@ const useStyles = makeStyles((theme) => ({
     display: "inline-block",
     marginRight: 8,
     padding: 5
-  }
+  },
 
+  moreMovie: {
+    margin: "30px auto",
+    textAlign: "center",
+    display: props => props.openMore ? "none" : "block",
+  },
+  moreMovieButton: {
+    color: "#949494",
+    borderColor: "#949494",
+    padding: "7px 25px",
+    '&:hover': {
+      backgroundColor: "#fb4226",
+      borderColor: "#fb4226",
+      color: "#fff !important"
+    },
+  },
 
 }));
 

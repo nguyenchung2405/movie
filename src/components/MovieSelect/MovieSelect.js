@@ -15,11 +15,11 @@ import axios from 'axios';
 import { USER_LOGIN } from '../../redux/constants/NguoiDungConst';
 import Swal from 'sweetalert2';
 import CustomPopper from './CustomPopper';
-
+import { useHistory } from 'react-router-dom';
 
 export default function MovieSelect(props) {
     const { mangPhim } = useSelector((state) => state.PhimReducer);
-
+    const history = useHistory();
     const [data, setData] = useState({
         // handleSelectPhim
         setPhim: "",
@@ -266,8 +266,9 @@ export default function MovieSelect(props) {
 
     const handleRoute = (url) => {
         if (localStorage.getItem(USER_LOGIN)) {
-            const win = window.open(url, '_black');
-            win.focus();
+            // const win = window.open(url, '_black');
+            // win.focus();
+            return history.push(url);
         } else {
             Swal.fire({
                 title: 'Opps...',
