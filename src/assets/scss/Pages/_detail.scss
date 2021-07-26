@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .btnPlay {
   opacity: 0;
   transition: all 0.2s;
@@ -9,6 +10,8 @@
   }
 }
 
+=======
+>>>>>>> ebc930d2bc77f554d128505362ba69e3bf1ac9b3
 #chiTietTong {
   background-color: rgb(10, 32, 41);
   .chiTiet {
@@ -18,7 +21,10 @@
       top: 0;
       left: 0;
       width: 100%;
+<<<<<<< HEAD
       max-height: 560px;
+=======
+>>>>>>> ebc930d2bc77f554d128505362ba69e3bf1ac9b3
       overflow: hidden;
       .chiTiet__Videores {
         display: none;
@@ -31,8 +37,11 @@
       @include respon-to("medium") {
         .anhBiaPhim {
           filter: none;
+<<<<<<< HEAD
           max-height: 300px;
           object-fit: cover;
+=======
+>>>>>>> ebc930d2bc77f554d128505362ba69e3bf1ac9b3
         }
       }
     }
@@ -49,16 +58,23 @@
       top: 50%;
       width: 100%;
       left: 50%;
+<<<<<<< HEAD
       transform: translate3d(-50%, -40%, 0);
+=======
+      transform: translate3d(-50%, -50%, 0);
+>>>>>>> ebc930d2bc77f554d128505362ba69e3bf1ac9b3
       .anhPhim {
         padding-left: 0;
         padding-right: 0;
         max-width: 220px;
+<<<<<<< HEAD
         &:hover {
           .btnPlay {
             opacity: 1;
           }
         }
+=======
+>>>>>>> ebc930d2bc77f554d128505362ba69e3bf1ac9b3
       }
     }
     .chiTiet__thongTinPhim {
@@ -99,9 +115,13 @@
   }
   .chiTiet__anhNho {
     border-radius: 4px;
+<<<<<<< HEAD
     width: 100%;
   }
 
+=======
+  }
+>>>>>>> ebc930d2bc77f554d128505362ba69e3bf1ac9b3
   @include respon-to("medium") {
     .chiTiet__ThongTin {
       display: none;
@@ -110,9 +130,12 @@
   .noiDung__Mobile {
     display: none;
   }
+<<<<<<< HEAD
   .ant-tabs {
     margin-bottom: 80px;
   }
+=======
+>>>>>>> ebc930d2bc77f554d128505362ba69e3bf1ac9b3
   .ant-tabs-tab {
     font-size: $fs-3;
 

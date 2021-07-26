@@ -6,9 +6,13 @@
   background-position: center;
   .dangNhap__Khung {
     max-width: 360px;
+<<<<<<< HEAD
     display: flex;
     flex-direction: column;
     padding: 80px 32px 40px;
+=======
+    padding: 40px 32px 30px;
+>>>>>>> ebc930d2bc77f554d128505362ba69e3bf1ac9b3
     position: absolute;
     top: 50%;
     left: 50%;
@@ -23,9 +27,13 @@
     color: #fff;
     border-radius: 6px;
     .dangNhap__Logo {
+<<<<<<< HEAD
       width: 60%;
 
       align-self: center;
+=======
+      width: 209px;
+>>>>>>> ebc930d2bc77f554d128505362ba69e3bf1ac9b3
       margin-bottom: 50px;
       cursor: pointer;
     }
@@ -37,7 +45,11 @@
 
     .dangNhap__Input {
       width: 100%;
+<<<<<<< HEAD
       height: 56px;
+=======
+      border-bottom: 2px solid #adadad;
+>>>>>>> ebc930d2bc77f554d128505362ba69e3bf1ac9b3
       margin: 10px 0;
 
       .input {
@@ -45,15 +57,22 @@
         line-height: 1.2;
         display: block;
         width: 100%;
+<<<<<<< HEAD
         height: 36px;
+=======
+        height: 45px;
+>>>>>>> ebc930d2bc77f554d128505362ba69e3bf1ac9b3
         background: 0 0;
         padding: 0 5px;
         border-width: inherit;
         border-style: none;
+<<<<<<< HEAD
         border: 1px solid white;
         border-radius: 5px;
         background-color: $color-white;
         color: $color-black;
+=======
+>>>>>>> ebc930d2bc77f554d128505362ba69e3bf1ac9b3
       }
     }
 
@@ -62,12 +81,18 @@
       border: 1px solid #949494;
       border-radius: 4px;
       text-align: center;
+<<<<<<< HEAD
       background: $color-red;
       color: $color-white;
+=======
+      background: white;
+      color: black;
+>>>>>>> ebc930d2bc77f554d128505362ba69e3bf1ac9b3
       font-weight: $fw-1;
       padding: 7px 25px;
       transition: all 0.2s;
       margin-bottom: 20px;
+<<<<<<< HEAD
       letter-spacing: 2.5px;
       font-size: $fs-2;
       margin-top: 30px;
@@ -83,6 +108,15 @@
     .dangKy{
       color: #1890ff;
     }
+=======
+      letter-spacing: 3.5px;
+      font-size: $fs-2;
+      margin-top: 30px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+>>>>>>> ebc930d2bc77f554d128505362ba69e3bf1ac9b3
     .dangNhap__Dong {
       opacity: 1;
       position: absolute;
@@ -103,18 +137,25 @@
         }
       }
     }
+<<<<<<< HEAD
     .canhBao {
       margin-bottom: 0;
       text-align: initial;
       color: red;
     }
+=======
+>>>>>>> ebc930d2bc77f554d128505362ba69e3bf1ac9b3
     @include respon-to("small") {
       .dangNhap__Dong {
         top: 5px;
         right: 5px;
       }
       .dangNhap__Input {
+<<<<<<< HEAD
         margin: 5px 0;
+=======
+        margin: 20px 0;
+>>>>>>> ebc930d2bc77f554d128505362ba69e3bf1ac9b3
       }
       .dangNhap__noiDung {
         margin: 50px 0;

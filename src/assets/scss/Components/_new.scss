@@ -1,6 +1,10 @@
 .card-container {
   max-width: 960px;
+<<<<<<< HEAD
   padding: 0 16px;
+=======
+  padding: 0 10px;
+>>>>>>> ebc930d2bc77f554d128505362ba69e3bf1ac9b3
   margin: auto;
   .linear__New {
     height: 100px;
@@ -30,6 +34,7 @@
       background: $color-red;
     }
   }
+<<<<<<< HEAD
   .titleNew{
    height: 50px;
     font-weight:$fw-0 + 100;
@@ -45,6 +50,8 @@
       }
     }
   }
+=======
+>>>>>>> ebc930d2bc77f554d128505362ba69e3bf1ac9b3
   .ant-tabs-tab {
     font-size: $fs-3;
 
