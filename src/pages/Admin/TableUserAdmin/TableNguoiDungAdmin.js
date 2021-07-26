@@ -6,7 +6,6 @@ import {
   layDanhSachNguoiDungPhanTrang,
   xoaNguoiDungAdminAction
 } from "../../../redux/action/UserAdminAction";
-import FormUpdateUserAdmin from "../FormUpdateUserAdmin/FormUpdateUserAdmin";
 import Pagination from "../TablePaginationUserAdmin/Pagination";
 import SearchAdmin from "../SeachAdmin/SearchAdmin";
 import UppdateUserAdmin from "../FormUpdateUserAdmin/UppdateUserAdmin";
@@ -74,7 +73,7 @@ export default function TableNguoiDungAdmin(props) {
           <td>{nguoiDung.maLoaiNguoiDung}</td>
           <td>{nguoiDung.soDt}</td>
 
-          <td>
+          <td className="btn_Update">
             <Button
               className="btnCapNhatSua"
               type="primary"
@@ -121,8 +120,8 @@ export default function TableNguoiDungAdmin(props) {
         onCancel={() => setVisible(false)}
         width={1000}
       >
-        {/* <UppdateUserAdmin  ndEdit={ndEdit} closeModal={setVisible}/> */}
-       <FormUpdateUserAdmin ndEdit={ndEdit} closeModal={setVisible}/> 
+        {visible&&
+        <UppdateUserAdmin  ndEdit={ndEdit} closeModal={setVisible}/> }
       </Modal>
       <Pagination onePageChange={handlePageChange} />
     </>

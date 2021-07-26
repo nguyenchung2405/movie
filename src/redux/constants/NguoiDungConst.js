@@ -12,3 +12,5 @@ export const DANH_SACH_NGUOI_DUNG_PHAN_TRANG =
   "DANH_SACH_NGUOI_DUNG_PHAN_TRANG";
  export const SHOW_LOADING = "SHOW_LOADING";
  export const HIDE_LOADING = "HIDE_LOADING";
+ export const domain = "https://movie0706.cybersoft.edu.vn/api";
+ export const maNhom="GP01";

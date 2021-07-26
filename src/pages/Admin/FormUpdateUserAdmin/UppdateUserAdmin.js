@@ -1,10 +1,14 @@
-import React, { Component } from 'react'
+import React, {  useEffect,useState } from 'react'
 import Swal from "sweetalert2";
 import { Row, Col } from 'antd';
-import { suaNguoiDungAction } from '../../../redux/action/UserAdminAction';
-export default class UppdateUserAdmin extends Component {
-    
-    state = {
+import { quanLyAdminServices } from '../../../redux/service/QuanLyAdminServices';
+import { layDanhSachNguoiDungPhanTrang } from '../../../redux/action/UserAdminAction';
+import { useDispatch } from 'react-redux';
+
+export default function UppdateUserAdmin (props) {
+    const dispatch = useDispatch();
+    let{ndEdit,closeModal}=props;
+    const[state, setState] =useState( {
         values: {
           hoTen: "",
           taiKhoan: "",
@@ -22,11 +26,10 @@ export default class UppdateUserAdmin extends Component {
           soDt: "",
           maLoaiNguoiDung: "",
         },
-      };
-     
-      componentDidMount() {
-          let{ndEdit}=this.props;
-        this.setState({
+      });
+      useEffect(() => {
+        let{ndEdit}=props;
+        setState({   
           values: {
             hoTen: ndEdit.hoTen,
             taiKhoan: ndEdit.taiKhoan,
@@ -36,25 +39,26 @@ export default class UppdateUserAdmin extends Component {
             maLoaiNguoiDung: ndEdit.maLoaiNguoiDung,
             maNhom: "GP01",
           },
-          errors: {
-            hoTen: "",
-            taiKhoan: "",
-            matKhau: "",
-            email: "",
-            soDt: "",
-            maLoaiNguoiDung: "",
-            maNhom: "",
-          },
-        });
-      }
-      handleChangeInput = (event) => {
+         errors: {
+           hoTen: "",
+           taiKhoan: "",
+           matKhau: "",
+           email: "",
+           soDt: "",
+           maLoaiNguoiDung: "",
+           maNhom: "",
+         },
+       });
+      }, [ndEdit])
+     
+     const handleChangeInput = (event) => {
         var { value, name } = event.target;
         let newValues = {
-          ...this.state.values,
+          ...state.values,
           [name]: value,
         };
         let newErrors = {
-          ...this.state.errors,
+          ...state.errors,
           [name]: value === "" ? "*Không được bỏ trống !" : "",
         };
     
@@ -66,13 +70,13 @@ export default class UppdateUserAdmin extends Component {
             newErrors.email = "Email không hợp lệ";
           }
         }
-        this.setState({ values: newValues, errors: newErrors });
+        setState({ values: newValues, errors: newErrors });
       };
 
-      handleSubmit = (event) => {
+    const  handleSubmit = (event) => {
         event.preventDefault();
         let valid = true;
-        let { values, errors } = this.state;
+        let { values, errors } = state;
         for (let key in values) {
           if (values[key] === "") {
             valid = false;
@@ -87,15 +91,29 @@ export default class UppdateUserAdmin extends Component {
           alert("thông tin không hợp lệ");
           return;
         }
-      // gọi api hoạc dispatch redux
-      
-         suaNguoiDungAction(this.state.values)
+    
+        quanLyAdminServices
+        .capNhatThongTinNguoiDung(values)
+        .then((res) => {
+       
+          console.log(res.data)
+          Swal.fire({
+            icon: 'success',
+            text: 'Cập nhật người dùng thành công',
+            });
+          closeModal(false);
+          dispatch(layDanhSachNguoiDungPhanTrang())
+        })
+        .catch((err) => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: "Nhập lại thông tin",
+            });
+        });
     };
-    render() {
-        const {ndEdit}=this.props;
-        console.log(ndEdit)
         return (
-            <form className="themNguoiDung" onSubmit={this.handleSubmit} >
+            <form className="themNguoiDung" onSubmit={handleSubmit} >
             <Row className="rowInput">
               <Col span={12}>
                 <h2>Tài Khoản</h2>
@@ -105,13 +123,13 @@ export default class UppdateUserAdmin extends Component {
                     type="text"
                     name="taiKhoan"
                     placeholder="Tài Khoản"
-                    onChange={this.handleChangeInput}
-                    value={this.state.values.taiKhoan}
+                    onChange={handleChangeInput}
+                    value={state.values.taiKhoan}
                     disabled
                     required
                   />
                 </div>
-                <p className="canhBaoCap">  {this.state.errors.taiKhoan}</p>
+                <p className="canhBaoCap">  {state.errors.taiKhoan}</p>
               </Col>
               <Col span={12}>
                 <h2>Email </h2>
@@ -121,12 +139,12 @@ export default class UppdateUserAdmin extends Component {
                     type="text"
                     name="email"
                     placeholder="email"
-                    onChange={this.handleChangeInput}
-                    value={this.state.values.email}
+                    onChange={handleChangeInput}
+                    value={state.values.email}
                     required
                   />
                 </div>
-                <p className="canhBaoCap">  {this.state.errors.email}</p>
+                <p className="canhBaoCap">  {state.errors.email}</p>
               </Col>
             </Row>
             <Row className="rowInput">
@@ -138,12 +156,12 @@ export default class UppdateUserAdmin extends Component {
                     type="password"
                     name="matKhau"
                     placeholder="Mật Khẩu"
-                    onChange={this.handleChangeInput}
-                    value={this.state.values.matKhau}
+                    onChange={handleChangeInput}
+                    value={state.values.matKhau}
                     required
                   />
                 </div>
-                <p className="canhBaoCap">  {this.state.errors.matKhau}</p>
+                <p className="canhBaoCap">  {state.errors.matKhau}</p>
               </Col>
               <Col span={12}>
                 <h2>Số Điện Thoại</h2>
@@ -151,14 +169,14 @@ export default class UppdateUserAdmin extends Component {
                 <input
                     className="inputPhim"
                     type="text"
-                    name="soDT"
+                    name="soDt"
                     placeholder="Số Điện Thoại"
-                    onChange={this.handleChangeInput}
-                    value={this.state.values.soDt}
+                    onChange={handleChangeInput}
+                    value={state.values.soDt}
                     required
                   />
                 </div>
-                <p className="canhBaoCap">  {this.state.errors.soDt}</p>
+                <p className="canhBaoCap">  {state.errors.soDt}</p>
               </Col>
             </Row>
             <Row className="rowInput">
@@ -170,20 +188,21 @@ export default class UppdateUserAdmin extends Component {
                     type="text"
                     placeholder="Họ Tên"
                     name="hoTen"
-                    onChange={this.handleChangeInput}
-                    value={this.state.values.hoTen}
+                    onChange={handleChangeInput}
+                    value={state.values.hoTen}
                     required
                   />
                 </div>
-                <p className="canhBaoCap">  {this.state.errors.hoTen}</p>
+                <p className="canhBaoCap">  {state.errors.hoTen}</p>
               </Col>
               <Col span={12}>
                 <h2>Loại Người Dùng</h2>
                 <div>
                   <select
                     className="selectNguoiDung"
-                    onChange={this.handleChangeInput}
-                    value={this.state.values.maLoaiNguoiDung}
+                    name="maLoaiNguoiDung"
+                    onChange={handleChangeInput}
+                    value={state.values.maLoaiNguoiDung}
                   >
                     <option>KhachHang</option>
                     <option>QuanTri</option>
@@ -192,10 +211,9 @@ export default class UppdateUserAdmin extends Component {
               </Col>
             </Row>
             <div className="div_btnThemNguoiDung">
-              <button className="btnThemNguoiDung">Cập Nhật</button>
+              <button type="submit" className="btnThemNguoiDung">Cập Nhật</button>
             </div>
           </form>
-        )
-    }
+        )  
 }
  

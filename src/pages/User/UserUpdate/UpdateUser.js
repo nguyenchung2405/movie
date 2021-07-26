@@ -45,7 +45,6 @@ export default function UpdateUser(props) {
         let userLogin = JSON.parse(localStorage.getItem(USER_LOGIN));
         values.taiKhoan = userLogin.taiKhoan;
       }
-      console.log(values);
       const action = capNhatThongTinNguoiDung(values);
       dispatch(action);
     },
