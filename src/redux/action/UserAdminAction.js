@@ -75,33 +75,31 @@ export const layDanhSachNguoiDungPhanTrang = (paramString) => {
     };
   };
   
-  export const suaNguoiDungAction = (taiKhoan) => {
+  export const suaNguoiDungAction = (thongTinNguoiDung) => {
     return async (dispatch) => {
       try {
         const result = await axios({
           url: "https://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung",
           method: "PUT",
-          data: taiKhoan,
+          data: thongTinNguoiDung,
           headers: {
             Authorization:
               "Bearer " + JSON.parse(localStorage.getItem(ACCESSTOKEN)),
           },
         });
-  
-        Swal.fire({
-          position: 'top-center',
-          icon: 'success',
-          title: "Xóa Thành công",
-          showConfirmButton: false,
-          timer: 2000
-        })
-      } catch (err) {
+        console.log(result.data)
+        Swal({
+          title: "Cập Nhật thành công",
+          icon: "success",
+          button: "OK",
+        });
+      } catch (error) {
         Swal.fire({
           icon: 'error',
           title: 'Oops...',
-          text: `${err.response?.data}`,
+          text: `${error.response?.data}`,
         })
       }
-    };
-  };
+      }
+  }
  

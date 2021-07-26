@@ -48,12 +48,13 @@
       width: 221px;
     }
     .table {
-      width: 99%;
+      width: 95%;
       border: 1px solid;
       border-radius: 10px;
       margin-top: 30px;
       padding-right: 10px;
       box-shadow: 0px 10px 10px 10px gray;
+      
       .thead {
         border-bottom: 1px solid;
         tr {
@@ -72,6 +73,9 @@
             padding: 5px 0;
             line-height: 30px;
             padding-left: 15px;
+          }
+          .td_NameFilm{
+            width: 235px;
           }
         }
       }
@@ -140,6 +144,9 @@
       opacity: 1;
     }
   }
+  .btn_Update{
+    display: flex;
+ 
   .btnCapNhatSua {
     width: 84px;
     color: $color-white;
@@ -154,6 +161,7 @@
       opacity: 1;
     }
   }
+}
 }
 .ant-modal-content {
   .ant-btn:hover,
@@ -192,6 +200,10 @@
       width: 250px;
       padding: 5px;
     }
+    .text-danger{
+      color: $color-red;
+    }
+   
     .div_btnThemPhim {
       text-align: right;
       .btnThemPhim {
@@ -210,14 +222,7 @@
       }
     }
   }
-  .rowTextarea {
-    margin-top: 30px;
-    .textArea {
-      width: 100%;
-      padding: 5px;
-      height: 150px;
-    }
-  }
+
   .themNguoiDung {
     .rowInput {
       height: 119px;
@@ -262,6 +267,10 @@
   .ant-modal-footer {
     display: none;
   }
+}
+.ant-modal-body {
+  padding: 0 24px !important;
+  padding-bottom: 10px !important;
 }
 @media only screen and (max-width: 1000px) {
   .tabAdmin {

@@ -1,5 +1,4 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import { Row, Col } from "antd";
 import "antd/dist/antd.css";
@@ -7,25 +6,28 @@ import { Tabs } from "antd";
 import { LogoutOutlined } from "@ant-design/icons";
 import logo from "../../assets/img/web-logo.png";
 import { USER_LOGIN } from "../../redux/constants/NguoiDungConst";
-import { layThongTinNguoiDung } from "../../redux/action/NguoiDungAction";
-import UpdateUser from "./UserUpdate/UpdateUser";
 import ThongTinDatVe from "./ThongTinDatVe/ThongTinDatVe";
 import Loading from "../../ultil/Loading/Loading";
+import UserUpdate from "./UserUpdate/UserUpdate";
+import { quanLyNguoiDungServices } from "../../redux/service/QuanLyNguoiDungServices";
+import { useDispatch } from "react-redux";
+import { showLoading } from "../../redux/action/PhimAction";
 const { TabPane } = Tabs;
-
 export default function User(props) {
-  const { thongTinNguoiDung } = useSelector((state) => state.NguoiDungReducer);
+  const[loading,setLoading]=useState(true);
   const dispatch = useDispatch();
-  useEffect(async () => {
-    if (localStorage.getItem(USER_LOGIN)) {
-      let userLogin = JSON.parse(localStorage.getItem(USER_LOGIN));
-      let taiKhoan = {
-        taiKhoan: userLogin.taiKhoan,
-      };
+  const info = JSON.parse(localStorage.getItem(USER_LOGIN));
 
-      dispatch(layThongTinNguoiDung(taiKhoan));
-    }
-  }, []);
+  let [thongTin, setThongTin] = useState([]);
+  useEffect(() => {
+    dispatch(showLoading())
+    quanLyNguoiDungServices
+      .layThongTinTaiKhoan(JSON.parse(localStorage.getItem(USER_LOGIN)))
+      .then((result) => {
+        setThongTin(result.data);
+        setLoading(false)
+      });
+  }, [info]);
 
   const handleCloseUser = () => {
     props.history.push("/");
@@ -48,10 +50,10 @@ export default function User(props) {
                   <div className="sider">
                     <img
                       className="avatar"
-                      src={`https://i.pravatar.cc/150?u=${thongTinNguoiDung.taiKhoan}`}
+                      src={`https://i.pravatar.cc/150?u=${thongTin.taiKhoan}`}
                       alt="avatar"
                     />
-                    <p className="ten">{thongTinNguoiDung.taiKhoan}</p>
+                    <p className="ten">{thongTin.taiKhoan}</p>
                   </div>
                 </Col>
                 <Col className="user_tab" xs={24} sm={10}>
@@ -63,7 +65,7 @@ export default function User(props) {
                       <p className="thongTin_dangNhap">
                         Email:
                         <span style={{ color: "#f55960" }}>
-                          {thongTinNguoiDung.email}
+                          {thongTin.email}
                         </span>
                       </p>
                       <p>
@@ -80,7 +82,7 @@ export default function User(props) {
                       <p className="thongTin_dangNhap">
                         Họ Tên:
                         <span style={{ color: "#f55960" }}>
-                          {thongTinNguoiDung.hoTen}
+                          {thongTin.hoTen}
                         </span>
                       </p>
                       <p> Tên tài khoản hoạt động trên website</p>
@@ -96,7 +98,7 @@ export default function User(props) {
                       <p className="thongTin_dangNhap">
                         Số Điện Thoại:
                         <span style={{ color: "#f55960" }}>
-                          {thongTinNguoiDung.soDT}
+                          {thongTin.soDT}
                         </span>
                       </p>
                       <p> Số điện thoại khi đăng ký</p>
@@ -112,7 +114,7 @@ export default function User(props) {
                       <p className="thongTin_dangNhap">
                         Tài Khoản:{" "}
                         <span style={{ color: "#f55960" }}>
-                          {thongTinNguoiDung.taiKhoan}
+                          {thongTin.taiKhoan}
                         </span>
                       </p>
                       <p>Là tên tài khoản (username) để đăng nhập tài khoản.</p>
@@ -128,7 +130,7 @@ export default function User(props) {
                       <p className="thongTin_dangNhap">
                         Mật Khẩu:
                         <span style={{ color: "#f55960" }}>
-                          {thongTinNguoiDung.matKhau}
+                          {thongTin.matKhau}
                         </span>
                       </p>
                       <p>
@@ -144,15 +146,14 @@ export default function User(props) {
           
               <TabPane tab="Lịch Sử Đặt Vé" key="2">
               <div  className="thongTinDatVe">
-                <ThongTinDatVe />
+              <ThongTinDatVe thongTinDatVe={thongTin}/>
                 </div>
               </TabPane>
-           
-           
+          
 
             {/**Cập Nhật thông tin người dùng lap */}
             <TabPane tab="Chỉnh Sửa Thông Tin" key="3">
-              <UpdateUser />
+              <UserUpdate/>
             </TabPane>
           </Tabs>
         </div>
@@ -173,12 +174,12 @@ export default function User(props) {
                   <div className="sider">
                     <img
                       className="avatar"
-                      src={`https://i.pravatar.cc/150?u=${thongTinNguoiDung.taiKhoan}`}
+                      src={`https://i.pravatar.cc/150?u=${thongTin.taiKhoan}`}
                       alt="avatar"
                     />
-                    <p className="ten">{thongTinNguoiDung.taiKhoan}</p>
+                    <p className="ten">{thongTin.taiKhoan}</p>
                     <p className="maLoai">
-                      {thongTinNguoiDung.maLoaiNguoiDung}
+                      {thongTin.maLoaiNguoiDung}
                     </p>
                   </div>
                 </Col>
@@ -191,7 +192,7 @@ export default function User(props) {
                       <p className="thongTin_dangNhap">
                         Email:
                         <span style={{ color: "#f55960" }}>
-                          {thongTinNguoiDung.email}
+                          {thongTin.email}
                         </span>
                       </p>
                       <p>
@@ -208,7 +209,7 @@ export default function User(props) {
                       <p className="thongTin_dangNhap">
                         Họ Tên:
                         <span style={{ color: "#f55960" }}>
-                          {thongTinNguoiDung.hoTen}
+                          {thongTin.hoTen}
                         </span>
                       </p>
                       <p> Tên tài khoản hoạt động trên website</p>
@@ -224,7 +225,7 @@ export default function User(props) {
                       <p className="thongTin_dangNhap">
                         Số Điện Thoại:
                         <span style={{ color: "#f55960" }}>
-                          {thongTinNguoiDung.soDT}
+                          {thongTin.soDT}
                         </span>
                       </p>
                       <p> Số điện thoại khi đăng ký</p>
@@ -240,7 +241,7 @@ export default function User(props) {
                       <p className="thongTin_dangNhap">
                         Tài Khoản:
                         <span style={{ color: "#f55960" }}>
-                          {thongTinNguoiDung.taiKhoan}
+                          {thongTin.taiKhoan}
                         </span>
                       </p>
                       <p>Là tên tài khoản (username) để đăng nhập .</p>
@@ -255,7 +256,7 @@ export default function User(props) {
                     <Col sm={20}>
                       <p className="thongTin_dangNhap">
                         <span style={{ color: "#f55960" }}>
-                          {thongTinNguoiDung.matKhau}
+                          {thongTin.matKhau}
                         </span>
                       </p>
                       <p>
@@ -270,16 +271,16 @@ export default function User(props) {
             </TabPane>
             <TabPane tab="Lịch Sử Đặt Vé" key="2">
               <div  className="thongTinDatVe">
-                <ThongTinDatVe />
+                <ThongTinDatVe thongTinDatVe={thongTin}/>
               </div>
             </TabPane>
             <TabPane tab="Chỉnh Sửa Thông Tin" key="3">
-              <UpdateUser />
+            <UserUpdate/>
             </TabPane>
           </Tabs>
         </div>
       </div>
-      <Loading/>
+        {loading?<Loading/>:"" }
     </div>
   );
 }

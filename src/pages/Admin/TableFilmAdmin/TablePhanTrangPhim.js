@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { danhSachPhimPhanTrang, xoaPhimAdminAction} from "../../../redux/action/FilmAdminAction";
 import PaginationPhim from "../TablePaginationPhimAdmin/PaginationPhim";
-import Loading from "../../../ultil/Loading/Loading";
 
 export default function TablePhanTrangPhim(props) {
   const dispatch = useDispatch();
@@ -41,7 +40,7 @@ export default function TablePhanTrangPhim(props) {
       return (
         <tr key={index}>
           <td>{Phim.maPhim}</td>
-          <td>{Phim.tenPhim}</td>
+          <td className="td_NameFilm">{Phim.tenPhim}</td>
           <td>
             <img
               style={{ width: "70px", height: "70px", objectFit: "cover" }}

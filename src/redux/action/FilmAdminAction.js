@@ -18,35 +18,6 @@ export const danhSachPhimPhanTrang = (paramString) => {
       }
     };
   };
-
-  
-export const themPhimAction = (form_data) => {
-    return async (dispatch) => {
-      try {
-        const result = await axios({
-          url: "https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/ThemPhimUploadHinh",
-          method: "POST",
-          data: form_data,
-        });
-  
-        Swal.fire({
-          position: 'top-center',
-          icon: 'success',
-          title: "Thêm Phim Thành công",
-          showConfirmButton: false,
-          timer: 2000
-        });
-      } catch (err) {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: `${err.response?.data}`,
-        });
-      }
-    };
-  };
-  
-  
   export const xoaPhimAdminAction = (maPhim) => {
     return async (dispatch) => {
       try {

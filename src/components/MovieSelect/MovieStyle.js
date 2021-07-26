@@ -12,12 +12,12 @@ const useStyles = makeStyles((theme) => ({
         alignItems: "center",
     },
     formControl: {
-        minWidth: "100%",
-        maxWidth: "100%",
+        minWidth: "100% !important" ,
+        maxWidth: "100% !important",
     },
     itemFirst: {
-        minWidth: "100%",
-        maxWidth: "100%",
+        minWidth: "100% !important",
+        maxWidth: "100% !important",
         padding: '1%',
         flex: "30%",
         '&:after': {
@@ -89,8 +89,8 @@ const useStyles = makeStyles((theme) => ({
         padding: "9.5px 20px 9.5px 20px",
     },
     search__item: {
-        minWidth: "100%",
-        maxWidth: "100%",
+        minWidth: "100% !important" ,
+        maxWidth: "100% !important",
         color: 'black',
         padding: '1%',
         '& > div:before': {
@@ -109,7 +109,7 @@ const useStyles = makeStyles((theme) => ({
             '& ~ svg': {
                 fontSize: 19,
                 color: 'rgba(0, 0, 0, 0.3)',
-                top: '33%',
+                top: '50%',
             }
         },
         '&:after': {

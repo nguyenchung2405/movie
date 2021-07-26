@@ -1,12 +1,10 @@
 import React from "react";
-import { useSelector } from "react-redux";
+
 export default function ThongTinDatVe(props) {
-  const thongTinDatVe = useSelector(
-    (state) => state.NguoiDungReducer.thongTinNguoiDung.thongTinDatVe
-  );
-  console.log("thongtindatve", thongTinDatVe);
+ let {thongTinDatVe}=props;
+ console.log(thongTinDatVe)
   const renderVe = () => {
-    return thongTinDatVe.map((Ve, index) => {
+    return thongTinDatVe.thongTinDatVe?.map((Ve, index) => {
       return (
         <tr key={index}>
           <td>

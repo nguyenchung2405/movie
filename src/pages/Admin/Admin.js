@@ -40,15 +40,16 @@ export default function Admin(props) {
             >
               Thêm Phim
             </Button>
-            <Modal
+            <Modal 
+              className="modalThemPhim"
               title="Thêm Phim"
               centered
               visible={visible}
               onOk={() => setVisible(false)}
               onCancel={() => setVisible(false)}
-              width={1000}
+              width={800}
             >
-              <ThemPhim />
+              <ThemPhim closeModalThemPhim={setVisible} />
             </Modal>
             <TablePhanTrangPhim />
           </TabPane>
@@ -66,7 +67,7 @@ export default function Admin(props) {
               visible={visibleUser}
               onOk={() => setVisibleUser(false)}
               onCancel={() => setVisibleUser(false)}
-              width={1000}
+              width={800}
             >
               <AddUser closerModal={setVisibleUser}/>  
             </Modal>
