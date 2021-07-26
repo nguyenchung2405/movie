@@ -67,10 +67,11 @@ export default function DemoCarousel(props) {
                 position: "absolute",
                 bottom: "120px",
             }
-        }
+        },
+        
     }
     return (
-        <Hidden xsDown>
+        // <Hidden xsDown>
             <Carousel {...settings} >
                 {
                     imgList.map((item, i) => (
@@ -85,7 +86,7 @@ export default function DemoCarousel(props) {
                     ))
                 }
             </Carousel>
-        </Hidden>
+        // </Hidden>
     )
 
 }
