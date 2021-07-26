@@ -105,10 +105,12 @@ export default function BHD(props) {
                     {
                         lstCumRap.map((dsPhim) => {
                             const { danhSachPhim } = dsPhim;
+                            
                             return (
                                 <TabPanel key={dsPhim.tenCumRap}>
                                     {
                                         danhSachPhim.map((phim, index) => {
+                                            phim && (phim.hinhAnh= phim.hinhAnh.replace("http:","https:"));
                                             return (
                                                 <div key={index} className=" wrapListMovie">
                                                     <Accordion >

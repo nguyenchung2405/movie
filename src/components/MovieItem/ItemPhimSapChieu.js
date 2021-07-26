@@ -13,9 +13,10 @@ import { NavLink } from 'react-router-dom';
 
 export default function ItemPhimSapChieu(props) {
     const { phim } = props;
+    phim && (phim.hinhAnh= phim.hinhAnh.replace("http:","https:"));
     const classes = useStyles();
     const [isOpen, setOpen] = useState(false);
-
+    
     const getVideoId = (url) => {
         var arrItem = url.split('/')
         return arrItem[arrItem.length - 1]

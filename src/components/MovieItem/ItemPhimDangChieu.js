@@ -13,6 +13,7 @@ import { NavLink } from 'react-router-dom';
 
 export default function ItemPhimDangChieu(props) {
     const { phim } = props;
+    phim && (phim.hinhAnh= phim.hinhAnh.replace("http:","https:"));
     const classes = useStyles();
     const [isOpen, setOpen] = useState(false);
 
@@ -48,7 +49,7 @@ export default function ItemPhimDangChieu(props) {
 
                     <img src={phim.hinhAnh} alt={phim.hinhAnh} className={classes.img} />
                 </CardActionArea>
-
+        
                 <div style={{ position: "relative" }}>
                     <div className="hideHover">
                         <Typography noWrap> <span className={classes.ageType}>P</span>
