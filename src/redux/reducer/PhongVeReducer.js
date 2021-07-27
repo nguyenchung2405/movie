@@ -15,6 +15,9 @@ const PhongVeReducer = (state = initialState, action) => {
     switch (action.type) {
         case LAY_DANH_SACH_PHONG_VE: {
             state.danhSachPhongVe = action.danhSachPhongVe;
+            let danhSachPhongVeUpdate ={...state.danhSachPhongVe};
+            danhSachPhongVeUpdate && (danhSachPhongVeUpdate.thongTinPhim.hinhAnh= danhSachPhongVeUpdate.thongTinPhim.hinhAnh.replace("http:","https:"));
+            state.danhSachPhongVe=danhSachPhongVeUpdate;
             return { ...state }
         }
         case DAT_GHE: {

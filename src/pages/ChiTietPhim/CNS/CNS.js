@@ -51,7 +51,9 @@ const AccordionDetails = withStyles((theme) => ({
 }))(MuiAccordionDetails);
 
 export default function CNS(props) {
-    const { heThongRapChieu } = props;
+    let { heThongRapChieu } = props;
+   
+    // heThongRapChieu && (heThongRapChieu.logo= heThongRapChieu.logo.replace("http:","https:"));
     const history = useHistory();
     const [expanded, setExpanded] = React.useState('panel1');
     const handleChange = (panel) => (event, newExpanded) => {
@@ -97,6 +99,7 @@ export default function CNS(props) {
         if (!!heThongRapChieu) {
             return heThongRapChieu.map((item) => {
                 const { cumRapChieu } = item;
+                item && (item.logo= item.logo.replace("http:","https:"));
                 return (
                     <TabPanel key={item.maHeThongRap} className="w-100">
                         {

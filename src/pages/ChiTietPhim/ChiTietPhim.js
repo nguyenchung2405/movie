@@ -24,11 +24,9 @@ const action = <Rate disabled value={5} />;
 
 export default function ChiTietPhim(props) {
   const { chiTietPhim } = useSelector((state) => state.PhimReducer);
-  chiTietPhim && (chiTietPhim.hinhAnh= chiTietPhim.hinhAnh.replace("http:","https:"));
   const [isOpen, setOpen] = useState(false);
   const dispatch = useDispatch();
   const id = props.match.params.id;
-
   useEffect(() => {
     dispatch(layThongTinPhimAction(id));
   }, []);

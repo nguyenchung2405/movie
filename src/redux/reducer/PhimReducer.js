@@ -29,7 +29,11 @@ const PhimReducer = (state = initialState, action) => {
       return { ...state };
     }
     case CHI_TIET_PHIM: {
-      return { ...state, chiTietPhim: action.chiTietPhim };
+      state.chiTietPhim = action.chiTietPhim;
+      let chiTietPhimUpdate= {...state.chiTietPhim};
+      chiTietPhimUpdate && (chiTietPhimUpdate.hinhAnh= chiTietPhimUpdate.hinhAnh.replace("http:","https:"));
+      state.chiTietPhim=chiTietPhimUpdate
+      return { ...state};
     }
     case DANH_SACH_PHIM_PHAN_TRANG: {
       state.danhSachPhimPhanTrang = action.danhSachPhimPhanTrang;
