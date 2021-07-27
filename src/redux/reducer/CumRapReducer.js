@@ -13,7 +13,16 @@ const CumRapReducer = (state = initialState, action)=>{
         }
         case LAY_THONG_TIN_LICH_CHIEU:{
             state.thongTinLichCHieu = action.thongTinLichCHieu;
-            return {...state};
+            let thongTinLichCHieuUpdate= [...state.thongTinLichCHieu];
+            console.log(thongTinLichCHieuUpdate)
+            for(let item of thongTinLichCHieuUpdate){
+                item && (item.logo= item.logo.replace("http:","https:"));
+               thongTinLichCHieuUpdate=[...thongTinLichCHieuUpdate, item]
+            }
+            
+            state.thongTinLichCHieu=thongTinLichCHieuUpdate;
+          
+            return { ...state};
         }
 
 
